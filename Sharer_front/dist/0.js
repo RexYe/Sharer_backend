@@ -10415,7 +10415,7 @@ exports.push([module.i, ".mint-header{-webkit-box-align:center;-ms-flex-align:ce
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__babel_loader_node_modules_vue_loader_lib_selector_type_script_index_0_Index_vue__ = __webpack_require__(52);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_template_compiler_index_id_data_v_2abb434a_hasScoped_true_node_modules_vue_loader_lib_selector_type_template_index_0_Index_vue__ = __webpack_require__(55);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_template_compiler_index_id_data_v_2abb434a_hasScoped_true_node_modules_vue_loader_lib_selector_type_template_index_0_Index_vue__ = __webpack_require__(58);
 function injectStyle (ssrContext) {
   __webpack_require__(50)
 }
@@ -10715,6 +10715,7 @@ exports.push([module.i, "", ""]);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_bottomMenu_bottomMenu__ = __webpack_require__(37);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_mint_ui__ = __webpack_require__(18);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_mint_ui___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4_mint_ui__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__app_db__ = __webpack_require__(55);
 //
 //
 //
@@ -10776,8 +10777,7 @@ exports.push([module.i, "", ""]);
 //
 //
 //
-//
-//
+
 
 
 
@@ -10896,6 +10896,22 @@ __WEBPACK_IMPORTED_MODULE_0_vue__["default"].component('todo-item', {
 			this.popupVisible = true;
 			console.log(this.popupVisible);
 		},
+		_fetch_choose_book() {
+			const t = this;
+			__WEBPACK_IMPORTED_MODULE_5__app_db__["a" /* default */].Choose.getBookType({
+				// start_time: t.state.start_time,
+				// end_time: t.state.start_time,
+			}).then(result => {
+				//解构赋值，拿出list
+				console.log(result);
+				let { list = [] } = result;
+				//new一个容器
+				let obj;
+				if (list && list.length) {
+					obj = list[0] || {};
+				}
+			});
+		},
 		toOther: function (to, run) {
 			if (this.$route.path !== `/${to}`) {
 				location.hash = to;
@@ -10957,6 +10973,207 @@ exports.push([module.i, ".index .search-div{display:inline;width:100%}.index .se
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__dbFactory__ = __webpack_require__(56);
+
+
+/* harmony default export */ __webpack_exports__["a"] = (__WEBPACK_IMPORTED_MODULE_0__dbFactory__["a" /* default */].context);
+
+let prefix = '';
+if (false) {
+    // prefix = 'http://localhost:6060'
+    // prefix = 'http://localhost:8000'
+    prefix = 'http://101.132.71.185';
+}
+// if(__PRO__){
+//     prefix = ''
+// }
+
+__WEBPACK_IMPORTED_MODULE_0__dbFactory__["a" /* default */].create('Choose', {
+    getBookType: {
+        url: prefix + '/api/choose_book',
+        method: 'GET'
+    }
+});
+
+/***/ }),
+/* 56 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_object_param__ = __webpack_require__(57);
+// import os from 'object-serialize'
+
+
+/* harmony default export */ __webpack_exports__["a"] = (new class {
+    constructor() {
+        this.map = new Map();
+    }
+    create(name, methods) {
+        return this.context[name] = this.DB(methods);
+    }
+    set(key, value) {
+        this.map.set(key, value);
+    }
+    get(key) {
+        return this.map.get(key);
+    }
+    context() {
+        this.link = data => this.context.Data = data;
+    }
+    DB(methods) {
+        for (let method in methods) {
+            const config = methods[method];
+            this[method] = query => new Request(config, query, method);
+        }
+        return this;
+    }
+}());
+
+function Request(config, body) {
+
+    let { url, method = '' } = config;
+    const option = {
+        credentials: 'same-origin'
+    };
+    if (method.toUpperCase() === 'POST') {
+        Object.assign(option, {
+            headers: {
+                "Accept": "application/json",
+                "Content-Type": "application/x-www-form-urlencoded"
+            },
+            method: 'post',
+            body: Object(__WEBPACK_IMPORTED_MODULE_0_object_param__["a" /* default */])(body)
+        });
+    } else {
+        url += `?${Object(__WEBPACK_IMPORTED_MODULE_0_object_param__["a" /* default */])(body)}`;
+    }
+
+    return new Promise((resolve, reject) => {
+        fetch(url, option).then(data => data.json()).then(({ success, data, err }) => {
+            if (success) {
+                resolve(data);
+            } else {
+                reject({
+                    success, data, err
+                });
+            }
+        }).catch(() => reject({
+            errorMsg: '请求失败'
+        }));
+    });
+}
+
+/***/ }),
+/* 57 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
+
+/**
+ * 功能和`Zepto.param`一样
+ * @param obj {Object}
+ * @param traditional {Boolean}
+ * @returns {string}
+ * param({ foo: { one: 1, two: 2 }}) // "foo[one]=1&foo[two]=2)"
+ * param({ ids: [1,2,3] })           // "ids[]=1&ids[]=2&ids[]=3"
+ * param({ ids: [1,2,3] }, true)     // "ids=1&ids=2&ids=3"
+ * param({ foo: 'bar', nested: { will: 'not be ignored' }})    // "foo=bar&nested[will]=not+be+ignored"
+ * param({ foo: 'bar', nested: { will: 'be ignored' }}, true)  // "foo=bar&nested=[object+Object]"
+ * param({ id: function(){ return 1 + 2 } })  // "id=3"
+ */
+
+var ARRAY_TYPE = '[object Array]';
+var FUNCTION = 'function';
+var OBJECT = 'object';
+var NUMBER = 'number';
+var NULL = null;
+var OBJECT_TYPE = '[object Object]';
+
+function isFunction(v) {
+    return (typeof v === 'undefined' ? 'undefined' : _typeof(v)) === FUNCTION;
+}
+
+function isArray(v) {
+    return toString.call(v) === ARRAY_TYPE;
+}
+
+function isObject(v) {
+    return (typeof v === 'undefined' ? 'undefined' : _typeof(v)) === OBJECT && v !== NULL;
+}
+
+function isWindow(v) {
+    return v !== NULL && v === v.window;
+}
+
+function isPlainObject(v) {
+    return v !== NULL && isObject(v) && !isWindow(v) && Object.getPrototypeOf(v) === Object.prototype;
+}
+
+function isNumber(v) {
+    return !isNaN(v) && (typeof v === 'undefined' ? 'undefined' : _typeof(v)) === NUMBER;
+}
+
+function likeArray(v) {
+    if (!v) {
+        return false;
+    }
+    return _typeof(v.length) === NUMBER;
+}
+
+function each(v, fn) {
+    var i = void 0,
+        l = void 0;
+    if (likeArray(v)) {
+        for (i = 0, l = v.length; i < l; i++) {
+            if (fn.call(v[i], v[i], i) === false) return;
+        }
+    } else {
+        for (i in v) {
+            if (fn.call(v[i], v[i], i) === false) return;
+        }
+    }
+}
+
+function serialize(params, obj, traditional, scope) {
+    var type = void 0,
+        array = isArray(obj),
+        hash = isPlainObject(obj);
+    each(obj, function (value, key) {
+        type = toString.call(value);
+        if (scope) {
+            key = traditional ? scope : scope + '[' + (hash || type == OBJECT_TYPE || type == ARRAY_TYPE ? key : '') + ']';
+        }
+
+        // 递归
+        if (!scope && array) {
+            params.add(value.name, value.value);
+        }
+        // recurse into nested objects
+        else if (type == ARRAY_TYPE || !traditional && type == OBJECT_TYPE) {
+                serialize(params, value, traditional, key);
+            } else {
+                params.add(key, value);
+            }
+    });
+}
+
+/* harmony default export */ __webpack_exports__["a"] = (function (obj, traditional) {
+    var params = [];
+    params.add = function (key, value) {
+        if (isFunction(value)) value = value();
+        if (value == null) value = "";
+        params.push(key + '=' + value);
+    };
+    serialize(params, obj, traditional);
+    return params.join('&').replace(/%20/g, '+');
+});
+
+/***/ }),
+/* 58 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
 var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
   return _c('div', {
     staticClass: "index"
@@ -11015,6 +11232,11 @@ var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._sel
   }, [_c('mt-tab-item', {
     attrs: {
       "id": "jiaocai"
+    },
+    nativeOn: {
+      "click": function($event) {
+        _vm._fetch_choose_book()
+      }
     }
   }, [_vm._v("教材")]), _vm._v(" "), _c('mt-tab-item', {
     attrs: {
