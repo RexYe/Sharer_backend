@@ -49,17 +49,9 @@ var update = __webpack_require__(2)("3863b70b", content, true);
 /***/ }),
 
 /***/ 64:
-/***/ (function(module, exports, __webpack_require__) {
+/***/ (function(module, exports) {
 
-exports = module.exports = __webpack_require__(1)(undefined);
-// imports
-
-
-// module
-exports.push([module.i, "", ""]);
-
-// exports
-
+throw new Error("Module build failed: Error: Missing binding /var/www/sharer_backend/Sharer_front/node_modules/node-sass/vendor/linux-x64-46/binding.node\nNode Sass could not find a binding for your current environment: Linux 64-bit with Node.js 4.x\n\nFound bindings for the following environments:\n  - Linux 64-bit with Node.js 6.x\n\nThis usually happens because your environment has changed since running `npm install`.\nRun `npm rebuild node-sass --force` to build the binding for your current environment.\n    at module.exports (/var/www/sharer_backend/Sharer_front/node_modules/node-sass/lib/binding.js:15:13)\n    at Object.<anonymous> (/var/www/sharer_backend/Sharer_front/node_modules/node-sass/lib/index.js:14:35)\n    at Module._compile (module.js:410:26)\n    at Object.Module._extensions..js (module.js:417:10)\n    at Module.load (module.js:344:32)\n    at Function.Module._load (module.js:301:12)\n    at Module.require (module.js:354:17)\n    at require (internal/module.js:12:17)\n    at Object.<anonymous> (/var/www/sharer_backend/Sharer_front/node_modules/sass-loader/lib/loader.js:3:14)\n    at Module._compile (module.js:410:26)\n    at Object.Module._extensions..js (module.js:417:10)\n    at Module.load (module.js:344:32)\n    at Function.Module._load (module.js:301:12)\n    at Module.require (module.js:354:17)\n    at require (internal/module.js:12:17)\n    at loadLoader (/var/www/sharer_backend/Sharer_front/node_modules/loader-runner/lib/loadLoader.js:13:17)\n    at iteratePitchingLoaders (/var/www/sharer_backend/Sharer_front/node_modules/loader-runner/lib/LoaderRunner.js:169:2)\n    at iteratePitchingLoaders (/var/www/sharer_backend/Sharer_front/node_modules/loader-runner/lib/LoaderRunner.js:165:10)\n    at /var/www/sharer_backend/Sharer_front/node_modules/loader-runner/lib/LoaderRunner.js:173:18\n    at loadLoader (/var/www/sharer_backend/Sharer_front/node_modules/loader-runner/lib/loadLoader.js:36:3)\n    at iteratePitchingLoaders (/var/www/sharer_backend/Sharer_front/node_modules/loader-runner/lib/LoaderRunner.js:169:2)\n    at iteratePitchingLoaders (/var/www/sharer_backend/Sharer_front/node_modules/loader-runner/lib/LoaderRunner.js:165:10)\n    at /var/www/sharer_backend/Sharer_front/node_modules/loader-runner/lib/LoaderRunner.js:173:18\n    at loadLoader (/var/www/sharer_backend/Sharer_front/node_modules/loader-runner/lib/loadLoader.js:36:3)\n    at iteratePitchingLoaders (/var/www/sharer_backend/Sharer_front/node_modules/loader-runner/lib/LoaderRunner.js:169:2)\n    at runLoaders (/var/www/sharer_backend/Sharer_front/node_modules/loader-runner/lib/LoaderRunner.js:362:2)\n    at NormalModule.doBuild (/var/www/sharer_backend/Sharer_front/node_modules/webpack/lib/NormalModule.js:181:3)\n    at NormalModule.build (/var/www/sharer_backend/Sharer_front/node_modules/webpack/lib/NormalModule.js:274:15)\n    at Compilation.buildModule (/var/www/sharer_backend/Sharer_front/node_modules/webpack/lib/Compilation.js:149:10)\n    at factoryCallback (/var/www/sharer_backend/Sharer_front/node_modules/webpack/lib/Compilation.js:337:12)");
 
 /***/ }),
 
