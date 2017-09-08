@@ -36,7 +36,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'sharer_backend',
+    'sharer_front',
 ]
 
 MIDDLEWARE = [
@@ -75,12 +75,12 @@ WSGI_APPLICATION = 'sharer_backend.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.mysql',  
-        'NAME': 'sharer',  
-        'USER': 'root',  
-        'PASSWORD': 'Qq894450343',  
-        'HOST': 'rm-uf6h525prkq65huc7o.mysql.rds.aliyuncs.com',  
-        'PORT': '3306',  
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'sharer',
+        'USER': 'root',
+        'PASSWORD': 'Qq894450343',
+        'HOST': 'rm-uf6h525prkq65huc7o.mysql.rds.aliyuncs.com',
+        'PORT': '3306',
     }
 }
 
