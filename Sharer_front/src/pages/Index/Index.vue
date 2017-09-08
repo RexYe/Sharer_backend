@@ -1,8 +1,6 @@
 <template>
 	<div class="index">
 		<div class="search-div">
-			<!-- <input type="text" name="" value="" placeholder="搜索">
-			<a href="#"><img src="../../img/search.png" alt=""></a> -->
 			<mt-search
 		  v-model="value"
 		  cancel-text="取消"
@@ -29,7 +27,7 @@
 		<div class="jiaocaiandfenlei">
 			<div class="top-mt-navbar">
 				<mt-navbar v-model="selected">
-				  <mt-tab-item id="jiaocai">教材</mt-tab-item>
+				  <mt-tab-item id="jiaocai" @click.native="_fetch_choose_book()">教材</mt-tab-item>
 				  <mt-tab-item id="fenlei">分类</mt-tab-item>
 				</mt-navbar>
 				<div class="school-choose-div" v-model="popupVisible" @click="change_popupVisible()">
@@ -68,7 +66,7 @@ import './Index.css'
 import 'mint-ui/lib/style.css'
 import bottomMenu1 from '../../components/bottomMenu/bottomMenu'
 import { TabContainer, TabContainerItem,Navbar, TabItem,Popup,Picker,Search } from 'mint-ui';
-
+import DB from '../../app/db'
 
 Vue.component(Picker.name, Picker);
 Vue.component(Popup.name, Popup);
@@ -191,6 +189,23 @@ export default {
 		change_popupVisible(){
 			this.popupVisible = true;
 			console.log(this.popupVisible);
+		},
+		_fetch_choose_book() {
+				const t = this;
+				DB.Choose.getBookType({
+						// start_time: t.state.start_time,
+						// end_time: t.state.start_time,
+				}).then(result=>{
+							//解构赋值，拿出list
+							console.log(result);
+							let { list = [] } = result
+							//new一个容器
+							let obj
+							if (list && list.length) {
+									obj = list[0] || {}
+							}
+
+				})
 		},
 		toOther:function(to,run) {
       if(this.$route.path!==`/${to}`){
