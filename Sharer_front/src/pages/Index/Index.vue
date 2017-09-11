@@ -29,11 +29,11 @@
 		<div class="jiaocaiandfenlei">
 			<div class="top-mt-navbar">
 				<mt-navbar v-model="selected">
-				  <mt-tab-item id="jiaocai" @click.native="_fetch_choose_book()">教材</mt-tab-item>
+				  <mt-tab-item id="jiaocai" >教材</mt-tab-item>
 				  <mt-tab-item id="fenlei">其他</mt-tab-item>
 				</mt-navbar>
 				<div class="school-choose-div" v-model="popupVisible" @click="change_popupVisible()">
-					{{this.choose_school_college}}∨
+					∨{{this.choose_school_college}}
 				</div>
 			</div>
 <!-- tab-container -->
@@ -44,7 +44,7 @@
 			</mt-cell>
 	  </mt-tab-container-item>
 	  <mt-tab-container-item id="fenlei">
-	    <mt-cell v-for="n in 4" :title="'测试 ' + n" />
+	    <mt-cell v-for="n in 14" :title="'测试 ' + n" />
 	  </mt-tab-container-item>
 	</mt-tab-container>
 	<div class="course-selected">
@@ -78,12 +78,6 @@ Vue.component(Navbar.name, Navbar);
 Vue.component(TabItem.name, TabItem);
 Vue.component(Search.name, Search);
 
-// 全局组件
-Vue.component('todo-item', {
-	props:['todo'],
-	template: '<div><li>{{todo.text}}</li></div>'
-})
-
 export default {
 	name: 'hello',
 	data () {
@@ -94,7 +88,7 @@ export default {
 			popupVisible:false,
 			//教材分类
 			material:[],
-			book_datail_flag:'tskc',
+			book_datail_flag:'',
 			book_datail:[{
 				tskc:[{
 					name:'马克思主义基本原理概论',
@@ -153,6 +147,7 @@ export default {
 	methods: {
 		changepage(key){
 			this.book_datail_flag = key;
+			this._fetch_choose_book();
 		},
 		change_popupVisible(){
 			this.popupVisible = true;
@@ -173,7 +168,6 @@ export default {
 				DB.Choose.getBookType({
 				}).then(result=>{
 							//解构赋值，拿出list
-			
 							let { list = [] } = result
 							//new一个容器
 							let obj

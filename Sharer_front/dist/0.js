@@ -10777,6 +10777,8 @@ exports.push([module.i, "", ""]);
 //
 //
 //
+//
+//
 
 
 
@@ -10794,45 +10796,17 @@ __WEBPACK_IMPORTED_MODULE_0_vue__["default"].component(__WEBPACK_IMPORTED_MODULE
 __WEBPACK_IMPORTED_MODULE_0_vue__["default"].component(__WEBPACK_IMPORTED_MODULE_4_mint_ui__["TabItem"].name, __WEBPACK_IMPORTED_MODULE_4_mint_ui__["TabItem"]);
 __WEBPACK_IMPORTED_MODULE_0_vue__["default"].component(__WEBPACK_IMPORTED_MODULE_4_mint_ui__["Search"].name, __WEBPACK_IMPORTED_MODULE_4_mint_ui__["Search"]);
 
-// 全局组件
-__WEBPACK_IMPORTED_MODULE_0_vue__["default"].component('todo-item', {
-	props: ['todo'],
-	template: '<div><li>{{todo.text}}</li></div>'
-});
-
 /* harmony default export */ __webpack_exports__["a"] = ({
 	name: 'hello',
 	data() {
 		return {
+			choose_school_college: '    请选择专业',
+			show_more_college: false,
 			selected: 'jiaocai',
 			popupVisible: false,
 			//教材分类
-			material: [{
-				name: '通识课程',
-				key: 'tskc'
-			}, {
-				name: '大类基础',
-				key: 'dljc'
-			}, {
-				name: '数字媒体',
-				key: 'szmt'
-			}, {
-				name: '软件工程',
-				key: 'rjgc'
-			}, {
-				name: '物联网',
-				key: 'wlw'
-			}, {
-				name: '网络工程',
-				key: 'wlgc'
-			}, {
-				name: '计算机与自动化',
-				key: 'jsjyzdh'
-			}, {
-				name: '计算机科学与技术',
-				key: 'jsjkxyjs'
-			}],
-			book_datail_flag: 'tskc',
+			material: [],
+			book_datail_flag: '',
 			book_datail: [{
 				tskc: [{
 					name: '马克思主义基本原理概论',
@@ -10868,19 +10842,11 @@ __WEBPACK_IMPORTED_MODULE_0_vue__["default"].component('todo-item', {
 					college: '计算机学院'
 				}, {
 					college: '经贸管理学院'
-				}, {
-					college: '机械学院'
-				}, {
-					college: '艺术学院'
-				}, {
-					college: '信息学院'
 				}]
 			}, {
 				name: '浙江大学',
 				college: [{
-					college: '计算机学院'
-				}, {
-					college: '经贸管理学院'
+					college: '机械工程学院'
 				}]
 			}]
 		};
@@ -10891,19 +10857,26 @@ __WEBPACK_IMPORTED_MODULE_0_vue__["default"].component('todo-item', {
 	methods: {
 		changepage(key) {
 			this.book_datail_flag = key;
+			this._fetch_choose_book();
 		},
 		change_popupVisible() {
 			this.popupVisible = true;
-			console.log(this.popupVisible);
+		},
+		show_more_college1(index) {
+			this.show_more_college = index.name;
+		},
+		choose_college(i, item) {
+			this.choose_school_college = item.name + '-' + i.college;
+			this.popupVisible = false;
+			this.material.length = 0;
+			this._fetch_choose_school_college(i, item);
+			//打开加载图标
+			__WEBPACK_IMPORTED_MODULE_4_mint_ui__["Indicator"].open('加载中...');
 		},
 		_fetch_choose_book() {
 			const t = this;
-			__WEBPACK_IMPORTED_MODULE_5__app_db__["a" /* default */].Choose.getBookType({
-				// start_time: t.state.start_time,
-				// end_time: t.state.start_time,
-			}).then(result => {
+			__WEBPACK_IMPORTED_MODULE_5__app_db__["a" /* default */].Choose.getBookType({}).then(result => {
 				//解构赋值，拿出list
-				console.log(result);
 				let { list = [] } = result;
 				//new一个容器
 				let obj;
@@ -10912,12 +10885,30 @@ __WEBPACK_IMPORTED_MODULE_0_vue__["default"].component('todo-item', {
 				}
 			});
 		},
+		//选择学校专业发送请求
+		_fetch_choose_school_college(i, item) {
+			const t = this;
+			__WEBPACK_IMPORTED_MODULE_5__app_db__["a" /* default */].Choose.getSchoolCollege({}).then(result => {
+				let { list = [] } = result;
+				var new_list = list.filter(itema => {
+					//过滤选中具体学院后返回的数据
+					return itema.school == item.name && itema.college == i.college;
+				});
+				for (var k = 0; k < new_list.length; k++) {
+					t.material.push({
+						name: new_list[k].major,
+						key: new_list[k].major_key
+					});
+				}
+				//关闭加载图标
+				__WEBPACK_IMPORTED_MODULE_4_mint_ui__["Indicator"].close();
+			});
+		},
 		toOther: function (to, run) {
 			if (this.$route.path !== `/${to}`) {
 				location.hash = to;
 			}
 		}
-
 	},
 	computed: {},
 	watch: {}
@@ -10963,7 +10954,7 @@ exports = module.exports = __webpack_require__(1)(undefined);
 
 
 // module
-exports.push([module.i, ".index .search-div{display:inline;width:100%}.index .search-div .mint-search{height:auto;font-size:.75rem}.index .search-div .mint-search .mint-searchbar{background-color:#fff;-webkit-transition:width .7s;transition:width .7s}.index .search-div .mint-search .mint-searchbar-inner{border:1px solid #e2e2e2;height:1.5rem}.index .search-div .mint-searchbar-inner .mintui-search{font-size:.8rem}.jiaocaiandfenlei .mint-navbar .mint-tab-item.is-selected{margin-bottom:0;font-size:.6rem}.index .mint-navbar{width:4rem}.jiaocaiandfenlei .top-mt-navbar{display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-pack:justify;-ms-flex-pack:justify;justify-content:space-between}.jiaocaiandfenlei .school-choose-div{width:3rem;font-size:.6rem;line-height:1;padding:1rem 0}.jiaocaiandfenlei .picker{width:400px;overflow:scroll}.index .mint-tab-container{width:4.5rem}.index .mint-tab-container .mint-cell-wrapper{font-size:.6rem;text-align:center}.index .mint-tab-container .mint-cell-wrapper:hover{background-color:hsla(240,2%,75%,.5)}.jiaocaiandfenlei .top-mt-navbar{width:100%;height:2.5rem}.jiaocaiandfenlei .course-container{width:100%;height:auto;display:-webkit-box;display:-ms-flexbox;display:flex;-ms-flex-wrap:nowrap;flex-wrap:nowrap;background-color:#ededed}.index .course-selected{width:100%;height:auto}.index .course-selected .book-detail{background-color:#fff;width:6rem;height:7.9rem;margin:1rem;font-size:.5rem}.index .course-selected .book-detail .book-name{margin:0 auto;text-align:center}.index .course-selected .book-detail img{width:4.4rem;height:5rem;margin:.8rem}.choose-school .mint-popup.mint-popup-right{width:75%;height:100%}.school-list .shcool-detail{font-size:.8rem;border-bottom:.005rem solid #838383;margin-top:.3rem}.college-list-container{display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-orient:horizontal;-webkit-box-direction:normal;-ms-flex-direction:row;flex-direction:row;-webkit-box-pack:start;-ms-flex-pack:start;justify-content:flex-start;-ms-flex-wrap:wrap;flex-wrap:wrap}.school-list .college-list{margin:.5rem .5rem .3rem .4rem;padding:0 .6rem;line-height:1.3rem;text-align:center;width:auto;height:1.3rem;border-radius:.65rem;font-size:.5rem;background-color:#dbdbdb}", ""]);
+exports.push([module.i, ".index{width:100%}.index .search-div{display:inline;width:7rem;margin-left:.5rem}.index .search-div input{margin:.5rem;height:1.6rem;border-radius:17px;border-style:none;padding-left:1rem;width:7rem;-webkit-transition:width .7s;transition:width .7s;color:#294057;font-size:.8rem;border:.1px solid #cfcfcf}.index .search-div img{position:relative;left:-2rem;top:.2rem;width:.85rem;height:.85rem}.index .search-div input:focus{width:12rem;border:.2px solid #b9b9b9;color:#4a4a4a}.jiaocaiandfenlei .mint-navbar .mint-tab-item.is-selected{margin-bottom:0}.jiaocaiandfenlei .mint-navbar .mint-tab-item-label{font-size:.7rem}.index .mint-navbar{width:4.95rem}.jiaocaiandfenlei .top-mt-navbar{display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-pack:justify;-ms-flex-pack:justify;justify-content:space-between}.jiaocaiandfenlei .school-choose-div{width:6.5rem;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;font-size:.6rem;line-height:1;padding:1rem 0}.jiaocaiandfenlei .picker{width:400px;overflow:scroll}.index .mint-tab-container{width:6.5rem}.index .mint-tab-container .mint-cell-wrapper{font-size:.75rem;text-align:center;height:3.5rem;padding:0}.index .mint-tab-container .mint-cell-wrapper:hover{background-color:#f2f2f2;color:#316dc2}.jiaocaiandfenlei .top-mt-navbar{width:100%;height:2.5rem}.jiaocaiandfenlei .course-container{width:100%;height:100%;display:-webkit-box;display:-ms-flexbox;display:flex;-ms-flex-wrap:nowrap;flex-wrap:nowrap;background-color:#f2f2f2}.index .course-selected{width:100%;height:auto}.index .course-selected .book-detail{background-color:#fff;width:6rem;height:7.9rem;margin:1rem;font-size:.5rem}.index .course-selected .book-detail .book-name{margin:0 auto;text-align:center}.index .course-selected .book-detail img{width:4.4rem;height:5rem;margin:.8rem}.choose-school .mint-popup.mint-popup-right{width:75%;height:100%}.school-list .shcool-detail{font-size:.85rem;padding-left:1rem;padding-bottom:1rem;border-bottom:.0001rem solid #838383;margin-top:.9rem}.school-list .shcool-detail:hover{color:#262626}.college-list-container{display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-orient:horizontal;-webkit-box-direction:normal;-ms-flex-direction:row;flex-direction:row;-webkit-box-pack:start;-ms-flex-pack:start;justify-content:flex-start;-ms-flex-wrap:wrap;flex-wrap:wrap}.school-list .college-list{margin:.5rem .5rem .3rem .4rem;padding:0 .6rem;line-height:1.3rem;text-align:center;width:auto;height:1.3rem;border-radius:.65rem;font-size:.5rem;background-color:#dbdbdb}", ""]);
 
 // exports
 
@@ -10981,8 +10972,8 @@ exports.push([module.i, ".index .search-div{display:inline;width:100%}.index .se
 let prefix = '';
 if (false) {
     // prefix = 'http://localhost:6060'
-    // prefix = 'http://localhost:8000'
-    prefix = 'http://101.132.71.185';
+    prefix = 'http://localhost:8000';
+    // prefix = 'http://101.132.71.185'
 }
 // if(__PRO__){
 //     prefix = ''
@@ -10991,6 +10982,10 @@ if (false) {
 __WEBPACK_IMPORTED_MODULE_0__dbFactory__["a" /* default */].create('Choose', {
     getBookType: {
         url: prefix + '/api/choose_book',
+        method: 'GET'
+    },
+    getSchoolCollege: {
+        url: prefix + '/api/choose_school_college',
         method: 'GET'
     }
 });
@@ -11177,21 +11172,7 @@ function serialize(params, obj, traditional, scope) {
 var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
   return _c('div', {
     staticClass: "index"
-  }, [_c('div', {
-    staticClass: "search-div"
-  }, [_c('mt-search', {
-    attrs: {
-      "cancel-text": "取消",
-      "placeholder": "搜索"
-    },
-    model: {
-      value: (_vm.value),
-      callback: function($$v) {
-        _vm.value = $$v
-      },
-      expression: "value"
-    }
-  })], 1), _vm._v(" "), _c('div', {
+  }, [_vm._m(0), _vm._v(" "), _c('div', {
     staticClass: "choose-school"
   }, [_c('mt-popup', {
     attrs: {
@@ -11209,13 +11190,23 @@ var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._sel
     staticClass: "school-list"
   }, _vm._l((_vm.school_list), function(item, index) {
     return _c('div', {
-      staticClass: "shcool-detail"
+      staticClass: "shcool-detail",
+      on: {
+        "click": function($event) {
+          _vm.show_more_college1(item)
+        }
+      }
     }, [_c('span', [_vm._v(_vm._s(item.name))]), _vm._v(" "), _c('div', {
       staticClass: "college-list-container"
-    }, _vm._l((item.college), function(i) {
-      return _c('div', {
-        staticClass: "college-list"
-      }, [_vm._v("\n\t\t\t\t\t\t\t" + _vm._s(i.college) + "\n\t\t\t\t\t\t")])
+    }, _vm._l((item.college), function(i, index) {
+      return (_vm.show_more_college == item.name) ? _c('div', {
+        staticClass: "college-list",
+        on: {
+          "click": function($event) {
+            _vm.choose_college(i, item)
+          }
+        }
+      }, [_vm._v("\n\t\t\t\t\t\t\t" + _vm._s(i.college) + "\n\t\t\t\t\t\t")]) : _vm._e()
     }))])
   }))])], 1), _vm._v(" "), _c('div', {
     staticClass: "jiaocaiandfenlei"
@@ -11232,17 +11223,12 @@ var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._sel
   }, [_c('mt-tab-item', {
     attrs: {
       "id": "jiaocai"
-    },
-    nativeOn: {
-      "click": function($event) {
-        _vm._fetch_choose_book()
-      }
     }
   }, [_vm._v("教材")]), _vm._v(" "), _c('mt-tab-item', {
     attrs: {
       "id": "fenlei"
     }
-  }, [_vm._v("分类")])], 1), _vm._v(" "), _c('div', {
+  }, [_vm._v("其他")])], 1), _vm._v(" "), _c('div', {
     staticClass: "school-choose-div",
     on: {
       "click": function($event) {
@@ -11256,7 +11242,7 @@ var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._sel
       },
       expression: "popupVisible"
     }
-  }, [_vm._v("\n\t\t\t\t\t计算机∨\n\t\t\t\t")])], 1), _vm._v(" "), _c('div', {
+  }, [_vm._v("\n\t\t\t\t\t∨" + _vm._s(this.choose_school_college) + "\n\t\t\t\t")])], 1), _vm._v(" "), _c('div', {
     staticClass: "course-container"
   }, [_c('mt-tab-container', {
     attrs: {
@@ -11288,7 +11274,7 @@ var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._sel
     attrs: {
       "id": "fenlei"
     }
-  }, _vm._l((4), function(n) {
+  }, _vm._l((14), function(n) {
     return _c('mt-cell', {
       attrs: {
         "title": '测试 ' + n
@@ -11300,11 +11286,11 @@ var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._sel
     return _c('div', {
       staticClass: "book-detail",
       class: {
-        on: (_vm.type === item.type || +_vm.type === index + 1), on: _vm.$route.path === ("/" + (item.to))
+        on: _vm.$route.path === ("/" + (item.to))
       },
       on: {
         "click": function($event) {
-          _vm.toOther(item.to, _vm.type === item.type || +_vm.type === index + 1)
+          _vm.toOther(item.to)
         }
       }
     }, [_c('img', {
@@ -11321,9 +11307,35 @@ var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._sel
     }
   })], 1)
 }
-var staticRenderFns = []
+var staticRenderFns = [function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('div', {
+    staticClass: "search-div"
+  }, [_c('input', {
+    attrs: {
+      "type": "text",
+      "name": "",
+      "value": "",
+      "placeholder": "搜索"
+    }
+  }), _vm._v(" "), _c('a', {
+    attrs: {
+      "href": "#"
+    }
+  }, [_c('img', {
+    attrs: {
+      "src": __webpack_require__(59),
+      "alt": ""
+    }
+  })])])
+}]
 var esExports = { render: render, staticRenderFns: staticRenderFns }
 /* harmony default export */ __webpack_exports__["a"] = (esExports);
+
+/***/ }),
+/* 59 */
+/***/ (function(module, exports) {
+
+module.exports = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAACoklEQVRYR72X0XHaQBCGd4XEszuIXUHiDnAFkApMB4EH7oankCfmjgdwBcYd4AqiDkI6IBXEeYU5NvMzJ4/ASCeBzb3AjHR73+7+t7tiKlnT6fRqvV63mblFRNdE9IWIrogo9dsWzrnn4XC4KrNT9oyLHhpjRsz8jYj+EdGCmRf5d0UEQB0iahPR3Dn34xSQNwDWWnj5KCIcRVFvMBhk3h5l9VHqEVGPmXtKqXmdaOwB+MN/EtGTUgpGKy+/F1Ea1YF4BRiPx9eNRuMXEfXrGMgT+mikzDyrauMVwBizZOa0rueHIfKOpM65VhVN7ACstV0R6Wmtkf+zlzGmw8xdpRREWroygBU2hAQXMpZ/bq1FKkYhmwxaCOe9vM8gfBRaoZSytXaGTaEX63iPdyHIzWazVEqhXhQuAFQKVV0Ary2IGlW0GMAY8xJFUSeUq1MBQjpABEQpVViSTzk4p4NRFEVpmXM7ACK6VUotzzns2F5rLXrILATwoRpAjyhzDhFYiEiqtd7dhvdc1tpVlVvQJSJUrVK11gWbTCYtVNdQNWR/X/86526q1O6qIMaYue8tpe15p368jF+tNaJx9soaUij8OGgH4Nsoxqqu1npv8jmFBp3Vl/egrdf77zviDPPfOVfSh76dJMlNv99/CTlwOBHhJtwz89e6ldFraYoo+kOXSZLchSCOzYQw8IgSGsfxQ8gADvOKx+F/MKwy8+eqEEdLMAxut1uk45OIzH05fc6H0wsNE3FHRG59zme5sawSRGkPgC5yo/ebdIrIb4zkzWZzno9UHYjKTQhTLzPjo2S34jhehtLjBXlflo7KACE1Fz0/gMCtuMvfsg8HyAodM2eR2IO4CEAZxMUAiiAuCuAh8NH7Hf9F5OniADjYl/0Wmt9/FZVwObWNz90AAAAASUVORK5CYII="
 
 /***/ })
 ]);
