@@ -10689,8 +10689,8 @@ var esExports = { render: render, staticRenderFns: staticRenderFns }
 let prefix = '';
 if (false) {
     // prefix = 'http://localhost:6060'
-    prefix = 'http://localhost:8000';
-    // prefix = 'http://101.132.71.185'
+    // prefix = 'http://localhost:8000'
+    prefix = 'http://101.132.71.185';
 }
 // if(__PRO__){
 //     prefix = ''
