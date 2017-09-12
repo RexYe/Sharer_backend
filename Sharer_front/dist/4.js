@@ -1,5 +1,169 @@
 webpackJsonp([4],{
 
+/***/ 100:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__OrderDetail_css__ = __webpack_require__(101);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__OrderDetail_css___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__OrderDetail_css__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+
+
+
+/* harmony default export */ __webpack_exports__["a"] = ({
+  name: 'OrderDetail',
+  data() {
+    return {
+      order: [{
+        name: '许见阳',
+        seller_head_img: 'http://upload.jianshu.io/users/upload_avatars/2979086/e08b736e-f99a-43c1-bce4-cc72e10eef88.jpg?imageMogr2/auto-orient/strip|imageView2/1/w/240/h/240',
+        price: '10',
+        date: '2017-9-5',
+        sthaboutbook: '九成新，低价出，有意者带走,九成新，低价出，有意者带走九成新，低价出，有意者带走',
+        img: [{
+          src: 'http://www.dayila.net/_static/kh_book_cover/2012_07/13929643555306f303521bb0.96867513.jpg'
+        }, {
+          src: 'http://www.dayila.net/_static/kh_book_cover/2014_09/141167712354247bc3f4117870332084.jpg'
+        }]
+      }]
+    };
+  }
+});
+
+/***/ }),
+
+/***/ 101:
+/***/ (function(module, exports, __webpack_require__) {
+
+// style-loader: Adds some css to the DOM by adding a <style> tag
+
+// load the styles
+var content = __webpack_require__(102);
+if(typeof content === 'string') content = [[module.i, content, '']];
+// Prepare cssTransformation
+var transform;
+
+var options = {}
+options.transform = transform
+// add the styles to the DOM
+var update = __webpack_require__(16)(content, options);
+if(content.locals) module.exports = content.locals;
+// Hot Module Replacement
+if(false) {
+	// When the styles change, update the <style> tags
+	if(!content.locals) {
+		module.hot.accept("!!../../../node_modules/css-loader/index.js!../../../node_modules/postcss-loader/lib/index.js!./OrderDetail.css", function() {
+			var newContent = require("!!../../../node_modules/css-loader/index.js!../../../node_modules/postcss-loader/lib/index.js!./OrderDetail.css");
+			if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+			update(newContent);
+		});
+	}
+	// When the module is disposed, remove the <style> tags
+	module.hot.dispose(function() { update(); });
+}
+
+/***/ }),
+
+/***/ 102:
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(1)(undefined);
+// imports
+
+
+// module
+exports.push([module.i, ".OrderDetail{font-size:.7rem}.OrderDetail .order-container{padding:.3rem}.OrderDetail .top-user{color:#2f2f2f;height:2.5rem;display:-webkit-box;display:-ms-flexbox;display:flex;list-style:none;padding:.3rem;margin-bottom:.9rem}.OrderDetail .top-user #date{margin-top:.2rem;color:#989898}.OrderDetail .top-user img{width:1.9rem;height:1.9rem;border-radius:1.9rem;margin-right:.5rem}.OrderDetail .top-user #price{margin-top:.4rem;color:#e8bc38;padding-left:60%;font-size:.9rem;font-weight:400}.OrderDetail .sth-about-book{width:100%;height:auto;color:#282828;margin-bottom:1rem}.book-photo{display:-webkit-box;display:-ms-flexbox;display:flex;-ms-flex-wrap:wrap;flex-wrap:wrap;-webkit-box-pack:center;-ms-flex-pack:center;justify-content:center}.book-photo img{width:100%;height:100%;margin:.3rem}.order-bottom-menu{width:100%;display:-webkit-box;display:-ms-flexbox;display:flex;position:fixed;bottom:0;z-index:100;height:2.5rem;border-top:1px solid grey;text-align:center;line-height:2.5rem}.order-bottom-menu .join-want{width:50%;background-color:#fff;color:#5e5e5e}.order-bottom-menu .i-want{color:#fff;width:50%;background-color:#eb3535}", ""]);
+
+// exports
+
+
+/***/ }),
+
+/***/ 103:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('div', {
+    staticClass: "OrderDetail"
+  }, [_c('div', {
+    staticClass: "order-container"
+  }, [_c('div', {
+    staticClass: "top-user"
+  }, [_c('img', {
+    attrs: {
+      "src": _vm.order[0].seller_head_img
+    }
+  }), _vm._v(" "), _c('div', {
+    staticClass: "name-and-date"
+  }, [_c('li', {
+    attrs: {
+      "id": "name"
+    }
+  }, [_vm._v(_vm._s(_vm.order[0].name))]), _vm._v(" "), _c('li', {
+    attrs: {
+      "id": "date"
+    }
+  }, [_vm._v(_vm._s(_vm.order[0].date))])]), _vm._v(" "), _c('span', {
+    attrs: {
+      "id": "price"
+    }
+  }, [_vm._v("¥" + _vm._s(_vm.order[0].price))])]), _vm._v(" "), _c('div', {
+    staticClass: "sth-about-book"
+  }, [_c('span', [_vm._v(_vm._s(_vm.order[0].sthaboutbook))])]), _vm._v(" "), _vm._l((_vm.order[0].img), function(item) {
+    return _c('div', {
+      staticClass: "book-photo"
+    }, [_c('img', {
+      attrs: {
+        "src": item.src
+      }
+    })])
+  })], 2), _vm._v(" "), _vm._m(0)])
+}
+var staticRenderFns = [function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('div', {
+    staticClass: "order-bottom-menu"
+  }, [_c('div', {
+    staticClass: "join-want"
+  }, [_c('span', [_vm._v("加入心愿单")])]), _vm._v(" "), _c('div', {
+    staticClass: "i-want"
+  }, [_c('span', [_vm._v("我想要")])])])
+}]
+var esExports = { render: render, staticRenderFns: staticRenderFns }
+/* harmony default export */ __webpack_exports__["a"] = (esExports);
+
+/***/ }),
+
 /***/ 16:
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -461,10 +625,10 @@ module.exports = function (css) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__babel_loader_node_modules_vue_loader_lib_selector_type_script_index_0_OrderDetail_vue__ = __webpack_require__(95);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_template_compiler_index_id_data_v_747d2b75_hasScoped_false_node_modules_vue_loader_lib_selector_type_template_index_0_OrderDetail_vue__ = __webpack_require__(98);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__babel_loader_node_modules_vue_loader_lib_selector_type_script_index_0_OrderDetail_vue__ = __webpack_require__(100);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_template_compiler_index_id_data_v_747d2b75_hasScoped_false_node_modules_vue_loader_lib_selector_type_template_index_0_OrderDetail_vue__ = __webpack_require__(103);
 function injectStyle (ssrContext) {
-  __webpack_require__(93)
+  __webpack_require__(98)
 }
 var normalizeComponent = __webpack_require__(3)
 /* script */
@@ -490,13 +654,13 @@ var Component = normalizeComponent(
 
 /***/ }),
 
-/***/ 93:
+/***/ 98:
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(94);
+var content = __webpack_require__(99);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
@@ -504,7 +668,7 @@ var update = __webpack_require__(2)("678ddad6", content, true);
 
 /***/ }),
 
-/***/ 94:
+/***/ 99:
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(1)(undefined);
@@ -516,170 +680,6 @@ exports.push([module.i, "", ""]);
 
 // exports
 
-
-/***/ }),
-
-/***/ 95:
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__OrderDetail_css__ = __webpack_require__(96);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__OrderDetail_css___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__OrderDetail_css__);
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-
-
-
-
-/* harmony default export */ __webpack_exports__["a"] = ({
-  name: 'OrderDetail',
-  data() {
-    return {
-      order: [{
-        name: '许见阳',
-        seller_head_img: 'http://upload.jianshu.io/users/upload_avatars/2979086/e08b736e-f99a-43c1-bce4-cc72e10eef88.jpg?imageMogr2/auto-orient/strip|imageView2/1/w/240/h/240',
-        price: '10',
-        date: '2017-9-5',
-        sthaboutbook: '九成新，低价出，有意者带走,九成新，低价出，有意者带走九成新，低价出，有意者带走',
-        img: [{
-          src: 'http://www.dayila.net/_static/kh_book_cover/2012_07/13929643555306f303521bb0.96867513.jpg'
-        }, {
-          src: 'http://www.dayila.net/_static/kh_book_cover/2014_09/141167712354247bc3f4117870332084.jpg'
-        }]
-      }]
-    };
-  }
-});
-
-/***/ }),
-
-/***/ 96:
-/***/ (function(module, exports, __webpack_require__) {
-
-// style-loader: Adds some css to the DOM by adding a <style> tag
-
-// load the styles
-var content = __webpack_require__(97);
-if(typeof content === 'string') content = [[module.i, content, '']];
-// Prepare cssTransformation
-var transform;
-
-var options = {}
-options.transform = transform
-// add the styles to the DOM
-var update = __webpack_require__(16)(content, options);
-if(content.locals) module.exports = content.locals;
-// Hot Module Replacement
-if(false) {
-	// When the styles change, update the <style> tags
-	if(!content.locals) {
-		module.hot.accept("!!../../../node_modules/css-loader/index.js!../../../node_modules/postcss-loader/lib/index.js!./OrderDetail.css", function() {
-			var newContent = require("!!../../../node_modules/css-loader/index.js!../../../node_modules/postcss-loader/lib/index.js!./OrderDetail.css");
-			if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
-			update(newContent);
-		});
-	}
-	// When the module is disposed, remove the <style> tags
-	module.hot.dispose(function() { update(); });
-}
-
-/***/ }),
-
-/***/ 97:
-/***/ (function(module, exports, __webpack_require__) {
-
-exports = module.exports = __webpack_require__(1)(undefined);
-// imports
-
-
-// module
-exports.push([module.i, ".OrderDetail{font-size:.7rem}.OrderDetail .order-container{padding:.3rem}.OrderDetail .top-user{color:#2f2f2f;height:2.5rem;display:-webkit-box;display:-ms-flexbox;display:flex;list-style:none;padding:.3rem;margin-bottom:.9rem}.OrderDetail .top-user #date{margin-top:.2rem;color:#989898}.OrderDetail .top-user img{width:1.9rem;height:1.9rem;border-radius:1.9rem;margin-right:.5rem}.OrderDetail .top-user #price{margin-top:.4rem;color:#e8bc38;padding-left:60%;font-size:.9rem;font-weight:400}.OrderDetail .sth-about-book{width:100%;height:auto;color:#282828;margin-bottom:1rem}.book-photo{display:-webkit-box;display:-ms-flexbox;display:flex;-ms-flex-wrap:wrap;flex-wrap:wrap;-webkit-box-pack:center;-ms-flex-pack:center;justify-content:center}.book-photo img{width:100%;height:100%;margin:.3rem}.order-bottom-menu{width:100%;display:-webkit-box;display:-ms-flexbox;display:flex;position:fixed;bottom:0;z-index:100;height:2.5rem;border-top:1px solid grey;text-align:center;line-height:2.5rem}.order-bottom-menu .join-want{width:50%;background-color:#fff;color:#5e5e5e}.order-bottom-menu .i-want{color:#fff;width:50%;background-color:#eb3535}", ""]);
-
-// exports
-
-
-/***/ }),
-
-/***/ 98:
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('div', {
-    staticClass: "OrderDetail"
-  }, [_c('div', {
-    staticClass: "order-container"
-  }, [_c('div', {
-    staticClass: "top-user"
-  }, [_c('img', {
-    attrs: {
-      "src": _vm.order[0].seller_head_img
-    }
-  }), _vm._v(" "), _c('div', {
-    staticClass: "name-and-date"
-  }, [_c('li', {
-    attrs: {
-      "id": "name"
-    }
-  }, [_vm._v(_vm._s(_vm.order[0].name))]), _vm._v(" "), _c('li', {
-    attrs: {
-      "id": "date"
-    }
-  }, [_vm._v(_vm._s(_vm.order[0].date))])]), _vm._v(" "), _c('span', {
-    attrs: {
-      "id": "price"
-    }
-  }, [_vm._v("¥" + _vm._s(_vm.order[0].price))])]), _vm._v(" "), _c('div', {
-    staticClass: "sth-about-book"
-  }, [_c('span', [_vm._v(_vm._s(_vm.order[0].sthaboutbook))])]), _vm._v(" "), _vm._l((_vm.order[0].img), function(item) {
-    return _c('div', {
-      staticClass: "book-photo"
-    }, [_c('img', {
-      attrs: {
-        "src": item.src
-      }
-    })])
-  })], 2), _vm._v(" "), _vm._m(0)])
-}
-var staticRenderFns = [function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('div', {
-    staticClass: "order-bottom-menu"
-  }, [_c('div', {
-    staticClass: "join-want"
-  }, [_c('span', [_vm._v("加入心愿单")])]), _vm._v(" "), _c('div', {
-    staticClass: "i-want"
-  }, [_c('span', [_vm._v("我想要")])])])
-}]
-var esExports = { render: render, staticRenderFns: staticRenderFns }
-/* harmony default export */ __webpack_exports__["a"] = (esExports);
 
 /***/ })
 

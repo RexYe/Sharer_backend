@@ -86,38 +86,13 @@ export default {
 			show_more_college:false,
 			selected:'jiaocai',
 			popupVisible:false,
+			school_filter:'',
+			college_filter:'',
+			major_key_filter:'',
 			//教材分类
 			material:[],
 			book_datail_flag:'',
-			book_datail:[{
-				tskc:[{
-					name:'马克思主义基本原理概论',
-					key:'mkszyjbylgl',
-					imgsrc:''
-				},{
-					name:'毛泽东思想和中国社会主义理论体系概论',
-					key:'maogai',
-					imgsrc:'',
-				}],
-				wlw:[{
-					name:'自动控制原理',
-					key:'zdkzyl',
-					imgsrc:'http://www.dayila.net/_static/kh_book_cover/2012_07/13929643555306f303521bb0.96867513.jpg',
-					type:'bookdetail',
-					to:'bookdetail'
-				},{
-					name:'无线传感网络',
-					key:'wxcgwl',
-					imgsrc:'',
-				}],
-				rjgc:[{
-					name:'软件工程导论',
-					key:'rjgcdl'
-				},{
-					name:'java',
-					key:'java'
-				}]
-			}],
+			book_datail:[{}],
 			school_list:[
 				{
 					name:'浙江工业大学',
@@ -137,6 +112,14 @@ export default {
 							college:'机械工程学院'
 						}
 					]
+				},
+				{
+					name:'浙江理工大学',
+					college:[
+						{
+							college:'机械工程学院'
+						}
+					]
 				}
 			]
 		}
@@ -146,16 +129,24 @@ export default {
 	},
 	methods: {
 		changepage(key){
+			const t = this
+			t.major_key_filter = key;
 			this.book_datail_flag = key;
 			this._fetch_choose_book();
+			Indicator.open('加载中...');
 		},
 		change_popupVisible(){
 			this.popupVisible = true;
+			//更改学院时，清空book_datail中的值
+			this.book_datail=[{}];
 		},
 		show_more_college1(index){
 			this.show_more_college = index.name;
 		},
 		choose_college(i,item){
+			const t = this
+			t.school_filter = item.name
+			t.college_filter = i.college
 			this.choose_school_college = item.name+'-'+i.college
 			this.popupVisible = false;
 			this.material.length=0;
@@ -163,29 +154,44 @@ export default {
 			//打开加载图标
 			Indicator.open('加载中...');
 		},
+		//选择学校学院以及专业后发送请求
 		_fetch_choose_book() {
 				const t = this;
 				DB.Choose.getBookType({
+					school: t.school_filter,
+					college: t.college_filter,
+					major_key:t.major_key_filter,
 				}).then(result=>{
 							//解构赋值，拿出list
 							let { list = [] } = result
-							//new一个容器
-							let obj
-							if (list && list.length) {
-									obj = list[0] || {}
-							}
+							//做一个拷贝，避免因为对象值改变不引起重新渲染的情况
+							let book_datail_copy = [{}]
+							book_datail_copy[0][t.major_key_filter]=[]
+								for (var i = 0; i < list.length; i++) {
+									book_datail_copy[0][t.major_key_filter].push({
+										name:list[i].book_name,
+										key:list[i].book_key,
+										imgsrc:list[i].book_img,
+										to:'bookdetail'
+									})
+								}
+								t.book_datail = book_datail_copy
+								Indicator.close();
 				})
 		},
 		//选择学校专业发送请求
 		_fetch_choose_school_college(i,item) {
 				const t = this;
 				DB.Choose.getSchoolCollege({
+					school: t.school_filter,
+					college: t.college_filter,
 				}).then(result=>{
 							let { list = [] } = result
-							var new_list = list.filter((itema)=>{
-								//过滤选中具体学院后返回的数据
-								return itema.school == item.name && itema.college == i.college
-							})
+							let new_list = list
+							// var new_list = list.filter((itema)=>{
+							// 	//过滤选中具体学院后返回的数据
+							// 	return itema.school == item.name && itema.college == i.college
+							// })
 							for (var k = 0; k < new_list.length; k++) {
 								t.material.push({
 									name:new_list[k].major,
@@ -196,7 +202,21 @@ export default {
 							Indicator.close();
 				})
 		},
-		toOther:function(to,run) {
+		_fetch_book_detail() {
+				const t = this;
+				DB.Choose.getBookDetail({
+					school_key: t.school_filter,
+					college_key: t.college_filter,
+					major_key: t.college_filter,
+					book_key: t.college_filter,
+				}).then(result=>{
+							let { list = [] } = result
+							//关闭加载图标
+							Indicator.close();
+				})
+		},
+		toOther(to,run) {
+
       if(this.$route.path!==`/${to}`){
         location.hash = to;
       }

@@ -22,7 +22,7 @@ export default {
 								 fn = function() {
 										 var width = docEle.clientWidth;
 										 width && (docEle.style.fontSize = 16  * (width / 320) + "px");//设置html的fontSize，随着event的改变而改变。
-										 console.log(width);
+										
 								 };
 
 						 win.addEventListener(event, fn, false);

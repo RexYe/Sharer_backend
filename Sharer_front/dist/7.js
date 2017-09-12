@@ -1,14 +1,14 @@
-webpackJsonp([6],{
+webpackJsonp([7],{
 
 /***/ 26:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__babel_loader_node_modules_vue_loader_lib_selector_type_script_index_0_TestVuex_vue__ = __webpack_require__(66);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_template_compiler_index_id_data_v_01a91375_hasScoped_true_node_modules_vue_loader_lib_selector_type_template_index_0_TestVuex_vue__ = __webpack_require__(67);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__babel_loader_node_modules_vue_loader_lib_selector_type_script_index_0_TestVuex_vue__ = __webpack_require__(67);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_template_compiler_index_id_data_v_01a91375_hasScoped_true_node_modules_vue_loader_lib_selector_type_template_index_0_TestVuex_vue__ = __webpack_require__(68);
 function injectStyle (ssrContext) {
-  __webpack_require__(64)
+  __webpack_require__(65)
 }
 var normalizeComponent = __webpack_require__(3)
 /* script */
@@ -34,13 +34,13 @@ var Component = normalizeComponent(
 
 /***/ }),
 
-/***/ 64:
+/***/ 65:
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(65);
+var content = __webpack_require__(66);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
@@ -48,7 +48,7 @@ var update = __webpack_require__(2)("3863b70b", content, true);
 
 /***/ }),
 
-/***/ 65:
+/***/ 66:
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(1)(undefined);
@@ -63,7 +63,7 @@ exports.push([module.i, "", ""]);
 
 /***/ }),
 
-/***/ 66:
+/***/ 67:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -111,7 +111,7 @@ exports.push([module.i, "", ""]);
 
 /***/ }),
 
-/***/ 67:
+/***/ 68:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
