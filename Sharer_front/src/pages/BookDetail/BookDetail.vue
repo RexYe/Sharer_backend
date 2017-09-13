@@ -40,10 +40,7 @@ export default {
   name:'bookedetail',
   data () {
     return {
-      school_key_filter:'zjgydx',
-      college_key_filter:'jsjxy',
-      major_key_filter:'wlw',
-      book_key_filter:'zdkzyl',
+      query_obj:'',
       book_info:[{}],
       book_seller:[{
         name:'许见阳',
@@ -72,11 +69,12 @@ export default {
     },
     _fetch_book_detail() {
 				const t = this;
+        t.query_obj = this.$route.query
+        console.log(t.query_obj);
 				DB.Choose.getBookDetail({
-					school_key: t.school_key_filter,
-					college_key: t.college_key_filter,
-          major_key: t.major_key_filter,
-          book_key: t.book_key_filter,
+          school: t.query_obj.school,
+          major_key: t.query_obj.major_key,
+          book_key: t.query_obj.book_key,
 				}).then(result=>{
 							let { list = [] } = result
 			        t.book_info.length = 0
@@ -86,13 +84,11 @@ export default {
                 original_price:list[0].original_price,
                 book_img:list[0].book_img
               })
-
               Indicator.close();
 				})
 		},
   },
     created: function () {
-      console.log(this.$route.params);
       Indicator.open('加载中...');
       this._fetch_book_detail()
     },

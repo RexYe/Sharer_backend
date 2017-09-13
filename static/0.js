@@ -61,7 +61,7 @@ var singleton = null;
 var	singletonCounter = 0;
 var	stylesInsertedAtTop = [];
 
-var	fixUrls = __webpack_require__(17);
+var	fixUrls = __webpack_require__(18);
 
 module.exports = function(list, options) {
 	if (typeof DEBUG !== "undefined" && DEBUG) {
@@ -375,101 +375,6 @@ function updateLink (link, options, obj) {
 
 /***/ }),
 /* 17 */
-/***/ (function(module, exports) {
-
-
-/**
- * When source maps are enabled, `style-loader` uses a link element with a data-uri to
- * embed the css on the page. This breaks all relative urls because now they are relative to a
- * bundle instead of the current page.
- *
- * One solution is to only use full urls, but that may be impossible.
- *
- * Instead, this function "fixes" the relative urls to be absolute according to the current page location.
- *
- * A rudimentary test suite is located at `test/fixUrls.js` and can be run via the `npm test` command.
- *
- */
-
-module.exports = function (css) {
-  // get current location
-  var location = typeof window !== "undefined" && window.location;
-
-  if (!location) {
-    throw new Error("fixUrls requires window.location");
-  }
-
-	// blank or null?
-	if (!css || typeof css !== "string") {
-	  return css;
-  }
-
-  var baseUrl = location.protocol + "//" + location.host;
-  var currentDir = baseUrl + location.pathname.replace(/\/[^\/]*$/, "/");
-
-	// convert each url(...)
-	/*
-	This regular expression is just a way to recursively match brackets within
-	a string.
-
-	 /url\s*\(  = Match on the word "url" with any whitespace after it and then a parens
-	   (  = Start a capturing group
-	     (?:  = Start a non-capturing group
-	         [^)(]  = Match anything that isn't a parentheses
-	         |  = OR
-	         \(  = Match a start parentheses
-	             (?:  = Start another non-capturing groups
-	                 [^)(]+  = Match anything that isn't a parentheses
-	                 |  = OR
-	                 \(  = Match a start parentheses
-	                     [^)(]*  = Match anything that isn't a parentheses
-	                 \)  = Match a end parentheses
-	             )  = End Group
-              *\) = Match anything and then a close parens
-          )  = Close non-capturing group
-          *  = Match anything
-       )  = Close capturing group
-	 \)  = Match a close parens
-
-	 /gi  = Get all matches, not the first.  Be case insensitive.
-	 */
-	var fixedCss = css.replace(/url\s*\(((?:[^)(]|\((?:[^)(]+|\([^)(]*\))*\))*)\)/gi, function(fullMatch, origUrl) {
-		// strip quotes (if they exist)
-		var unquotedOrigUrl = origUrl
-			.trim()
-			.replace(/^"(.*)"$/, function(o, $1){ return $1; })
-			.replace(/^'(.*)'$/, function(o, $1){ return $1; });
-
-		// already a full url? no change
-		if (/^(#|data:|http:\/\/|https:\/\/|file:\/\/\/)/i.test(unquotedOrigUrl)) {
-		  return fullMatch;
-		}
-
-		// convert the url to a full url
-		var newUrl;
-
-		if (unquotedOrigUrl.indexOf("//") === 0) {
-		  	//TODO: should we add protocol?
-			newUrl = unquotedOrigUrl;
-		} else if (unquotedOrigUrl.indexOf("/") === 0) {
-			// path should be relative to the base url
-			newUrl = baseUrl + unquotedOrigUrl; // already starts with '/'
-		} else {
-			// path should be relative to current directory
-			newUrl = currentDir + unquotedOrigUrl.replace(/^\.\//, ""); // Strip leading './'
-		}
-
-		// send back the fixed url(...)
-		return "url(" + JSON.stringify(newUrl) + ")";
-	});
-
-	// send back the fixed css
-	return fixedCss;
-};
-
-
-/***/ }),
-/* 18 */
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports =
@@ -10274,6 +10179,101 @@ module.exports = __webpack_require__(14);
 /******/ ]);
 
 /***/ }),
+/* 18 */
+/***/ (function(module, exports) {
+
+
+/**
+ * When source maps are enabled, `style-loader` uses a link element with a data-uri to
+ * embed the css on the page. This breaks all relative urls because now they are relative to a
+ * bundle instead of the current page.
+ *
+ * One solution is to only use full urls, but that may be impossible.
+ *
+ * Instead, this function "fixes" the relative urls to be absolute according to the current page location.
+ *
+ * A rudimentary test suite is located at `test/fixUrls.js` and can be run via the `npm test` command.
+ *
+ */
+
+module.exports = function (css) {
+  // get current location
+  var location = typeof window !== "undefined" && window.location;
+
+  if (!location) {
+    throw new Error("fixUrls requires window.location");
+  }
+
+	// blank or null?
+	if (!css || typeof css !== "string") {
+	  return css;
+  }
+
+  var baseUrl = location.protocol + "//" + location.host;
+  var currentDir = baseUrl + location.pathname.replace(/\/[^\/]*$/, "/");
+
+	// convert each url(...)
+	/*
+	This regular expression is just a way to recursively match brackets within
+	a string.
+
+	 /url\s*\(  = Match on the word "url" with any whitespace after it and then a parens
+	   (  = Start a capturing group
+	     (?:  = Start a non-capturing group
+	         [^)(]  = Match anything that isn't a parentheses
+	         |  = OR
+	         \(  = Match a start parentheses
+	             (?:  = Start another non-capturing groups
+	                 [^)(]+  = Match anything that isn't a parentheses
+	                 |  = OR
+	                 \(  = Match a start parentheses
+	                     [^)(]*  = Match anything that isn't a parentheses
+	                 \)  = Match a end parentheses
+	             )  = End Group
+              *\) = Match anything and then a close parens
+          )  = Close non-capturing group
+          *  = Match anything
+       )  = Close capturing group
+	 \)  = Match a close parens
+
+	 /gi  = Get all matches, not the first.  Be case insensitive.
+	 */
+	var fixedCss = css.replace(/url\s*\(((?:[^)(]|\((?:[^)(]+|\([^)(]*\))*\))*)\)/gi, function(fullMatch, origUrl) {
+		// strip quotes (if they exist)
+		var unquotedOrigUrl = origUrl
+			.trim()
+			.replace(/^"(.*)"$/, function(o, $1){ return $1; })
+			.replace(/^'(.*)'$/, function(o, $1){ return $1; });
+
+		// already a full url? no change
+		if (/^(#|data:|http:\/\/|https:\/\/|file:\/\/\/)/i.test(unquotedOrigUrl)) {
+		  return fullMatch;
+		}
+
+		// convert the url to a full url
+		var newUrl;
+
+		if (unquotedOrigUrl.indexOf("//") === 0) {
+		  	//TODO: should we add protocol?
+			newUrl = unquotedOrigUrl;
+		} else if (unquotedOrigUrl.indexOf("/") === 0) {
+			// path should be relative to the base url
+			newUrl = baseUrl + unquotedOrigUrl; // already starts with '/'
+		} else {
+			// path should be relative to current directory
+			newUrl = currentDir + unquotedOrigUrl.replace(/^\.\//, ""); // Strip leading './'
+		}
+
+		// send back the fixed url(...)
+		return "url(" + JSON.stringify(newUrl) + ")";
+	});
+
+	// send back the fixed css
+	return fixedCss;
+};
+
+
+/***/ }),
 /* 19 */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -10414,10 +10414,10 @@ exports.push([module.i, ".mint-header{-webkit-box-align:center;-ms-flex-align:ce
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__babel_loader_node_modules_vue_loader_lib_selector_type_script_index_0_Index_vue__ = __webpack_require__(56);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_template_compiler_index_id_data_v_2abb434a_hasScoped_true_node_modules_vue_loader_lib_selector_type_template_index_0_Index_vue__ = __webpack_require__(59);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__babel_loader_node_modules_vue_loader_lib_selector_type_script_index_0_Index_vue__ = __webpack_require__(57);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_template_compiler_index_id_data_v_2abb434a_hasScoped_true_node_modules_vue_loader_lib_selector_type_template_index_0_Index_vue__ = __webpack_require__(60);
 function injectStyle (ssrContext) {
-  __webpack_require__(54)
+  __webpack_require__(55)
 }
 var normalizeComponent = __webpack_require__(3)
 /* script */
@@ -10455,14 +10455,15 @@ var Component = normalizeComponent(
 /* 35 */,
 /* 36 */,
 /* 37 */,
-/* 38 */
+/* 38 */,
+/* 39 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__babel_loader_node_modules_vue_loader_lib_selector_type_script_index_0_bottomMenu_vue__ = __webpack_require__(41);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_template_compiler_index_id_data_v_8e7e8c16_hasScoped_true_node_modules_vue_loader_lib_selector_type_template_index_0_bottomMenu_vue__ = __webpack_require__(50);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__babel_loader_node_modules_vue_loader_lib_selector_type_script_index_0_bottomMenu_vue__ = __webpack_require__(42);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_template_compiler_index_id_data_v_8e7e8c16_hasScoped_true_node_modules_vue_loader_lib_selector_type_template_index_0_bottomMenu_vue__ = __webpack_require__(51);
 function injectStyle (ssrContext) {
-  __webpack_require__(39)
+  __webpack_require__(40)
 }
 var normalizeComponent = __webpack_require__(3)
 /* script */
@@ -10487,20 +10488,20 @@ var Component = normalizeComponent(
 
 
 /***/ }),
-/* 39 */
+/* 40 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(40);
+var content = __webpack_require__(41);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
 var update = __webpack_require__(2)("6438f6c2", content, true);
 
 /***/ }),
-/* 40 */
+/* 41 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(1)(undefined);
@@ -10514,12 +10515,12 @@ exports.push([module.i, ".hello[data-v-8e7e8c16]{background:#000}", ""]);
 
 
 /***/ }),
-/* 41 */
+/* 42 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__bottomMenu_css__ = __webpack_require__(42);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__bottomMenu_css__ = __webpack_require__(43);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__bottomMenu_css___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__bottomMenu_css__);
 //
 //
@@ -10564,13 +10565,13 @@ exports.push([module.i, ".hello[data-v-8e7e8c16]{background:#000}", ""]);
 });
 
 /***/ }),
-/* 42 */
+/* 43 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(43);
+var content = __webpack_require__(44);
 if(typeof content === 'string') content = [[module.i, content, '']];
 // Prepare cssTransformation
 var transform;
@@ -10595,7 +10596,7 @@ if(false) {
 }
 
 /***/ }),
-/* 43 */
+/* 44 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(1)(undefined);
@@ -10603,49 +10604,49 @@ exports = module.exports = __webpack_require__(1)(undefined);
 
 
 // module
-exports.push([module.i, "#my_bottom_menu{position:fixed;bottom:0;-webkit-margin-before:0;-webkit-margin-after:0;width:100%;background-color:#fff;height:3rem;-ms-flex-align:center;-webkit-box-shadow:0 1px 5px 3px #ddd;box-shadow:0 1px 5px 3px #ddd}#my_bottom_menu,#my_bottom_menu dd{display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-align:center;align-items:center}#my_bottom_menu dd{-webkit-margin-start:0;-webkit-box-flex:1;-ms-flex:1;flex:1;-webkit-box-pack:center;-ms-flex-pack:center;justify-content:center;-webkit-box-orient:vertical;-webkit-box-direction:normal;-ms-flex-direction:column;flex-direction:column;-ms-flex-align:center}#my_bottom_menu dd i{height:2rem;width:25%;background-repeat:no-repeat;background-size:contain;background-position:50%}#my_bottom_menu dd i.index{background-image:url(" + __webpack_require__(44) + ")}#my_bottom_menu dd i.publish{background-image:url(" + __webpack_require__(45) + ")}#my_bottom_menu dd i.me{background-image:url(" + __webpack_require__(46) + ")}#my_bottom_menu dd span{color:#949494;font-size:.5rem;padding-top:.22rem}#my_bottom_menu dd.on i.index{background-image:url(" + __webpack_require__(47) + ")}#my_bottom_menu dd.on i.publish{background-image:url(" + __webpack_require__(48) + ")}#my_bottom_menu dd.on i.me{background-image:url(" + __webpack_require__(49) + ")}#my_bottom_menu dd.on span{color:#294057}", ""]);
+exports.push([module.i, "#my_bottom_menu{position:fixed;bottom:0;-webkit-margin-before:0;-webkit-margin-after:0;width:100%;background-color:#fff;height:3rem;-ms-flex-align:center;-webkit-box-shadow:0 1px 5px 3px #ddd;box-shadow:0 1px 5px 3px #ddd}#my_bottom_menu,#my_bottom_menu dd{display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-align:center;align-items:center}#my_bottom_menu dd{-webkit-margin-start:0;-webkit-box-flex:1;-ms-flex:1;flex:1;-webkit-box-pack:center;-ms-flex-pack:center;justify-content:center;-webkit-box-orient:vertical;-webkit-box-direction:normal;-ms-flex-direction:column;flex-direction:column;-ms-flex-align:center}#my_bottom_menu dd i{height:2rem;width:25%;background-repeat:no-repeat;background-size:contain;background-position:50%}#my_bottom_menu dd i.index{background-image:url(" + __webpack_require__(45) + ")}#my_bottom_menu dd i.publish{background-image:url(" + __webpack_require__(46) + ")}#my_bottom_menu dd i.me{background-image:url(" + __webpack_require__(47) + ")}#my_bottom_menu dd span{color:#949494;font-size:.5rem;padding-top:.22rem}#my_bottom_menu dd.on i.index{background-image:url(" + __webpack_require__(48) + ")}#my_bottom_menu dd.on i.publish{background-image:url(" + __webpack_require__(49) + ")}#my_bottom_menu dd.on i.me{background-image:url(" + __webpack_require__(50) + ")}#my_bottom_menu dd.on span{color:#294057}", ""]);
 
 // exports
 
 
 /***/ }),
-/* 44 */
+/* 45 */
 /***/ (function(module, exports) {
 
 module.exports = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAACCUlEQVRYR+1W0U3DMBC9S9Wof5QJgAlgA9gAmIB2A/pRR/0q/arsfqRM0LIBI8AEwASECQi/tdJDF9kolKS1QyWEVP+0cRzf87v37ozwxwP/OD7sANRmYDKZnC2XyxmnMAiCbr/ff6iTTm8AcRy3F4vFEBGviwGJaBqG4ajX66V2Xkp5wf+jKLqvAucFwJ4aEQ95QyIa8S8iDs1zUmRDKUU8L4SojOMEgE+ttY4BoGMCvSBiRwjxzM9KqRMimiPisXmfs6G1fv81AKYRETnXbSL6AICbKIqmZZRKKW+KbFimajFgcj1DxDyPAPCYZVlnMBgk68Q2Ho8PG43GHABO7bpms7lf1Ebx+9IU+Jy6CoyUkkXKjOwBQEpE3TIx/gAgpeRcXtmNsyw72nTqKhCGjdfC+7kQoruWAaVUQkRtg3ytgl18b53A+kHEVAiRO8iOHwww6larlboo2AcA64DXr2qh0oYuHvYBUOWEHYBaDLBOgiCIEfGMCxQAPBDRbZnNNqXSG4Cx1pMJ/E0GRHS5CmLrAJRS3NnOieguDMO8I2qtufKdc7UUQjArX2PrAKSUKdeIYnk1zYobD/s8t5sdWwdQtaHvfGUh2oTcN9D/ZwAAvomKLWdY8pqvUwm57x+4lFuHNW+rTchFA3zNura3GocgpUuIKEHEqb2+rS5yuhPWDe7y3Q7AjoFPkTRQMDAuodAAAAAASUVORK5CYII="
 
 /***/ }),
-/* 45 */
+/* 46 */
 /***/ (function(module, exports) {
 
 module.exports = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAACOUlEQVRYR+1VwXEaQRCcoWr5GkcgKQKjDCACowhsRWDxYKZ4WXpRuzyQIzCOQHYERhEIR2Acge3vUTCuoW5dW8fe3cI9+LAvqNud6e3p7kU48cIT94czgDMDpQw457oi8oSIl02EKiKPzDwsqxEFMJvNOuv1+icAdJo092dFZMjMj7FaUQDW2jtEnAHAMxH1jgVhrR0g4pOIrJj5KhmAc24FABcicsPMX48FoOfqau0xMJ1OeyLyHQB+EVGj+SuAgM1vRDQoXmYPgHNOb/xWRB6Y+b7J7fVsrqff+nuz2VyNx2Nl9/+KARD9aox5PRwO/4SbnXMqpA9loHTW7Xb7unjOWjtHxHcxMcYAlM6/DoCOzRjTDQEoA1mWvaidY5raAxDMTG/fJ6JlkzEEI/3BzN1aDeTC8ZRFKU0F5BkTkb/b7bZbnL/WKU1Ca+0SEd8AwJKIrlOb+n3OufcA8HnXBLE/Go0WyTng1Ztl2QoRXwHAnIhuU0FojAPAS77/lojmB0VxcAt9DxY5iMpC/kwY4yLyhZmVidJV+xynUhl4XkNMGUiK8VoAuSjvEfEjAFQ6w/s9ZsejRlAIoV1CqiiNMf1I2OxAquIRsZdq3yQGAlGqHtQZCyLqe4D+1dP/hz5gyQC0+GQyuWy1WmpPdcYnIrrLFa9z71S9+41HEDrDW0wb6tuQx2yt4g/KgSrrhM7IaY/GbEpuHDSCsKC11jvj2RgzKIoypXllFKcWaLrvaAaaNvbnzwBOzsA/HRQuMJeJydQAAAAASUVORK5CYII="
 
 /***/ }),
-/* 46 */
+/* 47 */
 /***/ (function(module, exports) {
 
 module.exports = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAB7UlEQVRYR+2VTW4aQRCFX4GGrX0DcwPDCeKcIOQE5gZmFlSLlfEKdW8mvgE5geEE2CfI3CDxCYK3/HRFJfVYFp4hPZYjHIlaIVR0vXpUfUU4cNCB6+Mo4P9zIMuy081mc+W97xNRW0R+Aci99+loNNLPtaKWA1p8vV4vAHRKqiwBpMw8raOglgDn3AzAFwAPAAbMnKuo1WrVBzAmItlut906TkQLmEwm7Waz+RPAY5IknTRNtePnsNYOiCgTke/GGBUUFdEC/lbghcCcmbtR1YF4Dlhr1eJrEbkxxozLCjjnRL9n5ujGohOPAj6MAwBumXmwOwOBEb//2Qw45xQ+P5R6ZVNure0R0R2AOTP33n0L9EFrbU5E50Q0Hg6HN0URXcFGo7EIaP5qjFFgRUX0Fuhr6oKI3BPRCQAFUQ7gtEBzXQjpm1ECAm4VwWptRzsta684TABm3vuHGCTvFeCcU6ReArgoKaj34GV8Ksm5F5Fpq9Wa76K7yC0VEAZOr57aW8RcOwtDqNa/ijALOowqWB0rQv+uz3q8dn9UJUDv+lm4etMkSWZVHVRNWljLnojokTqv2p4qAbWZvm/k992Io4CP6YC1dhlgE0WzyKRHZn7FjyoH+iLy7b1EiMgTgH4ZoqNIGNnhm9KOAg7uwB9TFRUwx6iwqwAAAABJRU5ErkJggg=="
 
 /***/ }),
-/* 47 */
+/* 48 */
 /***/ (function(module, exports) {
 
 module.exports = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAABpElEQVRYR+2WO07DQBCG/8FSQirMCXADSrocYY8QCpJ0kBvkBogT4BskJYGCHGGPQJcICpwTYKo8JDNoYyzlsWvZzqI03sqydne++eexQzjyoiPbRwlQWIG66AqAB3EIqTeVT7JIOHMDeKLl1lC5B6i/bZD9OVYPgRyHyf8r0W6p73f5PDbB5QJIvCbA013IQLCpRkN0WO2byJHRTiYA5fUpqo8E3GWTOVajhurXwQBKRgcYAORmMx7vUmokShVS4C/WyvA6joesOZbnm7mxeZc2BEW9NkNyGAE9XTLuAdRFe0ig20M8Np1lYDiVo16qAg3RCRjsEujMJgSDvwkUTuRoq4I0CnS9BRZhksG2IFQeqLt2c8FYhkkN2wIwVUIJUFSBWQTur7BaP0AVVIQD8gFcmEJmMwSzOZbN3WSKG1f1zQRhDSACX5tet7iB0atOBWsAaW21LroegT//FSDtYVGGTeVrTYESgOlHpHVH4hPtbFgkBEFaXeds0bPdRyg5b2xEl+Km6cSDp3b+ywEQRGD/Q76oHrG3Ms2EOYzl3loClAr8AhFVviHQu5xNAAAAAElFTkSuQmCC"
 
 /***/ }),
-/* 48 */
+/* 49 */
 /***/ (function(module, exports) {
 
 module.exports = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAB0UlEQVRYR+1WO1ICQRTshxRqJDcQAquWyD3CeAIxgCUTbyAn0BvoDcCMXRI8geMJwIgtDcQbaCRYBWNN4Vq4v9mdGouESXdev6Zf9xsIGz604f7YEtgqkKjAEWvYRVAXIFvfqOIdQG/CvU4SRiyBCquX91F6Bais3/xPZWfC3ds4rFgCNeZcArgx1BwCmPrcreYhMAVwaIqAxFlAnD1zbxjGjChgsRYjiAeTzX+w7ifcrSsJ1JgjWZ7+AwEIUNXnfanu74koUGOOSGmeaCZZY7FWBViOCXSQgBGpjyOQNn8lAcJylJSeOB/EETCagEAJATz53I3slNgYWqzZI9C5KR8IiA+gYIfnL/ETN6HFnDEBxyZICNCJz/s88x6QF+U23ENpmmKoTNwElhc+H/RyreLgsnwPdkBcl4SAuPO5105jqnyOLdZoEwrdTD937ZKAePS5x1R1SgKrfDevCXSlAlv7/vaJuT3lQ/kapp5MBCRC1g0pHb+AYC98MFY1T01BuHhlyl2uSkbSo6NlwnCRzqpVqZB5BOvJKKIwCgNncXyuPZDGPJwMuWZnmLMspgvj5lYgAAj+Ncm4zfBV12mey4SqWep+11ZAt6GxEWwJmFLgG6manyGC8pTpAAAAAElFTkSuQmCC"
 
 /***/ }),
-/* 49 */
+/* 50 */
 /***/ (function(module, exports) {
 
 module.exports = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAABhElEQVRYR+2VT07CQBTGv1cN0ZXcwG5Mykq4wXgCcAF1Z2+gnEBvoEfAncAGTuB4Arsr0YV4g7ozRn1krGx0St8ICZp0tvPme7/58v4Q1nxozflRAvw/B3zVqm6hcgJQRIDPwJTAMcPrTvT11LWmnBwwybdRuQGo/jMRpwzuTvSw5wLhBFBT4QhAMz+BgfAaLk6IAQJ15BP4seh3DL6a6EFUFDe/FwPUVHgK4KJYmONEDxrFcVmEGCBQnXMCnUmEE90X64oDS4DSgT3Vrm/CuxMU4TjR/ZYgzq0LTHSgwpiA/UXi7+DDez0wA0t0xF1g1IwLGyBNoB2buusQEs+BrwXUJMBYqwCq2gHmiwkjwLuVjOSFDgSqHQHeMX0mdT8MaIB7L3gdT/UotSlYAbKCI7P1rD/9BUr6Bj540MP4+1srQE2FZq/vuida9MK+I/IAeLXJMzXbjigB/qYDgeqkecNmidp4SnTfF3VB1v90uSoIBj9/AJFtRDuN4iV+n/u0BFi7AzOoGZMhUXXOFwAAAABJRU5ErkJggg=="
 
 /***/ }),
-/* 50 */
+/* 51 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -10677,11 +10678,11 @@ var esExports = { render: render, staticRenderFns: staticRenderFns }
 /* harmony default export */ __webpack_exports__["a"] = (esExports);
 
 /***/ }),
-/* 51 */
+/* 52 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__dbFactory__ = __webpack_require__(52);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__dbFactory__ = __webpack_require__(53);
 
 
 /* harmony default export */ __webpack_exports__["a"] = (__WEBPACK_IMPORTED_MODULE_0__dbFactory__["a" /* default */].context);
@@ -10689,8 +10690,8 @@ var esExports = { render: render, staticRenderFns: staticRenderFns }
 let prefix = '';
 if (false) {
     // prefix = 'http://localhost:6060'
-    // prefix = 'http://localhost:8000'
-    prefix = 'http://101.132.71.185';
+    prefix = 'http://localhost:8000';
+    // prefix = 'http://101.132.71.185'
 }
 // if(__PRO__){
 //     prefix = ''
@@ -10706,17 +10707,17 @@ __WEBPACK_IMPORTED_MODULE_0__dbFactory__["a" /* default */].create('Choose', {
         method: 'GET'
     },
     getBookDetail: {
-        url: prefix + '/api/book_detail',
+        url: prefix + '/api/book_detail_new',
         method: 'GET'
     }
 });
 
 /***/ }),
-/* 52 */
+/* 53 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_object_param__ = __webpack_require__(53);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_object_param__ = __webpack_require__(54);
 // import os from 'object-serialize'
 
 
@@ -10780,7 +10781,7 @@ function Request(config, body) {
 }
 
 /***/ }),
-/* 53 */
+/* 54 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -10886,20 +10887,20 @@ function serialize(params, obj, traditional, scope) {
 });
 
 /***/ }),
-/* 54 */
+/* 55 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(55);
+var content = __webpack_require__(56);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
 var update = __webpack_require__(2)("72399ce9", content, true);
 
 /***/ }),
-/* 55 */
+/* 56 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(1)(undefined);
@@ -10913,19 +10914,19 @@ exports.push([module.i, "", ""]);
 
 
 /***/ }),
-/* 56 */
+/* 57 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__Index_css__ = __webpack_require__(57);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__Index_css__ = __webpack_require__(58);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__Index_css___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__Index_css__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_mint_ui_lib_style_css__ = __webpack_require__(22);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_mint_ui_lib_style_css___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_mint_ui_lib_style_css__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_bottomMenu_bottomMenu__ = __webpack_require__(38);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_mint_ui__ = __webpack_require__(18);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_bottomMenu_bottomMenu__ = __webpack_require__(39);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_mint_ui__ = __webpack_require__(17);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_mint_ui___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4_mint_ui__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__app_db__ = __webpack_require__(51);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__app_db__ = __webpack_require__(52);
 //
 //
 //
@@ -11089,7 +11090,10 @@ __WEBPACK_IMPORTED_MODULE_0_vue__["default"].component(__WEBPACK_IMPORTED_MODULE
 						name: list[i].book_name,
 						key: list[i].book_key,
 						imgsrc: list[i].book_img,
-						to: 'bookdetail'
+						to: 'bookdetail',
+						major_key: list[0].major_key,
+						college: list[0].college,
+						school: list[0].school
 					});
 				}
 				t.book_datail = book_datail_copy;
@@ -11133,9 +11137,9 @@ __WEBPACK_IMPORTED_MODULE_0_vue__["default"].component(__WEBPACK_IMPORTED_MODULE
 			});
 		},
 		toOther(to, run) {
-
+			// console.log(run);
 			if (this.$route.path !== `/${to}`) {
-				location.hash = to;
+				location.hash = to + '?' + 'book_key=' + run.key + '&' + 'major_key=' + run.major_key + '&' + 'school=' + run.school;
 			}
 		}
 	},
@@ -11144,13 +11148,13 @@ __WEBPACK_IMPORTED_MODULE_0_vue__["default"].component(__WEBPACK_IMPORTED_MODULE
 });
 
 /***/ }),
-/* 57 */
+/* 58 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(58);
+var content = __webpack_require__(59);
 if(typeof content === 'string') content = [[module.i, content, '']];
 // Prepare cssTransformation
 var transform;
@@ -11175,7 +11179,7 @@ if(false) {
 }
 
 /***/ }),
-/* 58 */
+/* 59 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(1)(undefined);
@@ -11189,7 +11193,7 @@ exports.push([module.i, ".index{width:100%}.index .search-div{display:inline;wid
 
 
 /***/ }),
-/* 59 */
+/* 60 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -11310,11 +11314,11 @@ var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._sel
     return _c('div', {
       staticClass: "book-detail",
       class: {
-        on: _vm.$route.path === ("/" + (item.to))
+        on: _vm.$route.path === ("/" + (item.to) + "/")
       },
       on: {
         "click": function($event) {
-          _vm.toOther(item.to)
+          _vm.toOther(item.to, item)
         }
       }
     }, [_c('img', {
@@ -11347,7 +11351,7 @@ var staticRenderFns = [function () {var _vm=this;var _h=_vm.$createElement;var _
     }
   }, [_c('img', {
     attrs: {
-      "src": __webpack_require__(60),
+      "src": __webpack_require__(61),
       "alt": ""
     }
   })])])
@@ -11356,7 +11360,7 @@ var esExports = { render: render, staticRenderFns: staticRenderFns }
 /* harmony default export */ __webpack_exports__["a"] = (esExports);
 
 /***/ }),
-/* 60 */
+/* 61 */
 /***/ (function(module, exports) {
 
 module.exports = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAACoklEQVRYR72X0XHaQBCGd4XEszuIXUHiDnAFkApMB4EH7oankCfmjgdwBcYd4AqiDkI6IBXEeYU5NvMzJ4/ASCeBzb3AjHR73+7+t7tiKlnT6fRqvV63mblFRNdE9IWIrogo9dsWzrnn4XC4KrNT9oyLHhpjRsz8jYj+EdGCmRf5d0UEQB0iahPR3Dn34xSQNwDWWnj5KCIcRVFvMBhk3h5l9VHqEVGPmXtKqXmdaOwB+MN/EtGTUgpGKy+/F1Ea1YF4BRiPx9eNRuMXEfXrGMgT+mikzDyrauMVwBizZOa0rueHIfKOpM65VhVN7ACstV0R6Wmtkf+zlzGmw8xdpRREWroygBU2hAQXMpZ/bq1FKkYhmwxaCOe9vM8gfBRaoZSytXaGTaEX63iPdyHIzWazVEqhXhQuAFQKVV0Ary2IGlW0GMAY8xJFUSeUq1MBQjpABEQpVViSTzk4p4NRFEVpmXM7ACK6VUotzzns2F5rLXrILATwoRpAjyhzDhFYiEiqtd7dhvdc1tpVlVvQJSJUrVK11gWbTCYtVNdQNWR/X/86526q1O6qIMaYue8tpe15p368jF+tNaJx9soaUij8OGgH4Nsoxqqu1npv8jmFBp3Vl/egrdf77zviDPPfOVfSh76dJMlNv99/CTlwOBHhJtwz89e6ldFraYoo+kOXSZLchSCOzYQw8IgSGsfxQ8gADvOKx+F/MKwy8+eqEEdLMAxut1uk45OIzH05fc6H0wsNE3FHRG59zme5sawSRGkPgC5yo/ebdIrIb4zkzWZzno9UHYjKTQhTLzPjo2S34jhehtLjBXlflo7KACE1Fz0/gMCtuMvfsg8HyAodM2eR2IO4CEAZxMUAiiAuCuAh8NH7Hf9F5OniADjYl/0Wmt9/FZVwObWNz90AAAAASUVORK5CYII="

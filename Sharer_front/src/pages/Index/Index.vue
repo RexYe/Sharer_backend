@@ -48,7 +48,7 @@
 	  </mt-tab-container-item>
 	</mt-tab-container>
 	<div class="course-selected">
-		<div class="book-detail" v-for="(item,index) in book_datail[0][this.book_datail_flag]"  :class='{on:$route.path === `/${item.to}`}' @click='toOther(item.to)'>
+		<div class="book-detail" v-for="(item,index) in book_datail[0][this.book_datail_flag]"  :class='{on:$route.path === `/${item.to}/`}' @click='toOther(item.to,item)'>
 			<img :src="item.imgsrc" alt="">
 			<div class="book-name">
 				{{item.name}}
@@ -172,7 +172,10 @@ export default {
 										name:list[i].book_name,
 										key:list[i].book_key,
 										imgsrc:list[i].book_img,
-										to:'bookdetail'
+										to:'bookdetail',
+										major_key:list[0].major_key,
+										college:list[0].college,
+										school:list[0].school
 									})
 								}
 								t.book_datail = book_datail_copy
@@ -216,9 +219,9 @@ export default {
 				})
 		},
 		toOther(to,run) {
-
+			// console.log(run);
       if(this.$route.path!==`/${to}`){
-        location.hash = to;
+        location.hash = to+'?'+'book_key='+run.key+'&'+'major_key='+run.major_key+'&'+'school='+run.school;
       }
     },
 	},

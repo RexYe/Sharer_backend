@@ -4,7 +4,7 @@ from django.shortcuts import render
 from django.views.decorators.http import require_http_methods
 from django.http import JsonResponse
 from django.core import serializers
-from models import choose_book_type,choose_school_college,load_book_by_choose_major,book_detail
+from models import choose_book_type,choose_school_college,load_book_by_choose_major,book_detail_new
 from django.views.decorators.csrf import csrf_protect,csrf_exempt
 from django.http import HttpResponse
 import hashlib
@@ -124,25 +124,22 @@ def load_book_by_choose_major_data(request):
 
 @require_http_methods(["GET"])
 def book_detail_data(request):
-    if 'school_key' in request.GET:
-        school_key=request.GET['school_key']
-    if 'college_key' in request.GET:
-        college_key=request.GET['college_key']
+    if 'school' in request.GET:
+        school=request.GET['school']
     if 'major_key' in request.GET:
         major_key=request.GET['major_key']
     if 'book_key' in request.GET:
         book_key=request.GET['book_key']
     response = {}
     try:
-        choose_book_json = book_detail.objects.filter(school_key = school_key , college_key = college_key , major_key = major_key , book_key = book_key)
+        choose_book_json = book_detail_new.objects.filter(school = school , major_key = major_key , book_key = book_key)
         tempList  = json.loads(serializers.serialize("json", choose_book_json))
         tempList2 = []
 
         # 处理返回的数据
         for i in tempList:
             tempList2.append({
-                'school_key':i['fields']['school_key'],
-                'college_key':i['fields']['college_key'],
+                'school':i['fields']['school'],
                 'major_key':i['fields']['major_key'],
                 'book_img':i['fields']['book_img'],
                 'book_name':i['fields']['book_name'],

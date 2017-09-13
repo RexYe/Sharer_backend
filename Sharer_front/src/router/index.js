@@ -12,6 +12,7 @@ const Me = resolve => require(['@/pages/Me/Me.vue'], resolve)
 const BookDetail = resolve => require(['@/pages/BookDetail/BookDetail.vue'], resolve)
 const OrderDetail = resolve => require(['@/pages/OrderDetail/OrderDetail.vue'], resolve)
 const AboutUs = resolve => require(['@/pages/AboutUs/AboutUs.vue'], resolve)
+const Register = resolve => require(['@/pages/Register/Register.vue'], resolve)
 Vue.use(Router)
 
 export default new Router({
@@ -48,6 +49,10 @@ export default new Router({
     {
       path:'/aboutus',
       component:AboutUs
+    },
+    {
+      path:'/register',
+      component:Register
     }
   ]
 })

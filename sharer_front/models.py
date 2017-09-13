@@ -58,3 +58,36 @@ class book_detail(models.Model):
     publish_house = models.CharField(max_length=50)
     def __unicode__(self):
         return self.book_name
+
+class book_detail_new(models.Model):
+    school = models.CharField(max_length=30)
+    major_key = models.CharField(max_length=30)
+    book_img = models.CharField(max_length=500)
+    book_name = models.CharField(max_length=30)
+    book_key = models.CharField(max_length=20)
+    author = models.CharField(max_length=30)
+    original_price = models.CharField(max_length=30)
+    publish_house = models.CharField(max_length=50)
+    def __unicode__(self):
+        return self.book_name
+class user(models.Model):
+    account = models.CharField(max_length=20)
+    password = models.CharField(max_length=20)
+    name = models.CharField(max_length=30)
+    telphone = models.CharField(max_length=11)
+    book_key = models.CharField(max_length=20)
+    def __unicode__(self):
+        return self.account
+class profile(models.Model):
+    user_account = models.CharField(max_length=20)
+    head_img = models.CharField(max_length=500)
+    wechat = models.CharField(max_length=30)
+    QQ = models.CharField(max_length=13)
+    school = models.CharField(max_length=20)
+    school_key = models.CharField(max_length=20)
+    college = models.CharField(max_length=30)
+    college_key = models.CharField(max_length=20)
+    major = models.CharField(max_length=20)
+    major_key = models.CharField(max_length=20)
+    def __unicode__(self):
+        return self.user_account
