@@ -70,7 +70,7 @@ export default {
     _fetch_book_detail() {
 				const t = this;
         t.query_obj = this.$route.query
-        console.log(t.query_obj);
+        // console.log(t.query_obj);
 				DB.Choose.getBookDetail({
           school: t.query_obj.school,
           major_key: t.query_obj.major_key,

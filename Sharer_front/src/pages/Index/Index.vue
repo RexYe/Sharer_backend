@@ -221,7 +221,7 @@ export default {
 		toOther(to,run) {
 			// console.log(run);
       if(this.$route.path!==`/${to}`){
-        location.hash = to+'?'+'book_key='+run.key+'&'+'major_key='+run.major_key+'&'+'school='+run.school;
+         location.hash = to+'?'+'book_key='+run.key+'&'+'major_key='+run.major_key+'&'+'school='+run.school;
       }
     },
 	},

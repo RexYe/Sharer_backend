@@ -14,10 +14,10 @@
   },
   "keywords": [
     "vue",
-    "boilerplate",
+    "sharer",
     "start-kit"
   ],
-  "author": "mcdyzg",
+  "author": "shawn ye",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/RexYe/Sharer_front/issues"
