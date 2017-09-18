@@ -1,5 +1,76 @@
 webpackJsonp([3],{
 
+/***/ 100:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('div', {
+    staticClass: "BookDetail"
+  }, [_c('div', {
+    staticClass: "top-div"
+  }, [_c('mt-header', {
+    attrs: {
+      "title": "书二"
+    }
+  }, [_c('router-link', {
+    attrs: {
+      "to": "/"
+    },
+    slot: "left"
+  }, [_c('mt-button', {
+    attrs: {
+      "icon": "back"
+    }
+  }, [_vm._v("返回")])], 1), _vm._v(" "), _c('mt-button', {
+    attrs: {
+      "icon": "more"
+    },
+    slot: "right"
+  })], 1)], 1), _vm._v(" "), _c('div', {
+    staticClass: "book-intro"
+  }, [_c('div', {
+    staticClass: "book-img"
+  }, [_c('img', {
+    attrs: {
+      "src": this.book_info[0].book_img
+    }
+  })]), _vm._v(" "), _c('div', {
+    staticClass: "book-info"
+  }, [_c('li', [_vm._v("作者：" + _vm._s(this.book_info[0].author))]), _vm._v(" "), _c('li', [_vm._v("出版社：" + _vm._s(this.book_info[0].publish_house))]), _vm._v(" "), _c('li', {
+    attrs: {
+      "id": "book-info-price"
+    }
+  }, [_vm._v("原价：¥" + _vm._s(this.book_info[0].original_price))])])]), _vm._v(" "), _c('div', {
+    staticClass: "book-seller-list"
+  }, _vm._l((_vm.book_seller), function(item) {
+    return _c('div', {
+      staticClass: "book-seller-list-detail",
+      class: {
+        on: _vm.$route.path === ("/" + (item.to))
+      },
+      on: {
+        "click": function($event) {
+          _vm.toOther(item.to)
+        }
+      }
+    }, [_c('img', {
+      attrs: {
+        "src": item.head_img
+      }
+    }), _vm._v(" "), _c('li', [_vm._v(_vm._s(item.name))]), _vm._v(" "), _c('li', {
+      attrs: {
+        "id": "book-seller-price"
+      }
+    }, [_vm._v("¥：" + _vm._s(item.price))])])
+  }))])
+}
+var staticRenderFns = []
+var esExports = { render: render, staticRenderFns: staticRenderFns }
+/* harmony default export */ __webpack_exports__["a"] = (esExports);
+
+/***/ }),
+
 /***/ 16:
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -10360,10 +10431,10 @@ module.exports = function (arr, predicate, ctx) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__babel_loader_node_modules_vue_loader_lib_selector_type_script_index_0_BookDetail_vue__ = __webpack_require__(95);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_template_compiler_index_id_data_v_6e15a016_hasScoped_false_node_modules_vue_loader_lib_selector_type_template_index_0_BookDetail_vue__ = __webpack_require__(98);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__babel_loader_node_modules_vue_loader_lib_selector_type_script_index_0_BookDetail_vue__ = __webpack_require__(97);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_template_compiler_index_id_data_v_6e15a016_hasScoped_false_node_modules_vue_loader_lib_selector_type_template_index_0_BookDetail_vue__ = __webpack_require__(100);
 function injectStyle (ssrContext) {
-  __webpack_require__(93)
+  __webpack_require__(95)
 }
 var normalizeComponent = __webpack_require__(3)
 /* script */
@@ -10389,11 +10460,11 @@ var Component = normalizeComponent(
 
 /***/ }),
 
-/***/ 52:
+/***/ 53:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__dbFactory__ = __webpack_require__(53);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__dbFactory__ = __webpack_require__(54);
 
 
 /* harmony default export */ __webpack_exports__["a"] = (__WEBPACK_IMPORTED_MODULE_0__dbFactory__["a" /* default */].context);
@@ -10425,11 +10496,11 @@ __WEBPACK_IMPORTED_MODULE_0__dbFactory__["a" /* default */].create('Choose', {
 
 /***/ }),
 
-/***/ 53:
+/***/ 54:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_object_param__ = __webpack_require__(54);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_object_param__ = __webpack_require__(55);
 // import os from 'object-serialize'
 
 
@@ -10494,7 +10565,7 @@ function Request(config, body) {
 
 /***/ }),
 
-/***/ 54:
+/***/ 55:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -10601,13 +10672,13 @@ function serialize(params, obj, traditional, scope) {
 
 /***/ }),
 
-/***/ 93:
+/***/ 95:
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(94);
+var content = __webpack_require__(96);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
@@ -10615,7 +10686,7 @@ var update = __webpack_require__(2)("caadc654", content, true);
 
 /***/ }),
 
-/***/ 94:
+/***/ 96:
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(1)(undefined);
@@ -10630,16 +10701,16 @@ exports.push([module.i, "", ""]);
 
 /***/ }),
 
-/***/ 95:
+/***/ 97:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_mint_ui__ = __webpack_require__(18);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_mint_ui___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_mint_ui__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__BookDetail_css__ = __webpack_require__(96);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__BookDetail_css__ = __webpack_require__(98);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__BookDetail_css___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2__BookDetail_css__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__app_db__ = __webpack_require__(52);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__app_db__ = __webpack_require__(53);
 //
 //
 //
@@ -10736,13 +10807,13 @@ __WEBPACK_IMPORTED_MODULE_0_vue__["default"].component(__WEBPACK_IMPORTED_MODULE
 
 /***/ }),
 
-/***/ 96:
+/***/ 98:
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(97);
+var content = __webpack_require__(99);
 if(typeof content === 'string') content = [[module.i, content, '']];
 // Prepare cssTransformation
 var transform;
@@ -10768,7 +10839,7 @@ if(false) {
 
 /***/ }),
 
-/***/ 97:
+/***/ 99:
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(1)(undefined);
@@ -10780,77 +10851,6 @@ exports.push([module.i, ".BookDetail .book-intro{width:100%;height:15rem;backgro
 
 // exports
 
-
-/***/ }),
-
-/***/ 98:
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('div', {
-    staticClass: "BookDetail"
-  }, [_c('div', {
-    staticClass: "top-div"
-  }, [_c('mt-header', {
-    attrs: {
-      "title": "书二"
-    }
-  }, [_c('router-link', {
-    attrs: {
-      "to": "/"
-    },
-    slot: "left"
-  }, [_c('mt-button', {
-    attrs: {
-      "icon": "back"
-    }
-  }, [_vm._v("返回")])], 1), _vm._v(" "), _c('mt-button', {
-    attrs: {
-      "icon": "more"
-    },
-    slot: "right"
-  })], 1)], 1), _vm._v(" "), _c('div', {
-    staticClass: "book-intro"
-  }, [_c('div', {
-    staticClass: "book-img"
-  }, [_c('img', {
-    attrs: {
-      "src": this.book_info[0].book_img
-    }
-  })]), _vm._v(" "), _c('div', {
-    staticClass: "book-info"
-  }, [_c('li', [_vm._v("作者：" + _vm._s(this.book_info[0].author))]), _vm._v(" "), _c('li', [_vm._v("出版社：" + _vm._s(this.book_info[0].publish_house))]), _vm._v(" "), _c('li', {
-    attrs: {
-      "id": "book-info-price"
-    }
-  }, [_vm._v("原价：¥" + _vm._s(this.book_info[0].original_price))])])]), _vm._v(" "), _c('div', {
-    staticClass: "book-seller-list"
-  }, _vm._l((_vm.book_seller), function(item) {
-    return _c('div', {
-      staticClass: "book-seller-list-detail",
-      class: {
-        on: _vm.$route.path === ("/" + (item.to))
-      },
-      on: {
-        "click": function($event) {
-          _vm.toOther(item.to)
-        }
-      }
-    }, [_c('img', {
-      attrs: {
-        "src": item.head_img
-      }
-    }), _vm._v(" "), _c('li', [_vm._v(_vm._s(item.name))]), _vm._v(" "), _c('li', {
-      attrs: {
-        "id": "book-seller-price"
-      }
-    }, [_vm._v("¥：" + _vm._s(item.price))])])
-  }))])
-}
-var staticRenderFns = []
-var esExports = { render: render, staticRenderFns: staticRenderFns }
-/* harmony default export */ __webpack_exports__["a"] = (esExports);
 
 /***/ })
 

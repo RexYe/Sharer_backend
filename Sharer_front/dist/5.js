@@ -1,6 +1,20 @@
 webpackJsonp([5],{
 
-/***/ 100:
+/***/ 119:
+/***/ (function(module, exports, __webpack_require__) {
+
+// style-loader: Adds some css to the DOM by adding a <style> tag
+
+// load the styles
+var content = __webpack_require__(120);
+if(typeof content === 'string') content = [[module.i, content, '']];
+if(content.locals) module.exports = content.locals;
+// add the styles to the DOM
+var update = __webpack_require__(2)("4e43fed6", content, true);
+
+/***/ }),
+
+/***/ 120:
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(1)(undefined);
@@ -15,13 +29,12 @@ exports.push([module.i, "", ""]);
 
 /***/ }),
 
-/***/ 101:
+/***/ 121:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__OrderDetail_css__ = __webpack_require__(102);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__OrderDetail_css___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__OrderDetail_css__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__Login_css__ = __webpack_require__(122);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__Login_css___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__Login_css__);
 //
 //
 //
@@ -40,50 +53,35 @@ exports.push([module.i, "", ""]);
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-
-
 
 
 /* harmony default export */ __webpack_exports__["a"] = ({
-  name: 'OrderDetail',
+  name: 'Login',
   data() {
     return {
-      order: [{
-        name: '许见阳',
-        seller_head_img: 'http://upload.jianshu.io/users/upload_avatars/2979086/e08b736e-f99a-43c1-bce4-cc72e10eef88.jpg?imageMogr2/auto-orient/strip|imageView2/1/w/240/h/240',
-        price: '10',
-        date: '2017-9-5',
-        sthaboutbook: '九成新，低价出，有意者带走,九成新，低价出，有意者带走九成新，低价出，有意者带走',
-        img: [{
-          src: 'http://www.dayila.net/_static/kh_book_cover/2012_07/13929643555306f303521bb0.96867513.jpg'
-        }, {
-          src: 'http://www.dayila.net/_static/kh_book_cover/2014_09/141167712354247bc3f4117870332084.jpg'
-        }]
-      }]
+      phone: '',
+      password: '',
+      username: '',
+      captcha: '',
+      state: 'success'
     };
+  },
+  methods: {
+    login_btn() {
+      console.log(this);
+    }
   }
 });
 
 /***/ }),
 
-/***/ 102:
+/***/ 122:
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(103);
+var content = __webpack_require__(123);
 if(typeof content === 'string') content = [[module.i, content, '']];
 // Prepare cssTransformation
 var transform;
@@ -97,8 +95,8 @@ if(content.locals) module.exports = content.locals;
 if(false) {
 	// When the styles change, update the <style> tags
 	if(!content.locals) {
-		module.hot.accept("!!../../../node_modules/css-loader/index.js!../../../node_modules/postcss-loader/lib/index.js!./OrderDetail.css", function() {
-			var newContent = require("!!../../../node_modules/css-loader/index.js!../../../node_modules/postcss-loader/lib/index.js!./OrderDetail.css");
+		module.hot.accept("!!../../../node_modules/css-loader/index.js!../../../node_modules/postcss-loader/lib/index.js!./Login.css", function() {
+			var newContent = require("!!../../../node_modules/css-loader/index.js!../../../node_modules/postcss-loader/lib/index.js!./Login.css");
 			if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
 			update(newContent);
 		});
@@ -109,7 +107,7 @@ if(false) {
 
 /***/ }),
 
-/***/ 103:
+/***/ 123:
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(1)(undefined);
@@ -117,62 +115,78 @@ exports = module.exports = __webpack_require__(1)(undefined);
 
 
 // module
-exports.push([module.i, ".OrderDetail{font-size:.7rem}.OrderDetail .order-container{padding:.3rem}.OrderDetail .top-user{color:#2f2f2f;height:2.5rem;display:-webkit-box;display:-ms-flexbox;display:flex;list-style:none;padding:.3rem;margin-bottom:.9rem}.OrderDetail .top-user #date{margin-top:.2rem;color:#989898}.OrderDetail .top-user img{width:1.9rem;height:1.9rem;border-radius:1.9rem;margin-right:.5rem}.OrderDetail .top-user #price{margin-top:.4rem;color:#e8bc38;padding-left:60%;font-size:.9rem;font-weight:400}.OrderDetail .sth-about-book{width:100%;height:auto;color:#282828;margin-bottom:1rem}.book-photo{display:-webkit-box;display:-ms-flexbox;display:flex;-ms-flex-wrap:wrap;flex-wrap:wrap;-webkit-box-pack:center;-ms-flex-pack:center;justify-content:center}.book-photo img{width:100%;height:100%;margin:.3rem}.order-bottom-menu{width:100%;display:-webkit-box;display:-ms-flexbox;display:flex;position:fixed;bottom:0;z-index:100;height:2.5rem;border-top:1px solid grey;text-align:center;line-height:2.5rem}.order-bottom-menu .join-want{width:50%;background-color:#fff;color:#5e5e5e}.order-bottom-menu .i-want{color:#fff;width:50%;background-color:#eb3535}", ""]);
+exports.push([module.i, ".login{width:100%;height:31rem;-webkit-box-pack:center;-ms-flex-pack:center;justify-content:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center}.login,.login .sharer-log{display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-orient:vertical;-webkit-box-direction:normal;-ms-flex-direction:column;flex-direction:column}.login .sharer-log{color:#294057;margin:1rem}.login .sharer-log img{margin-bottom:.5rem}.login-container{width:100%;height:auto;padding:2rem}.login .go-login-div{margin:0 auto;text-align:center;margin-top:.5rem;font-size:.7rem;color:#797979}.login .go-login-div a{color:#294057}", ""]);
 
 // exports
 
 
 /***/ }),
 
-/***/ 104:
+/***/ 124:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
   return _c('div', {
-    staticClass: "OrderDetail"
-  }, [_c('div', {
-    staticClass: "order-container"
-  }, [_c('div', {
-    staticClass: "top-user"
-  }, [_c('img', {
+    staticClass: "login"
+  }, [_vm._m(0), _vm._v(" "), _c('div', {
+    staticClass: "login-container"
+  }, [_c('mt-field', {
     attrs: {
-      "src": _vm.order[0].seller_head_img
+      "label": "手机号",
+      "placeholder": "请输入手机号",
+      "type": "tel",
+      "attr": {
+        maxlength: 11
+      },
+      "state": ""
+    },
+    model: {
+      value: (_vm.phone),
+      callback: function($$v) {
+        _vm.phone = $$v
+      },
+      expression: "phone"
     }
-  }), _vm._v(" "), _c('div', {
-    staticClass: "name-and-date"
-  }, [_c('li', {
+  }), _vm._v(" "), _c('mt-field', {
     attrs: {
-      "id": "name"
+      "label": "密码",
+      "placeholder": "请输入密码",
+      "type": "password"
+    },
+    model: {
+      value: (_vm.password),
+      callback: function($$v) {
+        _vm.password = $$v
+      },
+      expression: "password"
     }
-  }, [_vm._v(_vm._s(_vm.order[0].name))]), _vm._v(" "), _c('li', {
+  }), _vm._v(" "), _c('mt-button', {
     attrs: {
-      "id": "date"
+      "type": "primary",
+      "size": "large"
+    },
+    on: {
+      "click": _vm.login_btn
     }
-  }, [_vm._v(_vm._s(_vm.order[0].date))])]), _vm._v(" "), _c('span', {
-    attrs: {
-      "id": "price"
-    }
-  }, [_vm._v("¥" + _vm._s(_vm.order[0].price))])]), _vm._v(" "), _c('div', {
-    staticClass: "sth-about-book"
-  }, [_c('span', [_vm._v(_vm._s(_vm.order[0].sthaboutbook))])]), _vm._v(" "), _vm._l((_vm.order[0].img), function(item) {
-    return _c('div', {
-      staticClass: "book-photo"
-    }, [_c('img', {
-      attrs: {
-        "src": item.src
-      }
-    })])
-  })], 2), _vm._v(" "), _vm._m(0)])
+  }, [_vm._v("登录")]), _vm._v(" "), _vm._m(1)], 1)])
 }
 var staticRenderFns = [function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
   return _c('div', {
-    staticClass: "order-bottom-menu"
-  }, [_c('div', {
-    staticClass: "join-want"
-  }, [_c('span', [_vm._v("加入心愿单")])]), _vm._v(" "), _c('div', {
-    staticClass: "i-want"
-  }, [_c('span', [_vm._v("我想要")])])])
+    staticClass: "sharer-log"
+  }, [_c('img', {
+    attrs: {
+      "src": __webpack_require__(57)
+    }
+  }), _vm._v(" "), _c('span', [_vm._v("进入书二")])])
+},function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('div', {
+    staticClass: "go-login-div"
+  }, [_c('span', [_vm._v("还没账号？")]), _vm._v(" "), _c('a', {
+    attrs: {
+      "href": "#/register"
+    }
+  }, [_vm._v("马上注册")])])
 }]
 var esExports = { render: render, staticRenderFns: staticRenderFns }
 /* harmony default export */ __webpack_exports__["a"] = (esExports);
@@ -635,15 +649,15 @@ module.exports = function (css) {
 
 /***/ }),
 
-/***/ 30:
+/***/ 33:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__babel_loader_node_modules_vue_loader_lib_selector_type_script_index_0_OrderDetail_vue__ = __webpack_require__(101);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_template_compiler_index_id_data_v_747d2b75_hasScoped_false_node_modules_vue_loader_lib_selector_type_template_index_0_OrderDetail_vue__ = __webpack_require__(104);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__babel_loader_node_modules_vue_loader_lib_selector_type_script_index_0_Login_vue__ = __webpack_require__(121);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_template_compiler_index_id_data_v_85ca916e_hasScoped_false_node_modules_vue_loader_lib_selector_type_template_index_0_Login_vue__ = __webpack_require__(124);
 function injectStyle (ssrContext) {
-  __webpack_require__(99)
+  __webpack_require__(119)
 }
 var normalizeComponent = __webpack_require__(3)
 /* script */
@@ -657,8 +671,8 @@ var __vue_scopeId__ = null
 /* moduleIdentifier (server only) */
 var __vue_module_identifier__ = null
 var Component = normalizeComponent(
-  __WEBPACK_IMPORTED_MODULE_0__babel_loader_node_modules_vue_loader_lib_selector_type_script_index_0_OrderDetail_vue__["a" /* default */],
-  __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_template_compiler_index_id_data_v_747d2b75_hasScoped_false_node_modules_vue_loader_lib_selector_type_template_index_0_OrderDetail_vue__["a" /* default */],
+  __WEBPACK_IMPORTED_MODULE_0__babel_loader_node_modules_vue_loader_lib_selector_type_script_index_0_Login_vue__["a" /* default */],
+  __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_template_compiler_index_id_data_v_85ca916e_hasScoped_false_node_modules_vue_loader_lib_selector_type_template_index_0_Login_vue__["a" /* default */],
   __vue_styles__,
   __vue_scopeId__,
   __vue_module_identifier__
@@ -669,17 +683,10 @@ var Component = normalizeComponent(
 
 /***/ }),
 
-/***/ 99:
-/***/ (function(module, exports, __webpack_require__) {
+/***/ 57:
+/***/ (function(module, exports) {
 
-// style-loader: Adds some css to the DOM by adding a <style> tag
-
-// load the styles
-var content = __webpack_require__(100);
-if(typeof content === 'string') content = [[module.i, content, '']];
-if(content.locals) module.exports = content.locals;
-// add the styles to the DOM
-var update = __webpack_require__(2)("678ddad6", content, true);
+module.exports = "data:image/png;base64,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"
 
 /***/ })
 
