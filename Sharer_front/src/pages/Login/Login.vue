@@ -48,7 +48,7 @@ export default {
         },
         _fetch_account_login() {
             const t = this
-            fetch(`http://localhost:8000/api/account_login`, {
+            fetch(`http://101.132.71.185/api/account_login`, {
                  method: 'post',
                  body: 'telphone=' + t.phone + '&password=' + t.password,
                  headers: {

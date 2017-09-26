@@ -57,7 +57,7 @@ export default {
         },
         _fetch_account_register() {
             const t = this
-            fetch(`http://localhost:8000/api/account_register`, {
+            fetch(`http://101.132.71.185/api/account_register`, {
                  method: 'post',
                  body: 'telphone=' + t.phone + '&password=' + t.password + '&nickname=' + t.nickname,
                  headers: {

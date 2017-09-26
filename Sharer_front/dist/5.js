@@ -88,7 +88,7 @@ __WEBPACK_IMPORTED_MODULE_1_vue__["default"].component(__WEBPACK_IMPORTED_MODULE
         },
         _fetch_account_login() {
             const t = this;
-            fetch(`http://localhost:8000/api/account_login`, {
+            fetch(`http://101.132.71.185/api/account_login`, {
                 method: 'post',
                 body: 'telphone=' + t.phone + '&password=' + t.password,
                 headers: {

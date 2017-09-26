@@ -98,7 +98,7 @@ __WEBPACK_IMPORTED_MODULE_1_vue__["default"].component(__WEBPACK_IMPORTED_MODULE
         },
         _fetch_account_register() {
             const t = this;
-            fetch(`http://localhost:8000/api/account_register`, {
+            fetch(`http://101.132.71.185/api/account_register`, {
                 method: 'post',
                 body: 'telphone=' + t.phone + '&password=' + t.password + '&nickname=' + t.nickname,
                 headers: {
@@ -10673,8 +10673,8 @@ var Component = normalizeComponent(
 let prefix = '';
 if (false) {
     // prefix = 'http://localhost:6060'
-    prefix = 'http://localhost:8000';
-    // prefix = 'http://101.132.71.185'
+    // prefix = 'http://localhost:8000'
+    prefix = 'http://101.132.71.185';
 }
 // if(__PRO__){
 //     prefix = ''
