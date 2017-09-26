@@ -1,231 +1,73 @@
 webpackJsonp([4],{
 
-/***/ 111:
-/***/ (function(module, exports, __webpack_require__) {
-
-// style-loader: Adds some css to the DOM by adding a <style> tag
-
-// load the styles
-var content = __webpack_require__(112);
-if(typeof content === 'string') content = [[module.i, content, '']];
-if(content.locals) module.exports = content.locals;
-// add the styles to the DOM
-var update = __webpack_require__(2)("4a23d36b", content, true);
-
-/***/ }),
-
-/***/ 112:
-/***/ (function(module, exports, __webpack_require__) {
-
-exports = module.exports = __webpack_require__(1)(undefined);
-// imports
-
-
-// module
-exports.push([module.i, "", ""]);
-
-// exports
-
-
-/***/ }),
-
-/***/ 113:
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_mint_ui__ = __webpack_require__(18);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_mint_ui___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_mint_ui__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_vue__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__Register_css__ = __webpack_require__(114);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__Register_css___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2__Register_css__);
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-
-
-
-
-
-__WEBPACK_IMPORTED_MODULE_1_vue__["default"].component(__WEBPACK_IMPORTED_MODULE_0_mint_ui__["Field"].name, __WEBPACK_IMPORTED_MODULE_0_mint_ui__["Field"]);
-__WEBPACK_IMPORTED_MODULE_1_vue__["default"].component(__WEBPACK_IMPORTED_MODULE_0_mint_ui__["Button"].name, __WEBPACK_IMPORTED_MODULE_0_mint_ui__["Button"]);
-/* harmony default export */ __webpack_exports__["a"] = ({
-  name: 'Register',
-  data() {
-    return {
-      phone: '',
-      password: '',
-      username: '',
-      captcha: ''
-    };
-  },
-  methods: {
-    register_btn() {
-      console.log(this.phone);
-    }
-  }
-
-});
-
-/***/ }),
-
-/***/ 114:
-/***/ (function(module, exports, __webpack_require__) {
-
-// style-loader: Adds some css to the DOM by adding a <style> tag
-
-// load the styles
-var content = __webpack_require__(115);
-if(typeof content === 'string') content = [[module.i, content, '']];
-// Prepare cssTransformation
-var transform;
-
-var options = {}
-options.transform = transform
-// add the styles to the DOM
-var update = __webpack_require__(16)(content, options);
-if(content.locals) module.exports = content.locals;
-// Hot Module Replacement
-if(false) {
-	// When the styles change, update the <style> tags
-	if(!content.locals) {
-		module.hot.accept("!!../../../node_modules/css-loader/index.js!../../../node_modules/postcss-loader/lib/index.js!./Register.css", function() {
-			var newContent = require("!!../../../node_modules/css-loader/index.js!../../../node_modules/postcss-loader/lib/index.js!./Register.css");
-			if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
-			update(newContent);
-		});
-	}
-	// When the module is disposed, remove the <style> tags
-	module.hot.dispose(function() { update(); });
-}
-
-/***/ }),
-
-/***/ 115:
-/***/ (function(module, exports, __webpack_require__) {
-
-exports = module.exports = __webpack_require__(1)(undefined);
-// imports
-
-
-// module
-exports.push([module.i, ".register{width:100%;height:32rem;-webkit-box-pack:center;-ms-flex-pack:center;justify-content:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center}.register,.register .sharer-log{display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-orient:vertical;-webkit-box-direction:normal;-ms-flex-direction:column;flex-direction:column}.register .sharer-log{margin:1rem}.register-container{width:100%;height:auto;padding:2rem}", ""]);
-
-// exports
-
-
-/***/ }),
-
-/***/ 116:
+/***/ 100:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
   return _c('div', {
-    staticClass: "register"
-  }, [_vm._m(0), _vm._v(" "), _c('div', {
-    staticClass: "register-container"
-  }, [_c('mt-field', {
+    staticClass: "BookDetail"
+  }, [_c('div', {
+    staticClass: "top-div"
+  }, [_c('mt-header', {
     attrs: {
-      "label": "手机号",
-      "placeholder": "请输入手机号",
-      "type": "tel",
-      "attr": {
-        maxlength: 10
+      "title": "书二"
+    }
+  }, [_c('router-link', {
+    attrs: {
+      "to": "/"
+    },
+    slot: "left"
+  }, [_c('mt-button', {
+    attrs: {
+      "icon": "back"
+    }
+  }, [_vm._v("返回")])], 1), _vm._v(" "), _c('mt-button', {
+    attrs: {
+      "icon": "more"
+    },
+    slot: "right"
+  })], 1)], 1), _vm._v(" "), _c('div', {
+    staticClass: "book-intro"
+  }, [_c('div', {
+    staticClass: "book-img"
+  }, [_c('img', {
+    attrs: {
+      "src": this.book_info[0].book_img
+    }
+  })]), _vm._v(" "), _c('div', {
+    staticClass: "book-info"
+  }, [_c('li', [_vm._v("作者：" + _vm._s(this.book_info[0].author))]), _vm._v(" "), _c('li', [_vm._v("出版社：" + _vm._s(this.book_info[0].publish_house))]), _vm._v(" "), _c('li', {
+    attrs: {
+      "id": "book-info-price"
+    }
+  }, [_vm._v("原价：¥" + _vm._s(this.book_info[0].original_price))])])]), _vm._v(" "), _c('div', {
+    staticClass: "book-seller-list"
+  }, _vm._l((_vm.book_seller), function(item) {
+    return _c('div', {
+      staticClass: "book-seller-list-detail",
+      class: {
+        on: _vm.$route.path === ("/" + (item.to))
+      },
+      on: {
+        "click": function($event) {
+          _vm.toOther(item.to)
+        }
       }
-    },
-    model: {
-      value: (_vm.phone),
-      callback: function($$v) {
-        _vm.phone = $$v
-      },
-      expression: "phone"
-    }
-  }), _vm._v(" "), _c('mt-field', {
-    attrs: {
-      "label": "密码",
-      "placeholder": "请输入密码",
-      "type": "password"
-    },
-    model: {
-      value: (_vm.password),
-      callback: function($$v) {
-        _vm.password = $$v
-      },
-      expression: "password"
-    }
-  }), _vm._v(" "), _c('mt-field', {
-    attrs: {
-      "label": "用户名",
-      "placeholder": "请输入用户名"
-    },
-    model: {
-      value: (_vm.username),
-      callback: function($$v) {
-        _vm.username = $$v
-      },
-      expression: "username"
-    }
-  }), _vm._v(" "), _c('mt-field', {
-    attrs: {
-      "label": "验证码"
-    },
-    model: {
-      value: (_vm.captcha),
-      callback: function($$v) {
-        _vm.captcha = $$v
-      },
-      expression: "captcha"
-    }
-  }, [_c('img', {
-    attrs: {
-      "src": __webpack_require__(55),
-      "height": "20px",
-      "width": "20px"
-    }
-  })]), _vm._v(" "), _c('mt-button', {
-    attrs: {
-      "type": "primary",
-      "size": "large"
-    },
-    on: {
-      "click": _vm.register_btn
-    }
-  }, [_vm._v("注册")]), _vm._v(" "), _c('span', [_vm._v("已有账号")])], 1)])
+    }, [_c('img', {
+      attrs: {
+        "src": item.head_img
+      }
+    }), _vm._v(" "), _c('li', [_vm._v(_vm._s(item.name))]), _vm._v(" "), _c('li', {
+      attrs: {
+        "id": "book-seller-price"
+      }
+    }, [_vm._v("¥：" + _vm._s(item.price))])])
+  }))])
 }
-var staticRenderFns = [function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('div', {
-    staticClass: "sharer-log"
-  }, [_c('img', {
-    attrs: {
-      "src": __webpack_require__(117)
-    }
-  }), _vm._v(" "), _c('span', [_vm._v("进入书二")])])
-}]
+var staticRenderFns = []
 var esExports = { render: render, staticRenderFns: staticRenderFns }
 /* harmony default export */ __webpack_exports__["a"] = (esExports);
-
-/***/ }),
-
-/***/ 117:
-/***/ (function(module, exports) {
-
-module.exports = "data:image/png;base64,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"
 
 /***/ }),
 
@@ -10584,15 +10426,15 @@ module.exports = function (arr, predicate, ctx) {
 
 /***/ }),
 
-/***/ 32:
+/***/ 29:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__babel_loader_node_modules_vue_loader_lib_selector_type_script_index_0_Register_vue__ = __webpack_require__(113);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_template_compiler_index_id_data_v_76315a55_hasScoped_false_node_modules_vue_loader_lib_selector_type_template_index_0_Register_vue__ = __webpack_require__(116);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__babel_loader_node_modules_vue_loader_lib_selector_type_script_index_0_BookDetail_vue__ = __webpack_require__(97);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_template_compiler_index_id_data_v_6e15a016_hasScoped_false_node_modules_vue_loader_lib_selector_type_template_index_0_BookDetail_vue__ = __webpack_require__(100);
 function injectStyle (ssrContext) {
-  __webpack_require__(111)
+  __webpack_require__(95)
 }
 var normalizeComponent = __webpack_require__(3)
 /* script */
@@ -10606,8 +10448,8 @@ var __vue_scopeId__ = null
 /* moduleIdentifier (server only) */
 var __vue_module_identifier__ = null
 var Component = normalizeComponent(
-  __WEBPACK_IMPORTED_MODULE_0__babel_loader_node_modules_vue_loader_lib_selector_type_script_index_0_Register_vue__["a" /* default */],
-  __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_template_compiler_index_id_data_v_76315a55_hasScoped_false_node_modules_vue_loader_lib_selector_type_template_index_0_Register_vue__["a" /* default */],
+  __WEBPACK_IMPORTED_MODULE_0__babel_loader_node_modules_vue_loader_lib_selector_type_script_index_0_BookDetail_vue__["a" /* default */],
+  __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_template_compiler_index_id_data_v_6e15a016_hasScoped_false_node_modules_vue_loader_lib_selector_type_template_index_0_BookDetail_vue__["a" /* default */],
   __vue_styles__,
   __vue_scopeId__,
   __vue_module_identifier__
@@ -10618,10 +10460,405 @@ var Component = normalizeComponent(
 
 /***/ }),
 
-/***/ 55:
-/***/ (function(module, exports) {
+/***/ 40:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
-module.exports = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAADEElEQVRYR82XTVLbQBCFX4sUkBXOCTCLVJlVzAkYnyBmwc8OOEHICYAThJwgzg6ZBcoJmJwgZGVVssDcwFlZdmF1qjUjsGVbGuGqEG1UpZ+er5/edLcIL3zQC6+PUgA1dVBl8HsCmgJO4LqcGXRrzggI9C3Ul13XxJwAaupAAXxKgHIJzIAG6DzUl7ro+VyAqmpWVrFynS7M4D8AghgIPHi9CFGS+SpW6zHiimeUaRJozSqiIwx2ujrozQOZC/BW7daX4MniIrssfBHq9llRRgZ6+QTAiYAw0B0h3vmtrxLY7DETQBZ/BboBqMLAzwgDlZfFrMBWPU3AO4B7D+DGLIgpAPviD5v511C3j4qyzrtfU3stAh2KEhEGW9lEpgBqak8TaFsyD7WfuHzWITuCEF8zqJInsbxbU/u3ooSYM9R+YzzeBIC4ncA38s0jDKt5stfU3hmBTo3Z4uNQX7XmwVpfdI0nqDG+OzIAafZ8XmQ4a9IWARUGqaK9nwJnVXgEMJLynWQf6nZlke8+35TLqQobKfAjwKbal63zicELG2++b4whAXzsaP/CVFN7pOYbgXd+6XbgooAxF3NHt7fcnt89InhfGPw91O2kqk4BZE2SF3hT7bPc72jfuaRbk88E6IlL+xi8cS06zwCwPkM31P5GVoF/BgDgvqP96n/3CZIKWMaE5T9Bjgmfsw3LA+RuQ1OIpHP1MdxwMWIZACnHr7F8ZzosTRci0zTcS7E8XwbgqRQ/1YAJExoA04xcVXAFyGQ/vxmNqwDwbVGFk0oo7+S17cl2PJn9lAJywdCuSOB1Blqh9o9dyqxD/b/vY1AvHEgkkGm1JNtyTZToY9hwMeU4hJVdxrq6dNgRWDmNZGkQMxd60pTWxRMMXEQYfi4CscPHBwJOxPFS9R4QN0sNpSmEDSY/G9vmmoBQALAGcRe8dJ9cptE6mKoAiYmbdmFI14swbD5rLB+X0/yYxDKCWZB8V8jCgHe28I9Jdhk7NTU5yVJ6uWQtMyEnv2IECkShovFsPK5TH19kFxS9++IAfwG6mt8wbrd2hwAAAABJRU5ErkJggg=="
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__dbFactory__ = __webpack_require__(41);
+
+
+/* harmony default export */ __webpack_exports__["a"] = (__WEBPACK_IMPORTED_MODULE_0__dbFactory__["a" /* default */].context);
+
+let prefix = '';
+if (false) {
+    // prefix = 'http://localhost:6060'
+    prefix = 'http://localhost:8000';
+    // prefix = 'http://101.132.71.185'
+}
+// if(__PRO__){
+//     prefix = ''
+// }
+
+__WEBPACK_IMPORTED_MODULE_0__dbFactory__["a" /* default */].create('Choose', {
+    getBookType: {
+        url: prefix + '/api/load_book_by_choose_major',
+        method: 'GET'
+    },
+    getSchoolCollege: {
+        url: prefix + '/api/choose_school_college',
+        method: 'GET'
+    },
+    getBookDetail: {
+        url: prefix + '/api/book_detail_new',
+        method: 'GET'
+    },
+    account_register: {
+        url: prefix + '/api/account_register',
+        method: 'POST'
+    },
+    getUserInfo: {
+        url: prefix + '/api/get_user_info',
+        method: 'GET'
+    }
+});
+
+/***/ }),
+
+/***/ 41:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_object_param__ = __webpack_require__(42);
+// import os from 'object-serialize'
+
+
+/* harmony default export */ __webpack_exports__["a"] = (new class {
+    constructor() {
+        this.map = new Map();
+    }
+    create(name, methods) {
+        return this.context[name] = this.DB(methods);
+    }
+    set(key, value) {
+        this.map.set(key, value);
+    }
+    get(key) {
+        return this.map.get(key);
+    }
+    context() {
+        this.link = data => this.context.Data = data;
+    }
+    DB(methods) {
+        for (let method in methods) {
+            const config = methods[method];
+            this[method] = query => new Request(config, query, method);
+        }
+        return this;
+    }
+}());
+
+function Request(config, body) {
+
+    let { url, method = '' } = config;
+    const option = {
+        credentials: 'same-origin'
+    };
+    if (method.toUpperCase() === 'POST') {
+        Object.assign(option, {
+            headers: {
+                "Accept": "application/json",
+                "Content-Type": "application/x-www-form-urlencoded"
+            },
+            method: 'post',
+            body: Object(__WEBPACK_IMPORTED_MODULE_0_object_param__["a" /* default */])(body)
+        });
+    } else {
+        url += `?${Object(__WEBPACK_IMPORTED_MODULE_0_object_param__["a" /* default */])(body)}`;
+    }
+
+    return new Promise((resolve, reject) => {
+        fetch(url, option).then(data => data.json()).then(({ success, data, err }) => {
+            if (success) {
+                resolve(data);
+            } else {
+                reject({
+                    success, data, err
+                });
+            }
+        }).catch(() => reject({
+            errorMsg: '请求失败'
+        }));
+    });
+}
+
+/***/ }),
+
+/***/ 42:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
+
+/**
+ * 功能和`Zepto.param`一样
+ * @param obj {Object}
+ * @param traditional {Boolean}
+ * @returns {string}
+ * param({ foo: { one: 1, two: 2 }}) // "foo[one]=1&foo[two]=2)"
+ * param({ ids: [1,2,3] })           // "ids[]=1&ids[]=2&ids[]=3"
+ * param({ ids: [1,2,3] }, true)     // "ids=1&ids=2&ids=3"
+ * param({ foo: 'bar', nested: { will: 'not be ignored' }})    // "foo=bar&nested[will]=not+be+ignored"
+ * param({ foo: 'bar', nested: { will: 'be ignored' }}, true)  // "foo=bar&nested=[object+Object]"
+ * param({ id: function(){ return 1 + 2 } })  // "id=3"
+ */
+
+var ARRAY_TYPE = '[object Array]';
+var FUNCTION = 'function';
+var OBJECT = 'object';
+var NUMBER = 'number';
+var NULL = null;
+var OBJECT_TYPE = '[object Object]';
+
+function isFunction(v) {
+    return (typeof v === 'undefined' ? 'undefined' : _typeof(v)) === FUNCTION;
+}
+
+function isArray(v) {
+    return toString.call(v) === ARRAY_TYPE;
+}
+
+function isObject(v) {
+    return (typeof v === 'undefined' ? 'undefined' : _typeof(v)) === OBJECT && v !== NULL;
+}
+
+function isWindow(v) {
+    return v !== NULL && v === v.window;
+}
+
+function isPlainObject(v) {
+    return v !== NULL && isObject(v) && !isWindow(v) && Object.getPrototypeOf(v) === Object.prototype;
+}
+
+function isNumber(v) {
+    return !isNaN(v) && (typeof v === 'undefined' ? 'undefined' : _typeof(v)) === NUMBER;
+}
+
+function likeArray(v) {
+    if (!v) {
+        return false;
+    }
+    return _typeof(v.length) === NUMBER;
+}
+
+function each(v, fn) {
+    var i = void 0,
+        l = void 0;
+    if (likeArray(v)) {
+        for (i = 0, l = v.length; i < l; i++) {
+            if (fn.call(v[i], v[i], i) === false) return;
+        }
+    } else {
+        for (i in v) {
+            if (fn.call(v[i], v[i], i) === false) return;
+        }
+    }
+}
+
+function serialize(params, obj, traditional, scope) {
+    var type = void 0,
+        array = isArray(obj),
+        hash = isPlainObject(obj);
+    each(obj, function (value, key) {
+        type = toString.call(value);
+        if (scope) {
+            key = traditional ? scope : scope + '[' + (hash || type == OBJECT_TYPE || type == ARRAY_TYPE ? key : '') + ']';
+        }
+
+        // 递归
+        if (!scope && array) {
+            params.add(value.name, value.value);
+        }
+        // recurse into nested objects
+        else if (type == ARRAY_TYPE || !traditional && type == OBJECT_TYPE) {
+                serialize(params, value, traditional, key);
+            } else {
+                params.add(key, value);
+            }
+    });
+}
+
+/* harmony default export */ __webpack_exports__["a"] = (function (obj, traditional) {
+    var params = [];
+    params.add = function (key, value) {
+        if (isFunction(value)) value = value();
+        if (value == null) value = "";
+        params.push(key + '=' + value);
+    };
+    serialize(params, obj, traditional);
+    return params.join('&').replace(/%20/g, '+');
+});
+
+/***/ }),
+
+/***/ 95:
+/***/ (function(module, exports, __webpack_require__) {
+
+// style-loader: Adds some css to the DOM by adding a <style> tag
+
+// load the styles
+var content = __webpack_require__(96);
+if(typeof content === 'string') content = [[module.i, content, '']];
+if(content.locals) module.exports = content.locals;
+// add the styles to the DOM
+var update = __webpack_require__(2)("caadc654", content, true);
+
+/***/ }),
+
+/***/ 96:
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(1)(undefined);
+// imports
+
+
+// module
+exports.push([module.i, "", ""]);
+
+// exports
+
+
+/***/ }),
+
+/***/ 97:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_mint_ui__ = __webpack_require__(18);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_mint_ui___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_mint_ui__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__BookDetail_css__ = __webpack_require__(98);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__BookDetail_css___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2__BookDetail_css__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__app_db__ = __webpack_require__(40);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+
+
+
+
+
+__WEBPACK_IMPORTED_MODULE_0_vue__["default"].component(__WEBPACK_IMPORTED_MODULE_1_mint_ui__["Header"].name, __WEBPACK_IMPORTED_MODULE_1_mint_ui__["Header"]);
+/* harmony default export */ __webpack_exports__["a"] = ({
+  name: 'bookedetail',
+  data() {
+    return {
+      query_obj: '',
+      book_info: [{}],
+      book_seller: [{
+        name: '许见阳',
+        head_img: 'http://www.dayila.net/_static/kh_book_cover/2012_07/13929643555306f303521bb0.96867513.jpg',
+        price: '10',
+        type: 'orderdetail',
+        to: 'orderdetail'
+      }, {
+        name: '吴家成',
+        head_img: '',
+        price: '11'
+      }, {
+        name: '王家伟',
+        head_img: '',
+        price: '13'
+      }]
+    };
+  },
+  methods: {
+    toOther(to, run) {
+      if (this.$route.path !== `/${to}`) {
+        location.hash = to;
+      }
+    },
+    _fetch_book_detail() {
+      const t = this;
+      t.query_obj = this.$route.query;
+      // console.log(t.query_obj);
+      __WEBPACK_IMPORTED_MODULE_3__app_db__["a" /* default */].Choose.getBookDetail({
+        school: t.query_obj.school,
+        major_key: t.query_obj.major_key,
+        book_key: t.query_obj.book_key
+      }).then(result => {
+        let { list = [] } = result;
+        t.book_info.length = 0;
+        t.book_info.push({
+          author: list[0].author,
+          publish_house: list[0].publish_house,
+          original_price: list[0].original_price,
+          book_img: list[0].book_img
+        });
+        __WEBPACK_IMPORTED_MODULE_1_mint_ui__["Indicator"].close();
+      });
+    }
+  },
+  created: function () {
+    __WEBPACK_IMPORTED_MODULE_1_mint_ui__["Indicator"].open('加载中...');
+    this._fetch_book_detail();
+  }
+});
+
+/***/ }),
+
+/***/ 98:
+/***/ (function(module, exports, __webpack_require__) {
+
+// style-loader: Adds some css to the DOM by adding a <style> tag
+
+// load the styles
+var content = __webpack_require__(99);
+if(typeof content === 'string') content = [[module.i, content, '']];
+// Prepare cssTransformation
+var transform;
+
+var options = {}
+options.transform = transform
+// add the styles to the DOM
+var update = __webpack_require__(16)(content, options);
+if(content.locals) module.exports = content.locals;
+// Hot Module Replacement
+if(false) {
+	// When the styles change, update the <style> tags
+	if(!content.locals) {
+		module.hot.accept("!!../../../node_modules/css-loader/index.js!../../../node_modules/postcss-loader/lib/index.js!./BookDetail.css", function() {
+			var newContent = require("!!../../../node_modules/css-loader/index.js!../../../node_modules/postcss-loader/lib/index.js!./BookDetail.css");
+			if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+			update(newContent);
+		});
+	}
+	// When the module is disposed, remove the <style> tags
+	module.hot.dispose(function() { update(); });
+}
+
+/***/ }),
+
+/***/ 99:
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(1)(undefined);
+// imports
+
+
+// module
+exports.push([module.i, ".BookDetail .book-intro{width:100%;height:15rem;background-color:#ebebeb;list-style:none}.BookDetail .book-info{list-style:none;font-size:.68rem;line-height:1rem;color:#8b8b8b;text-align:center}.BookDetail .book-info #book-info-price{color:#da2e52;text-decoration:line-through}.BookDetail .book-intro .book-img{width:8rem;height:11.5rem;margin:0 auto}.BookDetail .book-seller-list .book-seller-list-detail{-webkit-box-align:center;-ms-flex-align:center;align-items:center;display:-webkit-box;display:-ms-flexbox;display:flex;width:100%;height:5rem;background-color:#f0f0f0;margin-top:.8rem;list-style:none;font-size:.9rem;color:#8b8b8b}.BookDetail .book-seller-list .book-seller-list-detail img{width:2rem;height:2rem;border-radius:2rem}.BookDetail .book-seller-list .book-seller-list-detail li{margin-left:1rem}.BookDetail .book-seller-list .book-seller-list-detail #book-seller-price{color:#da4d4d}", ""]);
+
+// exports
+
 
 /***/ })
 

@@ -2,6 +2,8 @@
 from __future__ import unicode_literals
 from django.db import models
 
+import hashlib
+
 class choose_school_college(models.Model):
     school = models.CharField(max_length=30)
     college = models.CharField(max_length=30)
@@ -91,3 +93,13 @@ class profile(models.Model):
     major_key = models.CharField(max_length=20)
     def __unicode__(self):
         return self.user_account
+
+class Accounts(models.Model):
+    telphone = models.CharField(max_length=11)
+    password = models.CharField(max_length=256)
+    nickname = models.CharField(max_length=16)
+    def __unicode__(self):
+        return self.telphone
+    def save(self,*args,**kwargs):
+        self.password = hashlib.sha1(self.password+self.telphone).hexdigest()
+        super(Accounts,self).save(*args,**kwargs)

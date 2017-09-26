@@ -4,7 +4,7 @@ from django.shortcuts import render
 from django.views.decorators.http import require_http_methods
 from django.http import JsonResponse
 from django.core import serializers
-from models import choose_book_type,choose_school_college,load_book_by_choose_major,book_detail_new
+from models import choose_book_type,choose_school_college,load_book_by_choose_major,book_detail_new,Accounts
 from django.views.decorators.csrf import csrf_protect,csrf_exempt
 from django.http import HttpResponse
 import hashlib
@@ -160,4 +160,78 @@ def book_detail_data(request):
     except  Exception,e:
         response['msg'] = str(e)
         response['error_num'] = 1
+    return JsonResponse(response)
+
+@csrf_protect
+@csrf_exempt
+@require_http_methods(["POST"])
+def account_register(request):
+    response = {}
+    try:
+        hasAccount = Accounts.objects.filter(telphone=request.POST['telphone'])
+        if(hasAccount):
+            response['msg'] = 'registerd telphone'
+            response['error_num'] = 0
+            return JsonResponse(response)
+        account = Accounts(telphone=request.POST['telphone'],password=request.POST['password'],nickname=request.POST['nickname'])
+        account.save()
+        response['msg'] = 'success'
+        response['error_num'] = 0
+    except  Exception,e:
+        response['msg'] = str(e)
+        response['error_num'] = 1
+    return JsonResponse(response)
+
+
+@csrf_protect
+@csrf_exempt
+@require_http_methods(["POST"])
+def account_login(request):
+    response = {}
+    try:
+        hasAccount = Accounts.objects.get(telphone=request.POST['telphone'])
+        if(hasAccount):
+            if(hasAccount.password==hashlib.sha1(request.POST['password']+request.POST['telphone']).hexdigest()):
+                response['msg'] = 'success'
+                response['error_num'] = 0
+                return JsonResponse(response)
+            response['msg'] = 'passwordError'
+            response['error_num'] = 0
+            return JsonResponse(response)
+
+    except  Exception,e:
+        response['msg'] = 'notRegisterd'
+        response['error_num'] = 0
+        return JsonResponse(response)
+    return JsonResponse(response)
+
+@require_http_methods(["GET"])
+def get_user_info(request):
+    if 'telphone' in request.GET:
+        telphone=request.GET['telphone']
+    response = {}
+    try:
+        get_user_info = Accounts.objects.filter(telphone = telphone)
+        tempList  = json.loads(serializers.serialize("json", get_user_info))
+        tempList2 = []
+
+        # 处理返回的数据
+        for i in tempList:
+            tempList2.append({
+                'nickname':i['fields']['nickname'],
+                'telphone':i['fields']['telphone'],
+            })
+        total = len(tempList2)
+        data = {
+            'list':tempList2,
+            'total':total
+        }
+        response['data'] = data
+        response['msg'] = 'success'
+        response['success'] = True
+        response['error_num'] = 0
+    except  Exception,e:
+        response['msg'] = str(e)
+        response['error_num'] = 1
+
     return JsonResponse(response)
