@@ -11148,12 +11148,13 @@ __WEBPACK_IMPORTED_MODULE_0_vue__["default"].component(__WEBPACK_IMPORTED_MODULE
 			});
 		},
 		toOther(to, run) {
-			// console.log(run);
 			if (this.$route.path !== `/${to}`) {
 				location.hash = to + '?' + 'book_key=' + run.key + '&' + 'major_key=' + run.major_key + '&' + 'school=' + run.school;
 			}
 		}
 	},
+	created: {},
+	mounted() {},
 	computed: {},
 	watch: {}
 });

@@ -70,6 +70,7 @@ import bottomMenu1 from '../../components/bottomMenu/bottomMenu'
 import { TabContainer, TabContainerItem,Navbar, TabItem,Popup,Picker,Search,Indicator } from 'mint-ui';
 import DB from '../../app/db'
 
+
 Vue.component(Picker.name, Picker);
 Vue.component(Popup.name, Popup);
 Vue.component(TabContainer.name, TabContainer);
@@ -219,12 +220,17 @@ export default {
 				})
 		},
 		toOther(to,run) {
-			// console.log(run);
-      if(this.$route.path!==`/${to}`){
-         location.hash = to+'?'+'book_key='+run.key+'&'+'major_key='+run.major_key+'&'+'school='+run.school;
-      }
+	      if(this.$route.path!==`/${to}`) {
+	         location.hash = to+'?'+'book_key='+run.key+'&'+'major_key='+run.major_key+'&'+'school='+run.school;
+	      }
     },
 	},
+	created:{
+
+	},
+	mounted(){
+
+			},
 	computed:{
 	},
 	watch:{

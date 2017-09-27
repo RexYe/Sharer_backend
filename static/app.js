@@ -1468,9 +1468,6 @@ var esExports = { render: render, staticRenderFns: staticRenderFns }
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_vue_router__ = __webpack_require__(12);
 
 
-// import Hello from '@/pages/Hello/Hello'
-// import todo from '@/pages/todo'
-// import TestVuex from '@/pages/TestVuex'
 
 const Index = resolve => __webpack_require__.e/* require */(1).then(function() { var __WEBPACK_AMD_REQUIRE_ARRAY__ = [__webpack_require__(24)]; (resolve.apply(null, __WEBPACK_AMD_REQUIRE_ARRAY__));}.bind(this)).catch(__webpack_require__.oe);
 const todo = resolve => __webpack_require__.e/* require */(8).then(function() { var __WEBPACK_AMD_REQUIRE_ARRAY__ = [__webpack_require__(25)]; (resolve.apply(null, __WEBPACK_AMD_REQUIRE_ARRAY__));}.bind(this)).catch(__webpack_require__.oe);
@@ -1484,12 +1481,13 @@ const Register = resolve => __webpack_require__.e/* require */(3).then(function(
 const Login = resolve => __webpack_require__.e/* require */(5).then(function() { var __WEBPACK_AMD_REQUIRE_ARRAY__ = [__webpack_require__(33)]; (resolve.apply(null, __WEBPACK_AMD_REQUIRE_ARRAY__));}.bind(this)).catch(__webpack_require__.oe);
 __WEBPACK_IMPORTED_MODULE_0_vue__["default"].use(__WEBPACK_IMPORTED_MODULE_1_vue_router__["default"]);
 
-/* harmony default export */ __webpack_exports__["a"] = (new __WEBPACK_IMPORTED_MODULE_1_vue_router__["default"]({
+const router = new __WEBPACK_IMPORTED_MODULE_1_vue_router__["default"]({
   routes: [{
     path: '/',
     name: 'Index',
-    component: Index
-  }, {
+    component: Index,
+    meta: { requireAuth: true //进入这个路由是需要登录
+    } }, {
     path: '/todo',
     component: todo
   }, {
@@ -1497,16 +1495,20 @@ __WEBPACK_IMPORTED_MODULE_0_vue__["default"].use(__WEBPACK_IMPORTED_MODULE_1_vue
     component: TestVuex
   }, {
     path: '/publish',
-    component: Publish
+    component: Publish,
+    meta: { requireAuth: true }
   }, {
     path: '/me',
-    component: Me
+    component: Me,
+    meta: { requireAuth: true }
   }, {
     path: '/bookdetail',
-    component: BookDetail
+    component: BookDetail,
+    meta: { requireAuth: true }
   }, {
     path: '/orderdetail',
-    component: OrderDetail
+    component: OrderDetail,
+    meta: { requireAuth: true }
   }, {
     path: '/aboutus',
     component: AboutUs
@@ -1517,7 +1519,24 @@ __WEBPACK_IMPORTED_MODULE_0_vue__["default"].use(__WEBPACK_IMPORTED_MODULE_1_vue
     path: '/login',
     component: Login
   }]
-}));
+});
+
+router.beforeEach((to, from, next) => {
+  if (to.matched.some(r => r.meta.requireAuth)) {
+    if (window.sessionStorage.tel) {
+      next();
+    } else {
+      next({
+        path: '/login',
+        query: { redirect: to.fullPath }
+      });
+    }
+  } else {
+    next();
+  }
+});
+
+/* harmony default export */ __webpack_exports__["a"] = (router);
 
 /***/ }),
 /* 12 */,

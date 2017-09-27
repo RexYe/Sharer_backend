@@ -1,19 +1,19 @@
 <template>
-  <div class="login">
-    <div class="sharer-log">
-        <img src="../../img/logo.png">
-        <span>进入书二</span>
-    </div>
-    <div class="login-container">
-        <mt-field label="手机号" placeholder="请输入手机号" type="tel" :attr="{ maxlength: 11 }" v-model="phone" state=""></mt-field>
-        <mt-field label="密码" placeholder="请输入密码" type="password" v-model="password"></mt-field>
-        <mt-button type="primary" size="large" @click="login_btn">登录</mt-button>
-        <div class="go-login-div">
-          <span>还没账号？</span>
-          <a href="#/register">马上注册</a>
+    <div class="login">
+        <div class="sharer-log">
+            <img src="../../img/logo.png">
+            <span>进入书二</span>
+        </div>
+        <div class="login-container">
+            <mt-field label="手机号" placeholder="请输入手机号" type="tel" :attr="{ maxlength: 11 }" v-model="phone" state=""></mt-field>
+            <mt-field label="密码" placeholder="请输入密码" type="password" v-model="password"></mt-field>
+            <mt-button type="primary" size="large" @click="login_btn">登录</mt-button>
+            <div class="go-login-div">
+                <span>还没账号？</span>
+                <a href="#/register">马上注册</a>
+            </div>
         </div>
     </div>
-  </div>
 </template>
 
 <script>
@@ -59,6 +59,7 @@ export default {
              .then(re => re.json())
              .then(re => {
                   if(re.msg == 'success') {
+                      window.sessionStorage.tel = t.phone;
                       MessageBox.alert('登录成功！').then(action => {
                           t.toOther('me',t.phone)
                       })
@@ -79,7 +80,11 @@ export default {
         toOther(to,tel) {
              this.$router.push({ path: `${to}?tel=`+tel })
         }
-    }
+    },
+    mounted(){
+    //  console.log(this);
+   },
+
 }
 </script>
 

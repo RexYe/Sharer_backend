@@ -97,6 +97,7 @@ __WEBPACK_IMPORTED_MODULE_1_vue__["default"].component(__WEBPACK_IMPORTED_MODULE
                 }
             }).then(re => re.json()).then(re => {
                 if (re.msg == 'success') {
+                    window.sessionStorage.tel = t.phone;
                     __WEBPACK_IMPORTED_MODULE_0_mint_ui__["MessageBox"].alert('登录成功！').then(action => {
                         t.toOther('me', t.phone);
                     });
@@ -114,7 +115,11 @@ __WEBPACK_IMPORTED_MODULE_1_vue__["default"].component(__WEBPACK_IMPORTED_MODULE
         toOther(to, tel) {
             this.$router.push({ path: `${to}?tel=` + tel });
         }
+    },
+    mounted() {
+        //  console.log(this);
     }
+
 });
 
 /***/ }),

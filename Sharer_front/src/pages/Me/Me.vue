@@ -21,12 +21,15 @@
                 </div>
             </div>
         </div>
+        <div class="logout">
+            <mt-button type="danger" size="large" @click="logout_btn">退出登录</mt-button>
+        </div>
         <bottomMenu1 />
     </div>
 </template>
 
 <script>
-import { MessageBox } from 'mint-ui';
+import { MessageBox,Button } from 'mint-ui';
 import Vue from 'vue'
 import bottomMenu1 from '../../components/bottomMenu/bottomMenu'
 import './Me.css'
@@ -35,6 +38,8 @@ import bangding from '../../img/bangding.png'
 import aboutus from '../../img/info.png'
 import gopng from '../../img/go.png'
 import DB from '../../app/db'
+
+Vue.component(Button.name, Button);
 Vue.component(MessageBox.name, MessageBox);
 export default {
   name:'me',
@@ -76,8 +81,17 @@ export default {
         }).then(result=>{
               let { list = [] } = result
               t.info = list[0]
+              window.sessionStorage.nickname = t.info.nickname
         })
     },
+    //退出登录
+    logout_btn() {
+        this.toOther('login')
+        window.sessionStorage.clear()
+    },
+    toOther(to) {
+         this.$router.push({ path: `${to}`})
+    }
   },
   created: function () {
       const t = this

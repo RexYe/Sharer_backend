@@ -1,8 +1,5 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-// import Hello from '@/pages/Hello/Hello'
-// import todo from '@/pages/todo'
-// import TestVuex from '@/pages/TestVuex'
 
 const Index = resolve => require(['@/pages/Index/Index.vue'], resolve)
 const todo = resolve => require(['@/pages/todo/todo.vue'], resolve)
@@ -16,12 +13,13 @@ const Register = resolve => require(['@/pages/Register/Register.vue'], resolve)
 const Login = resolve => require(['@/pages/Login/Login.vue'], resolve)
 Vue.use(Router)
 
-export default new Router({
+ const router = new Router({
   routes: [
     {
       path: '/',
       name: 'Index',
-      component: Index
+      component: Index,
+      meta:{ requireAuth: true} //进入这个路由是需要登录
     },
     {
     	path:'/todo',
@@ -33,19 +31,23 @@ export default new Router({
     },
     {
       path:'/publish',
-      component:Publish
+      component:Publish,
+      meta:{ requireAuth: true}
     },
     {
       path:'/me',
-      component:Me
+      component:Me,
+      meta:{ requireAuth: true}
     },
     {
       path:'/bookdetail',
-      component:BookDetail
+      component:BookDetail,
+      meta:{ requireAuth: true}
     },
     {
       path:'/orderdetail',
-      component:OrderDetail
+      component:OrderDetail,
+      meta:{ requireAuth: true}
     },
     {
       path:'/aboutus',
@@ -61,3 +63,22 @@ export default new Router({
     }
   ]
 })
+
+router.beforeEach((to, from, next) => {
+    if (to.matched.some(r => r.meta.requireAuth )) {
+        if (window.sessionStorage.tel) {
+            next();
+        }
+        else {
+            next({
+                path: '/login',
+                query: {redirect: to.fullPath}
+            })
+        }
+    }
+    else {
+        next();
+    }
+})
+
+export default router
