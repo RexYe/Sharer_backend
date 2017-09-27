@@ -11,6 +11,7 @@ const OrderDetail = resolve => require(['@/pages/OrderDetail/OrderDetail.vue'], 
 const AboutUs = resolve => require(['@/pages/AboutUs/AboutUs.vue'], resolve)
 const Register = resolve => require(['@/pages/Register/Register.vue'], resolve)
 const Login = resolve => require(['@/pages/Login/Login.vue'], resolve)
+const avatarUpload = resolve => require(['@/pages/avatarUpload/avatarUpload.vue'], resolve)
 Vue.use(Router)
 
  const router = new Router({
@@ -60,6 +61,11 @@ Vue.use(Router)
     {
       path:'/login',
       component:Login
+    },
+    {
+      path:'/avatarupload',
+      component:avatarUpload,
+      meta:{ requireAuth: true}
     }
   ]
 })

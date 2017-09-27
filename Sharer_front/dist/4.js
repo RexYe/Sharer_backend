@@ -1,6 +1,21 @@
 webpackJsonp([4],{
 
 /***/ 100:
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(1)(undefined);
+// imports
+
+
+// module
+exports.push([module.i, ".BookDetail .book-intro{width:100%;height:15rem;background-color:#ebebeb;list-style:none}.BookDetail .book-info{list-style:none;font-size:.68rem;line-height:1rem;color:#8b8b8b;text-align:center}.BookDetail .book-info #book-info-price{color:#da2e52;text-decoration:line-through}.BookDetail .book-intro .book-img{width:8rem;height:11.5rem;margin:0 auto}.BookDetail .book-seller-list .book-seller-list-detail{-webkit-box-align:center;-ms-flex-align:center;align-items:center;display:-webkit-box;display:-ms-flexbox;display:flex;width:100%;height:5rem;background-color:#f0f0f0;margin-top:.8rem;list-style:none;font-size:.9rem;color:#8b8b8b}.BookDetail .book-seller-list .book-seller-list-detail img{width:2rem;height:2rem;border-radius:2rem}.BookDetail .book-seller-list .book-seller-list-detail li{margin-left:1rem}.BookDetail .book-seller-list .book-seller-list-detail #book-seller-price{color:#da4d4d}", ""]);
+
+// exports
+
+
+/***/ }),
+
+/***/ 101:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -10431,10 +10446,10 @@ module.exports = function (arr, predicate, ctx) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__babel_loader_node_modules_vue_loader_lib_selector_type_script_index_0_BookDetail_vue__ = __webpack_require__(97);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_template_compiler_index_id_data_v_6e15a016_hasScoped_false_node_modules_vue_loader_lib_selector_type_template_index_0_BookDetail_vue__ = __webpack_require__(100);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__babel_loader_node_modules_vue_loader_lib_selector_type_script_index_0_BookDetail_vue__ = __webpack_require__(98);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_template_compiler_index_id_data_v_6e15a016_hasScoped_false_node_modules_vue_loader_lib_selector_type_template_index_0_BookDetail_vue__ = __webpack_require__(101);
 function injectStyle (ssrContext) {
-  __webpack_require__(95)
+  __webpack_require__(96)
 }
 var normalizeComponent = __webpack_require__(3)
 /* script */
@@ -10460,11 +10475,11 @@ var Component = normalizeComponent(
 
 /***/ }),
 
-/***/ 40:
+/***/ 41:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__dbFactory__ = __webpack_require__(41);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__dbFactory__ = __webpack_require__(42);
 
 
 /* harmony default export */ __webpack_exports__["a"] = (__WEBPACK_IMPORTED_MODULE_0__dbFactory__["a" /* default */].context);
@@ -10504,11 +10519,11 @@ __WEBPACK_IMPORTED_MODULE_0__dbFactory__["a" /* default */].create('Choose', {
 
 /***/ }),
 
-/***/ 41:
+/***/ 42:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_object_param__ = __webpack_require__(42);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_object_param__ = __webpack_require__(43);
 // import os from 'object-serialize'
 
 
@@ -10573,7 +10588,7 @@ function Request(config, body) {
 
 /***/ }),
 
-/***/ 42:
+/***/ 43:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -10680,13 +10695,13 @@ function serialize(params, obj, traditional, scope) {
 
 /***/ }),
 
-/***/ 95:
+/***/ 96:
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(96);
+var content = __webpack_require__(97);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
@@ -10694,7 +10709,7 @@ var update = __webpack_require__(2)("caadc654", content, true);
 
 /***/ }),
 
-/***/ 96:
+/***/ 97:
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(1)(undefined);
@@ -10709,16 +10724,16 @@ exports.push([module.i, "", ""]);
 
 /***/ }),
 
-/***/ 97:
+/***/ 98:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_mint_ui__ = __webpack_require__(18);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_mint_ui___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_mint_ui__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__BookDetail_css__ = __webpack_require__(98);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__BookDetail_css__ = __webpack_require__(99);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__BookDetail_css___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2__BookDetail_css__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__app_db__ = __webpack_require__(40);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__app_db__ = __webpack_require__(41);
 //
 //
 //
@@ -10815,13 +10830,13 @@ __WEBPACK_IMPORTED_MODULE_0_vue__["default"].component(__WEBPACK_IMPORTED_MODULE
 
 /***/ }),
 
-/***/ 98:
+/***/ 99:
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(99);
+var content = __webpack_require__(100);
 if(typeof content === 'string') content = [[module.i, content, '']];
 // Prepare cssTransformation
 var transform;
@@ -10844,21 +10859,6 @@ if(false) {
 	// When the module is disposed, remove the <style> tags
 	module.hot.dispose(function() { update(); });
 }
-
-/***/ }),
-
-/***/ 99:
-/***/ (function(module, exports, __webpack_require__) {
-
-exports = module.exports = __webpack_require__(1)(undefined);
-// imports
-
-
-// module
-exports.push([module.i, ".BookDetail .book-intro{width:100%;height:15rem;background-color:#ebebeb;list-style:none}.BookDetail .book-info{list-style:none;font-size:.68rem;line-height:1rem;color:#8b8b8b;text-align:center}.BookDetail .book-info #book-info-price{color:#da2e52;text-decoration:line-through}.BookDetail .book-intro .book-img{width:8rem;height:11.5rem;margin:0 auto}.BookDetail .book-seller-list .book-seller-list-detail{-webkit-box-align:center;-ms-flex-align:center;align-items:center;display:-webkit-box;display:-ms-flexbox;display:flex;width:100%;height:5rem;background-color:#f0f0f0;margin-top:.8rem;list-style:none;font-size:.9rem;color:#8b8b8b}.BookDetail .book-seller-list .book-seller-list-detail img{width:2rem;height:2rem;border-radius:2rem}.BookDetail .book-seller-list .book-seller-list-detail li{margin-left:1rem}.BookDetail .book-seller-list .book-seller-list-detail #book-seller-price{color:#da4d4d}", ""]);
-
-// exports
-
 
 /***/ })
 

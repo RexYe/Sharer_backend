@@ -30,3 +30,29 @@
 .register .go-login-div a{
   color: #294057;
 }
+.register .mint-cell-wrapper{
+  background-image: none;
+  border-bottom: 0.001rem solid #cdcdcd;
+  margin: 0.05rem;
+}
+.register .register-btn{
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+}
+.rigster .mint-cell-text{
+  color: #294057;
+}
+.register .code{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 5rem;
+  height: 2rem;
+  color: #303030;
+  font-size: 1.2rem;
+  font-family: Arial;
+  background-image: url('../../img/e_背景图片.png');
+  background-repeat:no-repeat;
+  background-size:100% 100%;
+  -moz-background-size:100% 100%;
+}

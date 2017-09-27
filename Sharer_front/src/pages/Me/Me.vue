@@ -1,7 +1,7 @@
 <template>
     <div class="me">
         <div class="user-photo-div">
-            <div class="user-photo">
+            <div class="user-photo" @click="avatarUpload">
                 <img src="../../img/avatar_man.png" >
             </div>
             <div class="user-name">
@@ -91,7 +91,10 @@ export default {
     },
     toOther(to) {
          this.$router.push({ path: `${to}`})
-    }
+    },
+    avatarUpload() {
+      this.toOther('avatarupload')
+    },
   },
   created: function () {
       const t = this

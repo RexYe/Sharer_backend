@@ -1,12 +1,12 @@
 webpackJsonp([3],{
 
-/***/ 113:
+/***/ 114:
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(114);
+var content = __webpack_require__(115);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
@@ -14,7 +14,7 @@ var update = __webpack_require__(2)("4a23d36b", content, true);
 
 /***/ }),
 
-/***/ 114:
+/***/ 115:
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(1)(undefined);
@@ -29,16 +29,16 @@ exports.push([module.i, "", ""]);
 
 /***/ }),
 
-/***/ 115:
+/***/ 116:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_mint_ui__ = __webpack_require__(18);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_mint_ui___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_mint_ui__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_vue__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__Register_css__ = __webpack_require__(116);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__Register_css__ = __webpack_require__(117);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__Register_css___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2__Register_css__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__app_db__ = __webpack_require__(40);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__app_db__ = __webpack_require__(41);
 //
 //
 //
@@ -77,23 +77,33 @@ __WEBPACK_IMPORTED_MODULE_1_vue__["default"].component(__WEBPACK_IMPORTED_MODULE
             password: '',
             nickname: '',
             captcha: '',
-            state: 'success'
+            state: ''
         };
     },
     methods: {
         register_btn() {
-            const that = this;
-            if (that.phone.length !== 11) {
+            const t = this;
+            if (t.phone.length !== 11) {
                 Object(__WEBPACK_IMPORTED_MODULE_0_mint_ui__["MessageBox"])('提示', '手机号不正确');
             }
-            if (that.password.length < 6) {
+            if (t.password.length < 6) {
                 Object(__WEBPACK_IMPORTED_MODULE_0_mint_ui__["MessageBox"])('提示', '密码不得少于6位');
             }
-            if (that.nickname.length < 1) {
+            if (t.nickname.length < 1) {
                 Object(__WEBPACK_IMPORTED_MODULE_0_mint_ui__["MessageBox"])('提示', '用户名不得为空');
             }
-            if (that.phone.length === 11 && that.password.length >= 6 && that.nickname.length !== 0) {
-                this._fetch_account_register();
+            if (t.captcha === t.code) {
+                t.state = 'success';
+                t.createCode();
+                if (t.phone.length === 11 && t.password.length >= 6 && t.nickname.length !== 0) {
+                    t._fetch_account_register();
+                }
+            }
+            if (t.captcha !== t.code) {
+                t.state = 'error';
+                Object(__WEBPACK_IMPORTED_MODULE_0_mint_ui__["MessageBox"])('提示', '验证码错误');
+                t.captcha = '';
+                t.createCode();
             }
         },
         _fetch_account_register() {
@@ -108,7 +118,9 @@ __WEBPACK_IMPORTED_MODULE_1_vue__["default"].component(__WEBPACK_IMPORTED_MODULE
             }).then(re => re.json()).then(re => {
                 if (re.msg == 'success') {
                     __WEBPACK_IMPORTED_MODULE_0_mint_ui__["MessageBox"].alert('注册成功！').then(action => {
-                        t.toOther('/#');
+                        window.sessionStorage.tel = t.phone;
+                        t.toOther('me', t.phone);
+                        // t.toOther('/#')
                     });
                 } else if (re.msg == 'registerd telphone') {
                     __WEBPACK_IMPORTED_MODULE_0_mint_ui__["MessageBox"].confirm('该手机已被注册,前往登录?').then(action => {
@@ -117,21 +129,40 @@ __WEBPACK_IMPORTED_MODULE_1_vue__["default"].component(__WEBPACK_IMPORTED_MODULE
                 }
             });
         },
-        toOther(to) {
-            this.$router.push({ path: `${to}` });
+        toOther(to, tel) {
+            this.$router.push({ path: `${to}?tel=` + tel });
+        },
+        //生成验证码
+        createCode() {
+            const t = this;
+            var code = '';
+            var codeLength = 4; //验证码的长度
+            var checkCode = document.getElementById("code");
+            var codeChars = new Array(0, 1, 2, 3, 4, 5, 6, 7, 8, 9);
+            for (var i = 0; i < codeLength; i++) {
+                var charNum = Math.floor(Math.random() * 10);
+                code += codeChars[charNum];
+            }
+            t.code = code;
+            if (checkCode) {
+                checkCode.innerHTML = t.code;
+            }
         }
     }
+    // mounted: function () {
+    //     this.createCode()
+    // },
 });
 
 /***/ }),
 
-/***/ 116:
+/***/ 117:
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(117);
+var content = __webpack_require__(118);
 if(typeof content === 'string') content = [[module.i, content, '']];
 // Prepare cssTransformation
 var transform;
@@ -157,7 +188,7 @@ if(false) {
 
 /***/ }),
 
-/***/ 117:
+/***/ 118:
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(1)(undefined);
@@ -165,14 +196,21 @@ exports = module.exports = __webpack_require__(1)(undefined);
 
 
 // module
-exports.push([module.i, ".register{width:100%;height:31rem;-webkit-box-pack:center;-ms-flex-pack:center;justify-content:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center}.register,.register .sharer-log{display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-orient:vertical;-webkit-box-direction:normal;-ms-flex-direction:column;flex-direction:column}.register .sharer-log{color:#294057;margin:1rem}.register .sharer-log img{margin-bottom:.5rem}.register-container{width:100%;height:auto;padding:2rem}.register .go-login-div{margin:0 auto;text-align:center;margin-top:.5rem;font-size:.7rem;color:#797979}.register .go-login-div a{color:#294057}", ""]);
+exports.push([module.i, ".register{width:100%;height:31rem;-webkit-box-pack:center;-ms-flex-pack:center;justify-content:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center}.register,.register .sharer-log{display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-orient:vertical;-webkit-box-direction:normal;-ms-flex-direction:column;flex-direction:column}.register .sharer-log{color:#294057;margin:1rem}.register .sharer-log img{margin-bottom:.5rem}.register-container{width:100%;height:auto;padding:2rem}.register .go-login-div{margin:0 auto;text-align:center;margin-top:.5rem;font-size:.7rem;color:#797979}.register .go-login-div a{color:#294057}.register .mint-cell-wrapper{background-image:none;border-bottom:.001rem solid #cdcdcd;margin:.05rem}.register .register-btn{margin-top:1rem;margin-bottom:1rem}.rigster .mint-cell-text{color:#294057}.register .code{display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-align:center;-ms-flex-align:center;align-items:center;-webkit-box-pack:center;-ms-flex-pack:center;justify-content:center;width:5rem;height:2rem;color:#303030;font-size:1.2rem;font-family:Arial;background-image:url(" + __webpack_require__(119) + ");background-repeat:no-repeat;background-size:100% 100%;-moz-background-size:100% 100%}", ""]);
 
 // exports
 
 
 /***/ }),
 
-/***/ 118:
+/***/ 119:
+/***/ (function(module, exports) {
+
+module.exports = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAIAAAACACAYAAADDPmHLAAAFpUlEQVR4Xu2d3XVTRxDHd2VieHQJdBCXYJ8TBHrCdGAqwKkgpIJABQ4VhDxJFpwjSoAOQgfwBg7WcFbGRLoWlnbvzM5s5q9H+37szO8/c/dj7t0Y8HPtgejaehgfIADnIoAAIADnHnBuPjIABODcA87NRwaAAJx7wLn5yAAQgHMPODcfGQACcO4B5+YjA0AAzj3g3HxkAAjAuQecm48MAAHY8cB0MnkSY9zrtujW7u7zw8PDD7ktnc1me1/Oz59cO4/o470HD57lXi8dP51O9yPRw+65MYR3v9y//7Lkmq/Pzo4ohJ+57M5pg5kMMJ1MTmMIx93GE9Hj4Wj0Z45R6dgE/9/Pn2cxhP3OuR9pMDgYDodvc6+5gD+fz0IIKyKlEN79dPv2QYlIp+PxcYzxdI3dL4aj0TV/5LZ50/EmBAD4q5iIqAr8dFd1AQC+Hnx1AQC+LnxVAQC+Pnw1AQC+DfgqAgB8O/CrCwDwbcGvKgDA54Of5iNK5jHWzQlUGQYCPiP8NGFG9P7eaPR00yTPNv8XFwDgM8NPs6VEvzchAMAXgJ8u2YIAAF8IfgsCAHxB+NYFAPjC8NMCToyPSpeeux1D1k4g4MvDL10e/9GIgE0AryaTkxDCH90blTbY83o+dyDdNBzkE8B4/DTE+NvyzQB/m5H46jE14bPOBL7qCADw7cMXEwDgtwFfRACA3w58dgFQCP+ggDNPALWf+WLDwNRrL6mKRW+frxI6T3qXR7ONAkpuDvi68FUFAPj68NUEAPg24KsIAPDtwK8uAMC3Bb+qAADfHvxqAgB8PvjJlxfn5wcml4PXDQUBnxf+4o1nor+bqAkEfAH46XX3FmoCAV8IvvWSsNQ+wBeEb10AgC8M37IAAL8C/BCKP3GzrpPOthgE+O3BZ50H6JaEfVNbsVpb+SAT93q+RCBpFYUCfuYaeW34khkA8BuALyUAwG8EvoQATv7vH2Fs/ZkvVhOY3gyiweBNyZcr0OHj+5ppZvLRrQlMjQV8Pfisj4Bc5QE+73eMS/yvKgBEvm7kXwmGbSYwR4GAbwO+SgYAfDvwqwsA8G3BryoAwLcHv5oAAJ8P/jdfHpRueSM2EfSjTiDgs8OfBaLnTRSFAr4A/LRfUQtFoYAvBN9ySdjVYwDwBeFbFwDgC8O3LADAl4ffZ49C0aJQwG8PPus8wLqi0D5qldhRs4ViDolAUikKBXwbW9NuWqRjWw1czgCA3wZ8kUcA4LcDn10AFOORpV208czf9ABg/E7g67Ozo53d3TclH4tEh49vO/rNyFePYOsD5N74+6zheHwcYzztnt9nC3VE/vY0VAWAyNeLfNWawEVFMCJ/bzlO+3Set4/360eqZADA1498tQwA+Hbgsw4Dt0lDgG8LflUBAD4f/NK9GURXA2/KAIDPB3/hyxDuNlETiN7+fBZSDd/Sr09v/3sgtVATCPhC8C1XBC0rHWlfIPKvHGw9AwC+IHzrGQDwheFfZoFfTb4ZBPjy8PsskokOA9NyMBH9hVW9Sw+w9PY7zuSGzzoRtLYolOjFcDQ63maWsHuM1yVdiSx6k//ZFoPW7B4O+JnKrw1fLAP0SVWI/FXV9PHlNvpjzwB9Ggz4deGzZwAK4S6e+dvE3X/HaKT95RayZYA+K1SI/PqRf3VHNgHk6X4pAiaT0xhsb7Yg8bqWduSbEAAiXy/y1QUA+PrwWTuBOY8AwLcBX0UAgG8HfnUBLDpTFxdH3WwRB4O3pZshL9Yg5vP97jVpZ+dlyd4F6Tpp74NAtFLJk/5+686dZyWvvqUR0pdPn06uZckYP3Ct6uVkYJFhYGkDcJ6uB9SHgbrm4+4QgHMNQAAQgHMPODcfGQACcO4B5+YjA0AAzj3g3HxkAAjAuQecm48MAAE494Bz85EBIADnHnBuPjIABODcA87NRwZwLoCvrOc2U9oz5/QAAAAASUVORK5CYII="
+
+/***/ }),
+
+/***/ 120:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -225,7 +263,8 @@ var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._sel
     }
   }), _vm._v(" "), _c('mt-field', {
     attrs: {
-      "label": "验证码"
+      "label": "验证码",
+      "id": "code-div"
     },
     model: {
       value: (_vm.captcha),
@@ -234,13 +273,16 @@ var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._sel
       },
       expression: "captcha"
     }
-  }, [_c('img', {
+  }, [_c('div', {
+    staticClass: "code",
     attrs: {
-      "src": __webpack_require__(56),
-      "height": "20px",
-      "width": "20px"
+      "id": "code"
+    },
+    on: {
+      "click": _vm.createCode
     }
   })]), _vm._v(" "), _c('mt-button', {
+    staticClass: "register-btn",
     attrs: {
       "type": "primary",
       "size": "large"
@@ -257,7 +299,7 @@ var staticRenderFns = [function () {var _vm=this;var _h=_vm.$createElement;var _
     attrs: {
       "src": __webpack_require__(57)
     }
-  }), _vm._v(" "), _c('span', [_vm._v("进入书二")])])
+  }), _vm._v(" "), _c('span', [_vm._v("注册书二")])])
 },function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
   return _c('div', {
     staticClass: "go-login-div"
@@ -10632,10 +10674,10 @@ module.exports = function (arr, predicate, ctx) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__babel_loader_node_modules_vue_loader_lib_selector_type_script_index_0_Register_vue__ = __webpack_require__(115);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_template_compiler_index_id_data_v_76315a55_hasScoped_false_node_modules_vue_loader_lib_selector_type_template_index_0_Register_vue__ = __webpack_require__(118);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__babel_loader_node_modules_vue_loader_lib_selector_type_script_index_0_Register_vue__ = __webpack_require__(116);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_template_compiler_index_id_data_v_76315a55_hasScoped_false_node_modules_vue_loader_lib_selector_type_template_index_0_Register_vue__ = __webpack_require__(120);
 function injectStyle (ssrContext) {
-  __webpack_require__(113)
+  __webpack_require__(114)
 }
 var normalizeComponent = __webpack_require__(3)
 /* script */
@@ -10661,11 +10703,11 @@ var Component = normalizeComponent(
 
 /***/ }),
 
-/***/ 40:
+/***/ 41:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__dbFactory__ = __webpack_require__(41);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__dbFactory__ = __webpack_require__(42);
 
 
 /* harmony default export */ __webpack_exports__["a"] = (__WEBPACK_IMPORTED_MODULE_0__dbFactory__["a" /* default */].context);
@@ -10705,11 +10747,11 @@ __WEBPACK_IMPORTED_MODULE_0__dbFactory__["a" /* default */].create('Choose', {
 
 /***/ }),
 
-/***/ 41:
+/***/ 42:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_object_param__ = __webpack_require__(42);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_object_param__ = __webpack_require__(43);
 // import os from 'object-serialize'
 
 
@@ -10774,7 +10816,7 @@ function Request(config, body) {
 
 /***/ }),
 
-/***/ 42:
+/***/ 43:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -10878,13 +10920,6 @@ function serialize(params, obj, traditional, scope) {
     serialize(params, obj, traditional);
     return params.join('&').replace(/%20/g, '+');
 });
-
-/***/ }),
-
-/***/ 56:
-/***/ (function(module, exports) {
-
-module.exports = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAADEElEQVRYR82XTVLbQBCFX4sUkBXOCTCLVJlVzAkYnyBmwc8OOEHICYAThJwgzg6ZBcoJmJwgZGVVssDcwFlZdmF1qjUjsGVbGuGqEG1UpZ+er5/edLcIL3zQC6+PUgA1dVBl8HsCmgJO4LqcGXRrzggI9C3Ul13XxJwAaupAAXxKgHIJzIAG6DzUl7ro+VyAqmpWVrFynS7M4D8AghgIPHi9CFGS+SpW6zHiimeUaRJozSqiIwx2ujrozQOZC/BW7daX4MniIrssfBHq9llRRgZ6+QTAiYAw0B0h3vmtrxLY7DETQBZ/BboBqMLAzwgDlZfFrMBWPU3AO4B7D+DGLIgpAPviD5v511C3j4qyzrtfU3stAh2KEhEGW9lEpgBqak8TaFsyD7WfuHzWITuCEF8zqJInsbxbU/u3ooSYM9R+YzzeBIC4ncA38s0jDKt5stfU3hmBTo3Z4uNQX7XmwVpfdI0nqDG+OzIAafZ8XmQ4a9IWARUGqaK9nwJnVXgEMJLynWQf6nZlke8+35TLqQobKfAjwKbal63zicELG2++b4whAXzsaP/CVFN7pOYbgXd+6XbgooAxF3NHt7fcnt89InhfGPw91O2kqk4BZE2SF3hT7bPc72jfuaRbk88E6IlL+xi8cS06zwCwPkM31P5GVoF/BgDgvqP96n/3CZIKWMaE5T9Bjgmfsw3LA+RuQ1OIpHP1MdxwMWIZACnHr7F8ZzosTRci0zTcS7E8XwbgqRQ/1YAJExoA04xcVXAFyGQ/vxmNqwDwbVGFk0oo7+S17cl2PJn9lAJywdCuSOB1Blqh9o9dyqxD/b/vY1AvHEgkkGm1JNtyTZToY9hwMeU4hJVdxrq6dNgRWDmNZGkQMxd60pTWxRMMXEQYfi4CscPHBwJOxPFS9R4QN0sNpSmEDSY/G9vmmoBQALAGcRe8dJ9cptE6mKoAiYmbdmFI14swbD5rLB+X0/yYxDKCWZB8V8jCgHe28I9Jdhk7NTU5yVJ6uWQtMyEnv2IECkShovFsPK5TH19kFxS9++IAfwG6mt8wbrd2hwAAAABJRU5ErkJggg=="
 
 /***/ }),
 

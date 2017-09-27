@@ -1,12 +1,12 @@
 webpackJsonp([5],{
 
-/***/ 119:
+/***/ 121:
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(120);
+var content = __webpack_require__(122);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
@@ -14,7 +14,7 @@ var update = __webpack_require__(2)("4e43fed6", content, true);
 
 /***/ }),
 
-/***/ 120:
+/***/ 122:
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(1)(undefined);
@@ -29,14 +29,14 @@ exports.push([module.i, "", ""]);
 
 /***/ }),
 
-/***/ 121:
+/***/ 123:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_mint_ui__ = __webpack_require__(18);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_mint_ui___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_mint_ui__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_vue__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__Login_css__ = __webpack_require__(122);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__Login_css__ = __webpack_require__(124);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__Login_css___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2__Login_css__);
 //
 //
@@ -70,7 +70,8 @@ __WEBPACK_IMPORTED_MODULE_1_vue__["default"].component(__WEBPACK_IMPORTED_MODULE
             password: '',
             username: '',
             captcha: '',
-            state: 'success'
+            state: 'success',
+            popupVisible: true
         };
     },
     methods: {
@@ -83,6 +84,10 @@ __WEBPACK_IMPORTED_MODULE_1_vue__["default"].component(__WEBPACK_IMPORTED_MODULE
                 Object(__WEBPACK_IMPORTED_MODULE_0_mint_ui__["MessageBox"])('提示', '密码不得少于6位');
             }
             if (that.phone.length === 11 && that.password.length >= 6) {
+                Object(__WEBPACK_IMPORTED_MODULE_0_mint_ui__["Toast"])({
+                    message: '登录成功',
+                    iconClass: 'icon icon-success'
+                });
                 this._fetch_account_login();
             }
         },
@@ -98,14 +103,17 @@ __WEBPACK_IMPORTED_MODULE_1_vue__["default"].component(__WEBPACK_IMPORTED_MODULE
             }).then(re => re.json()).then(re => {
                 if (re.msg == 'success') {
                     window.sessionStorage.tel = t.phone;
-                    __WEBPACK_IMPORTED_MODULE_0_mint_ui__["MessageBox"].alert('登录成功！').then(action => {
-                        t.toOther('me', t.phone);
-                    });
+                    __WEBPACK_IMPORTED_MODULE_0_mint_ui__["Indicator"].close();
+                    t.toOther('me', t.phone);
                 } else if (re.msg == 'passwordError') {
-                    __WEBPACK_IMPORTED_MODULE_0_mint_ui__["MessageBox"].confirm('密码错误，请重新输入').then(action => {
-                        t.toOther('login');
+                    __WEBPACK_IMPORTED_MODULE_0_mint_ui__["Indicator"].close();
+                    Object(__WEBPACK_IMPORTED_MODULE_0_mint_ui__["MessageBox"])({
+                        title: '提示',
+                        message: '密码错误，请重新输入',
+                        showCancelButton: false
                     });
                 } else if (re.msg == 'notRegisterd') {
+                    __WEBPACK_IMPORTED_MODULE_0_mint_ui__["Indicator"].close();
                     __WEBPACK_IMPORTED_MODULE_0_mint_ui__["MessageBox"].confirm('手机号未注册，前往注册?').then(action => {
                         t.toOther('register');
                     });
@@ -124,13 +132,13 @@ __WEBPACK_IMPORTED_MODULE_1_vue__["default"].component(__WEBPACK_IMPORTED_MODULE
 
 /***/ }),
 
-/***/ 122:
+/***/ 124:
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(123);
+var content = __webpack_require__(125);
 if(typeof content === 'string') content = [[module.i, content, '']];
 // Prepare cssTransformation
 var transform;
@@ -156,7 +164,7 @@ if(false) {
 
 /***/ }),
 
-/***/ 123:
+/***/ 125:
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(1)(undefined);
@@ -164,14 +172,14 @@ exports = module.exports = __webpack_require__(1)(undefined);
 
 
 // module
-exports.push([module.i, ".login{width:100%;height:31rem;-webkit-box-pack:center;-ms-flex-pack:center;justify-content:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center}.login,.login .sharer-log{display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-orient:vertical;-webkit-box-direction:normal;-ms-flex-direction:column;flex-direction:column}.login .sharer-log{color:#294057;margin:1rem}.login .sharer-log img{margin-bottom:.5rem}.login-container{width:100%;height:auto;padding:2rem}.login .go-login-div{margin:0 auto;text-align:center;margin-top:.5rem;font-size:.7rem;color:#797979}.login .go-login-div a{color:#294057}", ""]);
+exports.push([module.i, ".login{width:100%;height:31rem;-webkit-box-pack:center;-ms-flex-pack:center;justify-content:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center}.login,.login .sharer-log{display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-orient:vertical;-webkit-box-direction:normal;-ms-flex-direction:column;flex-direction:column}.login .sharer-log{color:#294057;margin:1rem}.login .sharer-log img{margin-bottom:.5rem}.login-container{width:100%;height:auto;padding:2rem}.login-container .login-btn{margin-top:1rem;margin-bottom:1rem}.login .go-login-div{margin:0 auto;text-align:center;margin-top:.5rem;font-size:.7rem;color:#797979}.login .go-login-div a{color:#294057}.login .mint-cell-wrapper{background-image:none;border-bottom:.001rem solid #cdcdcd;margin:.05rem}.login .mint-cell-value{color:#292929}", ""]);
 
 // exports
 
 
 /***/ }),
 
-/***/ 124:
+/***/ 126:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -182,7 +190,6 @@ var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._sel
     staticClass: "login-container"
   }, [_c('mt-field', {
     attrs: {
-      "label": "手机号",
       "placeholder": "请输入手机号",
       "type": "tel",
       "attr": {
@@ -199,7 +206,6 @@ var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._sel
     }
   }), _vm._v(" "), _c('mt-field', {
     attrs: {
-      "label": "密码",
       "placeholder": "请输入密码",
       "type": "password"
     },
@@ -211,6 +217,7 @@ var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._sel
       expression: "password"
     }
   }), _vm._v(" "), _c('mt-button', {
+    staticClass: "login-btn",
     attrs: {
       "type": "primary",
       "size": "large"
@@ -10602,10 +10609,10 @@ module.exports = function (arr, predicate, ctx) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__babel_loader_node_modules_vue_loader_lib_selector_type_script_index_0_Login_vue__ = __webpack_require__(121);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_template_compiler_index_id_data_v_85ca916e_hasScoped_false_node_modules_vue_loader_lib_selector_type_template_index_0_Login_vue__ = __webpack_require__(124);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__babel_loader_node_modules_vue_loader_lib_selector_type_script_index_0_Login_vue__ = __webpack_require__(123);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_template_compiler_index_id_data_v_85ca916e_hasScoped_false_node_modules_vue_loader_lib_selector_type_template_index_0_Login_vue__ = __webpack_require__(126);
 function injectStyle (ssrContext) {
-  __webpack_require__(119)
+  __webpack_require__(121)
 }
 var normalizeComponent = __webpack_require__(3)
 /* script */

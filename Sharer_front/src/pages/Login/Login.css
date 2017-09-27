@@ -20,6 +20,10 @@
   height: auto;
   padding: 2rem;
 }
+.login-container .login-btn{
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+}
 .login .go-login-div{
   margin: 0 auto;
   text-align: center;
@@ -29,4 +33,12 @@
 }
 .login .go-login-div a{
   color: #294057;
+}
+.login .mint-cell-wrapper{
+  background-image: none;
+  border-bottom: 0.001rem solid #cdcdcd;
+  margin: 0.05rem;
+}
+.login .mint-cell-value{
+  color: #292929;
 }

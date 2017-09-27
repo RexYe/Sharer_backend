@@ -1,0 +1,51 @@
+.avatarupload{
+   width: auto;
+   height: auto;
+}
+.avatarupload-div{
+  width: 100%;
+  height: auto;
+  padding-top: 15px;
+  padding-bottom: 15px;
+  display: flex;
+  align-items: center;
+  border-bottom: 2px solid #e1e1e1;
+}
+.avatarupload-div .room_img{
+  width: 150px;
+  height: 100px;
+  margin-right: 10px;
+  position: relative;
+  overflow: hidden;
+}
+.avatarupload-div .room_img img{
+  width: 100%;
+  height: 100%;
+}
+.avatarupload-div>.room_img span{
+   position: absolute;
+   width: auto;
+   height: auto;
+   right: 5px;
+   bottom:3px;
+}
+.room_add_btn{
+ width: 80px;
+height: 40px;
+border: 1px solid #e1e1e1;
+position: relative;
+line-height: 40px;
+text-align: center;
+background: #00a6c6;
+color: #fff;
+border-radius: 4px;
+}
+.room_add_btn input{
+   position: absolute;
+   top: 0px;
+   left: 0px;
+   width: 100%;
+   height: 100%;
+   z-index: 99999;
+   opacity: 0;
+}
