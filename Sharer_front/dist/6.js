@@ -1,12 +1,12 @@
 webpackJsonp([6],{
 
-/***/ 127:
+/***/ 123:
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(128);
+var content = __webpack_require__(124);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
@@ -14,7 +14,7 @@ var update = __webpack_require__(2)("ce5f45ba", content, true);
 
 /***/ }),
 
-/***/ 128:
+/***/ 124:
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(1)(undefined);
@@ -29,11 +29,11 @@ exports.push([module.i, "", ""]);
 
 /***/ }),
 
-/***/ 129:
+/***/ 125:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__avatarUpload_css__ = __webpack_require__(130);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__avatarUpload_css__ = __webpack_require__(126);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__avatarUpload_css___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__avatarUpload_css__);
 //
 //
@@ -60,26 +60,27 @@ exports.push([module.i, "", ""]);
     props: {},
     methods: {
         add_img(event) {
+            const t = this;
             var reader = new FileReader();
             var img1 = event.target.files[0];
             reader.readAsDataURL(img1);
-            var that = this;
             reader.onloadend = function () {
-                that.imgs.push(reader.result);
+                t.imgs.push(reader.result);
             };
+            console.log(t.imgs);
         }
     }
 });
 
 /***/ }),
 
-/***/ 130:
+/***/ 126:
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(131);
+var content = __webpack_require__(127);
 if(typeof content === 'string') content = [[module.i, content, '']];
 // Prepare cssTransformation
 var transform;
@@ -105,7 +106,7 @@ if(false) {
 
 /***/ }),
 
-/***/ 131:
+/***/ 127:
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(1)(undefined);
@@ -113,14 +114,14 @@ exports = module.exports = __webpack_require__(1)(undefined);
 
 
 // module
-exports.push([module.i, ".avatarupload{width:auto;height:auto}.avatarupload-div{width:100%;height:auto;padding-top:15px;padding-bottom:15px;display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-align:center;-ms-flex-align:center;align-items:center;border-bottom:2px solid #e1e1e1}.avatarupload-div .room_img{width:150px;height:100px;margin-right:10px;position:relative;overflow:hidden}.avatarupload-div .room_img img{width:100%;height:100%}.avatarupload-div>.room_img span{position:absolute;width:auto;height:auto;right:5px;bottom:3px}.room_add_btn{width:80px;height:40px;border:1px solid #e1e1e1;position:relative;line-height:40px;text-align:center;background:#00a6c6;color:#fff;border-radius:4px}.room_add_btn input{position:absolute;top:0;left:0;width:100%;height:100%;z-index:99999;opacity:0}", ""]);
+exports.push([module.i, ".avatarupload{width:auto;height:auto}.avatarupload-div{width:100%;height:auto;padding-top:15px;padding-bottom:15px;display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-align:center;-ms-flex-align:center;align-items:center;border-bottom:2px solid #e1e1e1}.avatarupload-div .img-show{width:3rem;height:3rem;margin-right:1rem;position:relative;overflow:hidden}.avatarupload-div .img-show img{width:100%;height:100%}.avatarupload-div>.img-show span{position:absolute;width:auto;height:auto;right:5px;bottom:3px}.img_upload_btn{width:4.5rem;height:2.2rem;border:1px solid #e1e1e1;position:relative;line-height:40px;text-align:center;background:#00a6c6;color:#fff;border-radius:4px}.img_upload_btn input{position:absolute;top:0;left:0;width:100%;height:100%;z-index:99999;opacity:0}", ""]);
 
 // exports
 
 
 /***/ }),
 
-/***/ 132:
+/***/ 128:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -131,14 +132,14 @@ var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._sel
     staticClass: "avatarupload-div"
   }, [_vm._l((_vm.imgs), function(item, index) {
     return _c('div', {
-      staticClass: "room_img"
+      staticClass: "img-show"
     }, [_c('img', {
       attrs: {
         "src": item
       }
     })])
   }), _vm._v(" "), _c('div', {
-    staticClass: "room_add_btn"
+    staticClass: "img_upload_btn"
   }, [_c('span', [_vm._v("上传图片")]), _vm._v(" "), _c('input', {
     attrs: {
       "type": "file"
@@ -615,10 +616,10 @@ module.exports = function (css) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__babel_loader_node_modules_vue_loader_lib_selector_type_script_index_0_avatarUpload_vue__ = __webpack_require__(129);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_template_compiler_index_id_data_v_49d77fb5_hasScoped_false_node_modules_vue_loader_lib_selector_type_template_index_0_avatarUpload_vue__ = __webpack_require__(132);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__babel_loader_node_modules_vue_loader_lib_selector_type_script_index_0_avatarUpload_vue__ = __webpack_require__(125);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_template_compiler_index_id_data_v_49d77fb5_hasScoped_false_node_modules_vue_loader_lib_selector_type_template_index_0_avatarUpload_vue__ = __webpack_require__(128);
 function injectStyle (ssrContext) {
-  __webpack_require__(127)
+  __webpack_require__(123)
 }
 var normalizeComponent = __webpack_require__(3)
 /* script */

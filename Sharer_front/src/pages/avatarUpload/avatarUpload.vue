@@ -1,10 +1,10 @@
 <template>
   <div class='avatarupload'>
   	   <div class='avatarupload-div'>
-       	   <div v-for='(item ,index ) in imgs' class='room_img'>
-       	   	  <img :src="item">
+       	   <div v-for='(item ,index ) in imgs' class='img-show'>
+       	   	    <img :src="item">
        	   </div>
-           <div class='room_add_btn'>
+           <div class='img_upload_btn'>
            	    <span>上传图片</span>
            	    <input @change='add_img'  type="file">
            </div>
@@ -23,13 +23,14 @@ export default {
     props:{},
     methods:{
         add_img(event) {
+            const t = this
             var reader = new FileReader()
             var img1 = event.target.files[0]
             reader.readAsDataURL(img1)
-            var that = this
             reader.onloadend = function() {
-                that.imgs.push(reader.result)
+                t.imgs.push(reader.result)
             }
+            console.log(t.imgs);
         }
     }
 }

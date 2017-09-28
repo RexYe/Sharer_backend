@@ -1,91 +1,5 @@
 webpackJsonp([4],{
 
-/***/ 100:
-/***/ (function(module, exports, __webpack_require__) {
-
-exports = module.exports = __webpack_require__(1)(undefined);
-// imports
-
-
-// module
-exports.push([module.i, ".BookDetail .book-intro{width:100%;height:15rem;background-color:#ebebeb;list-style:none}.BookDetail .book-info{list-style:none;font-size:.68rem;line-height:1rem;color:#8b8b8b;text-align:center}.BookDetail .book-info #book-info-price{color:#da2e52;text-decoration:line-through}.BookDetail .book-intro .book-img{width:8rem;height:11.5rem;margin:0 auto}.BookDetail .book-seller-list .book-seller-list-detail{-webkit-box-align:center;-ms-flex-align:center;align-items:center;display:-webkit-box;display:-ms-flexbox;display:flex;width:100%;height:5rem;background-color:#f0f0f0;margin-top:.8rem;list-style:none;font-size:.9rem;color:#8b8b8b}.BookDetail .book-seller-list .book-seller-list-detail img{width:2rem;height:2rem;border-radius:2rem}.BookDetail .book-seller-list .book-seller-list-detail li{margin-left:1rem}.BookDetail .book-seller-list .book-seller-list-detail #book-seller-price{color:#da4d4d}", ""]);
-
-// exports
-
-
-/***/ }),
-
-/***/ 101:
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('div', {
-    staticClass: "BookDetail"
-  }, [_c('div', {
-    staticClass: "top-div"
-  }, [_c('mt-header', {
-    attrs: {
-      "title": "书二"
-    }
-  }, [_c('router-link', {
-    attrs: {
-      "to": "/"
-    },
-    slot: "left"
-  }, [_c('mt-button', {
-    attrs: {
-      "icon": "back"
-    }
-  }, [_vm._v("返回")])], 1), _vm._v(" "), _c('mt-button', {
-    attrs: {
-      "icon": "more"
-    },
-    slot: "right"
-  })], 1)], 1), _vm._v(" "), _c('div', {
-    staticClass: "book-intro"
-  }, [_c('div', {
-    staticClass: "book-img"
-  }, [_c('img', {
-    attrs: {
-      "src": this.book_info[0].book_img
-    }
-  })]), _vm._v(" "), _c('div', {
-    staticClass: "book-info"
-  }, [_c('li', [_vm._v("作者：" + _vm._s(this.book_info[0].author))]), _vm._v(" "), _c('li', [_vm._v("出版社：" + _vm._s(this.book_info[0].publish_house))]), _vm._v(" "), _c('li', {
-    attrs: {
-      "id": "book-info-price"
-    }
-  }, [_vm._v("原价：¥" + _vm._s(this.book_info[0].original_price))])])]), _vm._v(" "), _c('div', {
-    staticClass: "book-seller-list"
-  }, _vm._l((_vm.book_seller), function(item) {
-    return _c('div', {
-      staticClass: "book-seller-list-detail",
-      class: {
-        on: _vm.$route.path === ("/" + (item.to))
-      },
-      on: {
-        "click": function($event) {
-          _vm.toOther(item.to)
-        }
-      }
-    }, [_c('img', {
-      attrs: {
-        "src": item.head_img
-      }
-    }), _vm._v(" "), _c('li', [_vm._v(_vm._s(item.name))]), _vm._v(" "), _c('li', {
-      attrs: {
-        "id": "book-seller-price"
-      }
-    }, [_vm._v("¥：" + _vm._s(item.price))])])
-  }))])
-}
-var staticRenderFns = []
-var esExports = { render: render, staticRenderFns: staticRenderFns }
-/* harmony default export */ __webpack_exports__["a"] = (esExports);
-
-/***/ }),
-
 /***/ 16:
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -10441,15 +10355,15 @@ module.exports = function (arr, predicate, ctx) {
 
 /***/ }),
 
-/***/ 29:
+/***/ 27:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__babel_loader_node_modules_vue_loader_lib_selector_type_script_index_0_BookDetail_vue__ = __webpack_require__(98);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_template_compiler_index_id_data_v_6e15a016_hasScoped_false_node_modules_vue_loader_lib_selector_type_template_index_0_BookDetail_vue__ = __webpack_require__(101);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__babel_loader_node_modules_vue_loader_lib_selector_type_script_index_0_Publish_vue__ = __webpack_require__(75);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_template_compiler_index_id_data_v_d15fedd6_hasScoped_false_node_modules_vue_loader_lib_selector_type_template_index_0_Publish_vue__ = __webpack_require__(78);
 function injectStyle (ssrContext) {
-  __webpack_require__(96)
+  __webpack_require__(73)
 }
 var normalizeComponent = __webpack_require__(3)
 /* script */
@@ -10463,8 +10377,8 @@ var __vue_scopeId__ = null
 /* moduleIdentifier (server only) */
 var __vue_module_identifier__ = null
 var Component = normalizeComponent(
-  __WEBPACK_IMPORTED_MODULE_0__babel_loader_node_modules_vue_loader_lib_selector_type_script_index_0_BookDetail_vue__["a" /* default */],
-  __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_template_compiler_index_id_data_v_6e15a016_hasScoped_false_node_modules_vue_loader_lib_selector_type_template_index_0_BookDetail_vue__["a" /* default */],
+  __WEBPACK_IMPORTED_MODULE_0__babel_loader_node_modules_vue_loader_lib_selector_type_script_index_0_Publish_vue__["a" /* default */],
+  __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_template_compiler_index_id_data_v_d15fedd6_hasScoped_false_node_modules_vue_loader_lib_selector_type_template_index_0_Publish_vue__["a" /* default */],
   __vue_styles__,
   __vue_scopeId__,
   __vue_module_identifier__
@@ -10475,241 +10389,21 @@ var Component = normalizeComponent(
 
 /***/ }),
 
-/***/ 41:
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__dbFactory__ = __webpack_require__(42);
-
-
-/* harmony default export */ __webpack_exports__["a"] = (__WEBPACK_IMPORTED_MODULE_0__dbFactory__["a" /* default */].context);
-
-let prefix = '';
-if (false) {
-    // prefix = 'http://localhost:6060'
-    // prefix = 'http://localhost:8000'
-    prefix = 'http://101.132.71.185';
-}
-// if(__PRO__){
-//     prefix = ''
-// }
-
-__WEBPACK_IMPORTED_MODULE_0__dbFactory__["a" /* default */].create('Choose', {
-    getBookType: {
-        url: prefix + '/api/load_book_by_choose_major',
-        method: 'GET'
-    },
-    getSchoolCollege: {
-        url: prefix + '/api/choose_school_college',
-        method: 'GET'
-    },
-    getBookDetail: {
-        url: prefix + '/api/book_detail_new',
-        method: 'GET'
-    },
-    account_register: {
-        url: prefix + '/api/account_register',
-        method: 'POST'
-    },
-    getUserInfo: {
-        url: prefix + '/api/get_user_info',
-        method: 'GET'
-    }
-});
-
-/***/ }),
-
-/***/ 42:
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_object_param__ = __webpack_require__(43);
-// import os from 'object-serialize'
-
-
-/* harmony default export */ __webpack_exports__["a"] = (new class {
-    constructor() {
-        this.map = new Map();
-    }
-    create(name, methods) {
-        return this.context[name] = this.DB(methods);
-    }
-    set(key, value) {
-        this.map.set(key, value);
-    }
-    get(key) {
-        return this.map.get(key);
-    }
-    context() {
-        this.link = data => this.context.Data = data;
-    }
-    DB(methods) {
-        for (let method in methods) {
-            const config = methods[method];
-            this[method] = query => new Request(config, query, method);
-        }
-        return this;
-    }
-}());
-
-function Request(config, body) {
-
-    let { url, method = '' } = config;
-    const option = {
-        credentials: 'same-origin'
-    };
-    if (method.toUpperCase() === 'POST') {
-        Object.assign(option, {
-            headers: {
-                "Accept": "application/json",
-                "Content-Type": "application/x-www-form-urlencoded"
-            },
-            method: 'post',
-            body: Object(__WEBPACK_IMPORTED_MODULE_0_object_param__["a" /* default */])(body)
-        });
-    } else {
-        url += `?${Object(__WEBPACK_IMPORTED_MODULE_0_object_param__["a" /* default */])(body)}`;
-    }
-
-    return new Promise((resolve, reject) => {
-        fetch(url, option).then(data => data.json()).then(({ success, data, err }) => {
-            if (success) {
-                resolve(data);
-            } else {
-                reject({
-                    success, data, err
-                });
-            }
-        }).catch(() => reject({
-            errorMsg: '请求失败'
-        }));
-    });
-}
-
-/***/ }),
-
-/***/ 43:
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
-
-/**
- * 功能和`Zepto.param`一样
- * @param obj {Object}
- * @param traditional {Boolean}
- * @returns {string}
- * param({ foo: { one: 1, two: 2 }}) // "foo[one]=1&foo[two]=2)"
- * param({ ids: [1,2,3] })           // "ids[]=1&ids[]=2&ids[]=3"
- * param({ ids: [1,2,3] }, true)     // "ids=1&ids=2&ids=3"
- * param({ foo: 'bar', nested: { will: 'not be ignored' }})    // "foo=bar&nested[will]=not+be+ignored"
- * param({ foo: 'bar', nested: { will: 'be ignored' }}, true)  // "foo=bar&nested=[object+Object]"
- * param({ id: function(){ return 1 + 2 } })  // "id=3"
- */
-
-var ARRAY_TYPE = '[object Array]';
-var FUNCTION = 'function';
-var OBJECT = 'object';
-var NUMBER = 'number';
-var NULL = null;
-var OBJECT_TYPE = '[object Object]';
-
-function isFunction(v) {
-    return (typeof v === 'undefined' ? 'undefined' : _typeof(v)) === FUNCTION;
-}
-
-function isArray(v) {
-    return toString.call(v) === ARRAY_TYPE;
-}
-
-function isObject(v) {
-    return (typeof v === 'undefined' ? 'undefined' : _typeof(v)) === OBJECT && v !== NULL;
-}
-
-function isWindow(v) {
-    return v !== NULL && v === v.window;
-}
-
-function isPlainObject(v) {
-    return v !== NULL && isObject(v) && !isWindow(v) && Object.getPrototypeOf(v) === Object.prototype;
-}
-
-function isNumber(v) {
-    return !isNaN(v) && (typeof v === 'undefined' ? 'undefined' : _typeof(v)) === NUMBER;
-}
-
-function likeArray(v) {
-    if (!v) {
-        return false;
-    }
-    return _typeof(v.length) === NUMBER;
-}
-
-function each(v, fn) {
-    var i = void 0,
-        l = void 0;
-    if (likeArray(v)) {
-        for (i = 0, l = v.length; i < l; i++) {
-            if (fn.call(v[i], v[i], i) === false) return;
-        }
-    } else {
-        for (i in v) {
-            if (fn.call(v[i], v[i], i) === false) return;
-        }
-    }
-}
-
-function serialize(params, obj, traditional, scope) {
-    var type = void 0,
-        array = isArray(obj),
-        hash = isPlainObject(obj);
-    each(obj, function (value, key) {
-        type = toString.call(value);
-        if (scope) {
-            key = traditional ? scope : scope + '[' + (hash || type == OBJECT_TYPE || type == ARRAY_TYPE ? key : '') + ']';
-        }
-
-        // 递归
-        if (!scope && array) {
-            params.add(value.name, value.value);
-        }
-        // recurse into nested objects
-        else if (type == ARRAY_TYPE || !traditional && type == OBJECT_TYPE) {
-                serialize(params, value, traditional, key);
-            } else {
-                params.add(key, value);
-            }
-    });
-}
-
-/* harmony default export */ __webpack_exports__["a"] = (function (obj, traditional) {
-    var params = [];
-    params.add = function (key, value) {
-        if (isFunction(value)) value = value();
-        if (value == null) value = "";
-        params.push(key + '=' + value);
-    };
-    serialize(params, obj, traditional);
-    return params.join('&').replace(/%20/g, '+');
-});
-
-/***/ }),
-
-/***/ 96:
+/***/ 73:
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(97);
+var content = __webpack_require__(74);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
-var update = __webpack_require__(2)("caadc654", content, true);
+var update = __webpack_require__(2)("00c457dd", content, true);
 
 /***/ }),
 
-/***/ 97:
+/***/ 74:
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(1)(undefined);
@@ -10724,16 +10418,20 @@ exports.push([module.i, "", ""]);
 
 /***/ }),
 
-/***/ 98:
+/***/ 75:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_mint_ui__ = __webpack_require__(18);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_mint_ui___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_mint_ui__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__BookDetail_css__ = __webpack_require__(99);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__BookDetail_css___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2__BookDetail_css__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__app_db__ = __webpack_require__(41);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_mint_ui__ = __webpack_require__(18);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_mint_ui___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_mint_ui__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_vue__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__Publish_css__ = __webpack_require__(76);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__Publish_css___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2__Publish_css__);
+//
+//
+//
+//
+//
 //
 //
 //
@@ -10771,72 +10469,47 @@ exports.push([module.i, "", ""]);
 
 
 
-__WEBPACK_IMPORTED_MODULE_0_vue__["default"].component(__WEBPACK_IMPORTED_MODULE_1_mint_ui__["Header"].name, __WEBPACK_IMPORTED_MODULE_1_mint_ui__["Header"]);
+
+__WEBPACK_IMPORTED_MODULE_1_vue__["default"].component(__WEBPACK_IMPORTED_MODULE_0_mint_ui__["Button"].name, __WEBPACK_IMPORTED_MODULE_0_mint_ui__["Button"]);
+
+__WEBPACK_IMPORTED_MODULE_1_vue__["default"].component(__WEBPACK_IMPORTED_MODULE_0_mint_ui__["Field"].name, __WEBPACK_IMPORTED_MODULE_0_mint_ui__["Field"]);
 /* harmony default export */ __webpack_exports__["a"] = ({
-  name: 'bookedetail',
-  data() {
-    return {
-      query_obj: '',
-      book_info: [{}],
-      book_seller: [{
-        name: '许见阳',
-        head_img: 'http://www.dayila.net/_static/kh_book_cover/2012_07/13929643555306f303521bb0.96867513.jpg',
-        price: '10',
-        type: 'orderdetail',
-        to: 'orderdetail'
-      }, {
-        name: '吴家成',
-        head_img: '',
-        price: '11'
-      }, {
-        name: '王家伟',
-        head_img: '',
-        price: '13'
-      }]
-    };
-  },
-  methods: {
-    toOther(to, run) {
-      if (this.$route.path !== `/${to}`) {
-        location.hash = to;
-      }
+    name: "publish",
+    data() {
+        return {
+            imgs: []
+        };
     },
-    _fetch_book_detail() {
-      const t = this;
-      t.query_obj = this.$route.query;
-      // console.log(t.query_obj);
-      __WEBPACK_IMPORTED_MODULE_3__app_db__["a" /* default */].Choose.getBookDetail({
-        school: t.query_obj.school,
-        major_key: t.query_obj.major_key,
-        book_key: t.query_obj.book_key
-      }).then(result => {
-        let { list = [] } = result;
-        t.book_info.length = 0;
-        t.book_info.push({
-          author: list[0].author,
-          publish_house: list[0].publish_house,
-          original_price: list[0].original_price,
-          book_img: list[0].book_img
-        });
-        __WEBPACK_IMPORTED_MODULE_1_mint_ui__["Indicator"].close();
-      });
-    }
-  },
-  created: function () {
-    __WEBPACK_IMPORTED_MODULE_1_mint_ui__["Indicator"].open('加载中...');
-    this._fetch_book_detail();
-  }
+    methods: {
+        //  添加图片
+        add_img(event) {
+            const t = this;
+            var reader = new FileReader();
+            var img1 = event.target.files[0];
+            reader.readAsDataURL(img1);
+            reader.onloadend = function () {
+                t.imgs.push(reader.result);
+            };
+            // console.log(t.imgs);
+        },
+        //删除图片
+        delete_img(index) {
+            const t = this;
+            t.imgs.splice(index, 1);
+        }
+    },
+    components: {}
 });
 
 /***/ }),
 
-/***/ 99:
+/***/ 76:
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(100);
+var content = __webpack_require__(77);
 if(typeof content === 'string') content = [[module.i, content, '']];
 // Prepare cssTransformation
 var transform;
@@ -10850,8 +10523,8 @@ if(content.locals) module.exports = content.locals;
 if(false) {
 	// When the styles change, update the <style> tags
 	if(!content.locals) {
-		module.hot.accept("!!../../../node_modules/css-loader/index.js!../../../node_modules/postcss-loader/lib/index.js!./BookDetail.css", function() {
-			var newContent = require("!!../../../node_modules/css-loader/index.js!../../../node_modules/postcss-loader/lib/index.js!./BookDetail.css");
+		module.hot.accept("!!../../../node_modules/css-loader/index.js!../../../node_modules/postcss-loader/lib/index.js!./Publish.css", function() {
+			var newContent = require("!!../../../node_modules/css-loader/index.js!../../../node_modules/postcss-loader/lib/index.js!./Publish.css");
 			if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
 			update(newContent);
 		});
@@ -10859,6 +10532,162 @@ if(false) {
 	// When the module is disposed, remove the <style> tags
 	module.hot.dispose(function() { update(); });
 }
+
+/***/ }),
+
+/***/ 77:
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(1)(undefined);
+// imports
+
+
+// module
+exports.push([module.i, ".Publish{padding:.3rem;margin-top:1rem;list-style:none;font-size:1rem}.Publish .upload-img{margin-top:1rem;width:100%;display:-webkit-box;display:-ms-flexbox;display:flex;-ms-flex-wrap:wrap;flex-wrap:wrap}.Publish .upload-img .img-show{width:4rem;height:4rem;border:.01rem solid #d4d4d4;margin:.3rem}.Publish .img-show img{width:100%;height:100%}.img-show .delete{width:4rem;margin-top:-.1rem}.img-show .delete img{margin-top:.2rem;width:1.3rem;height:1.3rem;margin-left:1.4rem;z-index:1000}.img_upload_btn{width:4rem;height:4rem;border:.01rem solid #d4d4d4;margin:.3rem;position:relative}.img_upload_btn img{width:1.7rem;height:1.7rem;position:absolute;left:1rem;top:.4rem}.img_upload_btn span{font-size:.7rem;text-align:center;color:#707070;position:absolute;left:1.2rem;top:2.4rem}.img_upload_btn input{position:relative;background-color:pink;width:4rem;height:3.9rem;left:0;z-index:99999;opacity:0}.Publish .college{margin-top:2rem;font-size:.5rem}.Publish .publish-bottom-div{display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-orient:vertical;-webkit-box-direction:normal;-ms-flex-direction:column;flex-direction:column;-webkit-box-pack:center;-ms-flex-pack:center;justify-content:center;margin-top:3rem;text-align:center}.Publish .mint-button--danger{width:99%;margin-top:.5rem}", ""]);
+
+// exports
+
+
+/***/ }),
+
+/***/ 78:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('div', {
+    staticClass: "Publish"
+  }, [_c('div', {
+    staticClass: "text"
+  }, [_c('mt-field', {
+    attrs: {
+      "label": "书名",
+      "placeholder": "请输入书名"
+    },
+    model: {
+      value: (_vm.bookname),
+      callback: function($$v) {
+        _vm.bookname = $$v
+      },
+      expression: "bookname"
+    }
+  }), _vm._v(" "), _c('mt-field', {
+    attrs: {
+      "label": "作者",
+      "placeholder": "请输入作者",
+      "type": "email"
+    },
+    model: {
+      value: (_vm.author),
+      callback: function($$v) {
+        _vm.author = $$v
+      },
+      expression: "author"
+    }
+  }), _vm._v(" "), _c('mt-field', {
+    attrs: {
+      "label": "ISBN",
+      "placeholder": "请输入ISBN",
+      "type": "tel"
+    },
+    model: {
+      value: (_vm.ISBN),
+      callback: function($$v) {
+        _vm.ISBN = $$v
+      },
+      expression: "ISBN"
+    }
+  }), _vm._v(" "), _c('mt-field', {
+    directives: [{
+      name: "modal",
+      rawName: "v-modal",
+      value: (_vm.introduction),
+      expression: "introduction"
+    }],
+    attrs: {
+      "placeholder": "描述一下你的书",
+      "type": "textarea",
+      "rows": "4"
+    }
+  })], 1), _vm._v(" "), _c('div', {
+    staticClass: "upload-img"
+  }, [_vm._l((_vm.imgs), function(item, index) {
+    return _c('div', {
+      staticClass: "img-show"
+    }, [_c('img', {
+      attrs: {
+        "src": item
+      }
+    }), _vm._v(" "), _c('div', {
+      staticClass: "delete",
+      on: {
+        "click": function($event) {
+          _vm.delete_img(index)
+        }
+      }
+    }, [_c('img', {
+      staticClass: "delete",
+      attrs: {
+        "src": __webpack_require__(79)
+      }
+    })])])
+  }), _vm._v(" "), _c('div', {
+    staticClass: "img_upload_btn"
+  }, [_c('img', {
+    attrs: {
+      "src": __webpack_require__(80)
+    }
+  }), _vm._v(" "), _c('span', [_vm._v("添加")]), _vm._v(" "), _c('input', {
+    attrs: {
+      "type": "file"
+    },
+    on: {
+      "change": _vm.add_img
+    }
+  })])], 2), _vm._v(" "), _vm._m(0), _vm._v(" "), _c('div', {
+    staticClass: "publish-bottom-div"
+  }, [_c('div', {
+    staticClass: "made-price"
+  }, [_c('span', [_vm._v("书价")]), _vm._v(" "), _c('mt-field', {
+    attrs: {
+      "placeholder": "¥0.00"
+    },
+    model: {
+      value: (_vm.bookprice),
+      callback: function($$v) {
+        _vm.bookprice = $$v
+      },
+      expression: "bookprice"
+    }
+  })], 1), _vm._v(" "), _c('div', {
+    staticClass: "sure-to-publish"
+  }, [_c('mt-button', {
+    attrs: {
+      "type": "danger"
+    }
+  }, [_vm._v("确定发布")])], 1)])])
+}
+var staticRenderFns = [function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('div', {
+    staticClass: "college"
+  }, [_c('li', [_vm._v("浙江工业大学-计算机-物联网")])])
+}]
+var esExports = { render: render, staticRenderFns: staticRenderFns }
+/* harmony default export */ __webpack_exports__["a"] = (esExports);
+
+/***/ }),
+
+/***/ 79:
+/***/ (function(module, exports) {
+
+module.exports = "data:image/png;base64,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"
+
+/***/ }),
+
+/***/ 80:
+/***/ (function(module, exports) {
+
+module.exports = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAIAAAACACAYAAADDPmHLAAAMIklEQVR4Xu1djZHVNhCWKghUwKWCQAVABUAFBxWcXAGXCp6pIEcFHBXkqCBHBYEKclSgzHesb8ybZ+3qz5ZkeeYNmZwlW7ufdr9drWSt+rVrCehdj74PXnUA7BwEHQAdADuXwM6H3y1AB8DOJbDz4e/SAhhjzrTWT+a6t9Z+H8fx297w0BwAjDGPtNZ/KKXOrLVnSqkXSqlHSqmnnsq9VUrdKaVutNYAxjdr7ddxHPH/mrmqBwAp/Lm1ForGz1fRvsoEMACKG2vtl9oBUSUASOnn1tq3KyicA8it1vrKWvuxRjBUBYBhGKD010op/Eq8rrXW14fD4WOJL3fqnYoHAGa7UupCKWXIl9cgW/CEUSn1oXSrUCwAwNSVUu+VUjDzNV9XSqk/S40wigPAior/Siwf4IKVQeSQ8wIQhtIsQlEAGIbhwlp7mcDU/1BK3bN1UjL++1YqfAIhLBAiCoBjii5+i0TIndb68nA4fIjsJ1nzIgBgjIGADxGMHgqHsu9/4zhC4ckvYwwAMYWb+DcUEHg/WAO876bXpgAgggc/D4IXcn1WSl2N43gd0ji2jTEG0Qg4yqvAvkAUwQ82Sy5tBgCaTX8FzHr4bgjuekvBzRVOQAYYAGRfLgFr8C6X1eKAuQkAjDGYNTD58K/S64tS6rIEs+l6YXJn4DHPpQMjngKXAKK46rU6AIwxmPU+oV0Vij/WWiAQ4M7erYmA1QBAZvITkSjJGEHs3m7l3yUvKLmHrB1clpQwghi+Wcu9rQIAUv7fHv4eYRLM/WbkSKJc6T00frgFZDQlF3jByzXGnx0AFFNj5ktW6b4jz78VIZJoJuYeIr6IWH6pRVjoEyCAJchao5AVAKT8f4RkDyEdTH4Ts34JKGQNQPYkoSNk8SwnCLIBwNPsgwHDT+7mMsYgZEQkxF1Z3UEWAHgoH0TvRasmn9MsuQSQPo4gZgNBLgDA7HM+f9fKn8DhAQKkuF9yoPL9e3IACON8ZPMw85v291JlEFcCOeSyiMnzBEkBQDEvEj2uqyv/hHTIbcIdcCBA2jhZxjAZAMiUIdZ3pXdh9s/6zD89P8gSwN+7OAGsJnIESVY8kwBASPq6zxf4BCEnSEYKUwEAIRyX5UI8mwS1AjlWfQuBAETadaHeMHQZ/aHfaADQogdMv+vaXZwfi0BhngCuIKqoJAUAuJDv8ziOpZZxx+opa3tjDCIDV8YQZW7PYl4iCgAClCK3/7STvjAVEbeC23StHURZ12AACPP83e+H6f6hlYAPICr4PXSSxQAAsei5Y3xJSEqk/JpobozhSDa2pfkU2cSRQJr9/zqk2+P9hNAjV4BlYVd+AFbAe+k4yAIYY7jZj3XsTSp1pXKn6GWq28Mu3yg2LX1u6H2CLGuQFfAGAKHxP8dAIEzUzBd7GWNQnYNy9PkVRabWGKwxBiBdKjYN4gIhADglvPn4o2PTnMJkSFXRpFWQc8EeA+hHfIUAALN/Kd9fw+x3FWJUbwXGcXws1r5SfgdFCvxQ0bMfglkw/5PMvGeQj7BT3CuwAl6rhV4WgMlM4fwcrggkhQyi+qgdAARisP2l5JBX5lUMAAH580JelBYjGjcCAMT8rrqLx9LEkA8AuCJG8UMj9BfdtBEAgIO5IjExl/EBgGvRx8vsRGsxooMWAEBuwLVQJCbjIgAIzH/xiZ8JMw0BACus2HCzdIksshQArof9GMfRZ5dvxPyNb9oKAMgKIPmzlB4WTUopAFyLEdWY/xbCwPkUYKIy0WKcFAAu/y8mHPHzN76HxiyAi5iLikVYAAj8f9Hp02PINAYA5F1ctYMsD5AAAAs7SzV/Vfn/1lyAgAewmVkJAFxJB3G4EW+80/TQkgUgALhWCNnknAQArtW/4nPnLbsAAoCLoLP6kQDAhbCqCGCjLsBFBFkLLQGAKwJgfUwaw52ulwZdgIujsZGABAA2NtuUTn3xPTUIABxpu1ifOY6jU8dRAOA6j1dX+h5aAwC5tcVJyumoCgCgjEtrjc/CpEg5T2f9nkLXdN5wFPK01nf0OZlV9kIaY/IAgCv/5tAVJUVqzMzYFI/I2ccqJNkFANo0slgu7rQATPkRyzBjJSsof4p9xBrtsxNlYwwszdLBEs7nlw4ArgJ5DQXGPoONxWMfwJSLdwDECjiyfQdAqAC7C5BJzhgTnKvhXEBUjCl7ffddgi3oKR6Tq4+6SWBsjJlKqrNPtaQKA5e2V+Fo+hR7BFGpgw9aeG/WDJFZtjCwFACECGWpTU8E/SqZqESQUootOEipvBR9tQaA2FyNBADBMWYKhaXuo0EAuBaD2N1aEgD05eDUKEzYH0OS2WSdBAC9ICShwlJ3xRwfw+YgJADoJWGptZawPyYLmKQkzOVj7nz3oycce1BXDXIA13kN7DqExAJwGxF7WXgQFOMbCY6QY6M0FgCUC3BFAqtku+LF9bOHliwAQwDZCADykAKgbw1LhcCE/ay5Ncy1ObQqHtCYBXD5/6SbQzkeIHpYQvAHd9UKAOjL5etsDxfwgGp2CDcEgPUOiCAA9CNigu1O2oaCDbtiYi4igQQAzg2wSYe0YgjrrQULIDiujw3/JumJAUAgcJkddhdKmMrStmoEANgIgmKdU5eXO/YFAHc8GZt5SqtO/95qB4CgTM7LEnsBgKyA61yaLF+39FfzcgsmeSL2nSnfyacvYwzOalg6jNv7vIYQAHCl2kVbgX5Y9K9wCwEARwZrsAK1HhfvnP0hH+X0BgC5gVY+GDGZUoA2RTGojzX3ulfA/Nf5YAQBwFkurpQK+niBl0R2dDPF/WD+rqro9T4ZI7QConPqdqTH4KEW99GoWWKI+5BRVbUCwRrK2FCw5h/1ga4gDjCNV7BrBwABCOAS+uUpATL92Pa1lPRBj1GhaxQAyBK4ikVwC3bIvPEce7/9Z/EKVvtcn90VFX24hJkCAK6awenZUSjdIxoE1hViic65RAOArAD3ZUvc1vmAEMkCv4+ekpDsVABAeII4eumUCrwweAAQu8q5OUJZF3cbKR8JH1fI9xXp4BTcKgkAyArg4GKAwPV5U4AAlmCVXbPFaZd5IeEHucH6ofwkEykZAAgE3GohbsOLwxL0yGAGCGL8mPncl9e8Vvu4SZAUAAQCLk3cQXCkFZr5YPyc8oPSvVmjgFOdM9uVpiadE/wM9aB0zudDZuxGT262n/p7cgtAVkBCCndPDD2Un4z0HYMgCwA8QaC01uZwOHwIQXCtbYZhuLDWInzmrmzKx4OzAYBAgBQmSJ8rMpgEgHpDEJymySGRPXz105Xhm2QCxv80Z9SUFQAzEEC5rhzBNGCEh9hkkiTE4abW2n8nkw+y58rtT6+Fmf86p/KzW4BpJIR6LlE01wdMIw43aMIa0Pjfg/MJQZfV7M/fIbsFOAIBLMHSEW3HsoHy4RLQptprGIZz8vXSI+5wVB1m/irgXw0AMyBI8gRzhcNywBoUXbJ1jFAq38asX6rgPQXq5HE+N3NWBwDxAmQMYeYl5HAaQxVACFQ8yJ4ZxxGTY9VrEwAQCJAAwYAl5HAulFut9WitxQ6YVcwkpxH4eK31K2stqo0lBG/eJfz9262I72YAIBDAL0JoF5yQF/5+rbW+OhwOnwPbRzUbhgFKhzWThHSnnoXcx+WWQN4UADNeAD8Jl+BrDaYuYAlutNY3OT/VMvt0zfTZGSmxO1Y+Zj1M/ua8pggAzICAMAkWwYcbnJpZAARyCXAXyC3cWmu/S2NqLM5orZ8gCWOthUmHu8IvVOHTO8LXY8ZLMoBR1knauCgAzNwCBHQuHUTgfQDIxCGgWG4lLvAxD80+0qwvgrdMb1UcAGbWADMP1iA3EGIV62qPGY88BmZ9kUUwxQJgBgTMTrgG/GJdQ05lz/uG4mHFYO2LmvHHAigeAPMXpv1xYNyv1tKk53MQjaAMfvV43vM9H26vCgBHVmEKv6Sp5VAZce2QuoWZvyp9tp8aSJUAOLIKcBFTWIZ/Q0NJTtHT3xHCTV8Yxa7iok08N6jqAXA8QFp5A6MHicQPoABIfIEBRd/nF5RSIHD34WTtCq+aA3Bolv6dijCPU7bfSmXq0nGF3NecBQgRwp7bdADsWfu5awJ3Ltsqht8tQBVqyveSHQD5ZFtFzx0AVagp30t2AOSTbRU9/w8OqsfM+4d0WwAAAABJRU5ErkJggg=="
 
 /***/ })
 
